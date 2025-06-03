@@ -12,6 +12,9 @@ class Factory {
         static Factory* getInstance();
         IControladorFechaActual* getControladorFechaActual();
         //TODO: Get interfaces de controladores
+        IUsuarios* getControladorUsuario();
+        IInmuebles* getControladorInmuebles();
+        IInmobiliarias* getControladorInmobilarias();
         ~Factory();
 };
 
