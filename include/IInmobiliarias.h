@@ -1,5 +1,5 @@
-#ifndef IINMOBILIAR_H
-#define IINMOBILIAR_H
+#ifndef IINMOBILIARIAS_H
+#define IINMOBILIARIAS_H
 #include <string>
 #include <set>
 #include "DTUsuario.h"
@@ -8,9 +8,9 @@
 
 using namespace std;
 
-class IInmobiliaria{
+class IInmobiliarias{
     public:
-        virtual ~IInmobiliaria() {}
+        virtual ~IInmobiliarias() {}
 
        virtual set <DTUsuario> listarInmobiliarias();
        virtual bool altaPublicacion(string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, string texto, float precio);
