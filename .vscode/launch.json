@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [],
+      "cwd": "/Users/vivianekunin/Downloads/documentos/fing/5tosem/p4/lab 4/lab4_2025",
+      "program": "/Users/vivianekunin/Downloads/documentos/fing/5tosem/p4/lab 4/lab4_2025/build/Debug/outDebug"
+    }
+  ]
+}
