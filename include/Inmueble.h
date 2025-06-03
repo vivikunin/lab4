@@ -5,6 +5,7 @@
 #include "DTPublicacion.h"
 #include "TipoPublicacion.h"
 #include "AdministraPropiedad.h"
+#include "Propietario.h"
 
 class Inmueble {
     private:
@@ -14,8 +15,9 @@ class Inmueble {
         int superficie;
         int anoConstruccion;
         AdministraPropiedad* administracion;
+        Propietario* dueño;
     public:
-        Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion);
+        Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion, Propietario* dueño);
         virtual ~Inmueble();
 
         bool esDelTipoInmueble(TipoInmueble tipoInmueble);
@@ -27,6 +29,8 @@ class Inmueble {
         int getNumeroPuerta() const;
         int getSuperficie() const;
         int getAnoConstruccion() const;
+        DTInmueble getDTInmueble();
+        Propietario* getDueño();
     
         void setAdministracion(AdministraPropiedad* admin);
         AdministraPropiedad* getAdministracion() const;

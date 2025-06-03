@@ -5,7 +5,6 @@
 #include "DTInmuebleAdministrado.h"
 #include "DTUsuario.h"
 
-#include <map>
 #include <set>
 #include <string>
 
@@ -15,7 +14,7 @@ class ControladorInmobiliarias : public IInmobiliarias {
     private:
         static ControladorInmobiliarias* instance;
         ControladorInmobiliarias();
-        std::map <string, Inmobiliaria*> coleccionInmobiliarias;
+        std::set <Inmobiliaria*> coleccionInmobiliarias;
     
     public:
         static ControladorInmobiliarias* getInstance();

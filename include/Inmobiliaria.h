@@ -8,6 +8,7 @@ class Inmobiliaria : public Usuario {
         std::string direccion;
         std::string url;
         std::string telefono;
+        
 
     public:
         Inmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono);

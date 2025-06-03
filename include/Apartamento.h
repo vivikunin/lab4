@@ -1,6 +1,7 @@
 #ifndef APARTAMENTO_H
 #define APARTAMENTO_H
 #include "Inmueble.h"
+#include "DTApartamento.h"
 
 
 class Apartamento : public Inmueble {
@@ -12,6 +13,8 @@ class Apartamento : public Inmueble {
     public:
         Apartamento(int piso, bool tieneAscensor, float gastosComunes);
         ~Apartamento();
+
+        DTApartamento getDTApartamento() const;
 };
 
 #endif

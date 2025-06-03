@@ -9,7 +9,7 @@ class IInmuebles{
     public:
         virtual ~IInmuebles() {}
 
-       virtual void eliminarInmueble(int codigoInmueble);
-       virtual std::set <DTPublicacion> listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble);
+       virtual void eliminarInmueble(int codigoInmueble)=0;
+       virtual std::set <DTPublicacion> listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble)=0;
 };
 #endif
