@@ -14,5 +14,5 @@ class DTCasa : public DTInmueble {
         TipoTecho getTecho();
         virtual ~DTCasa();
 };
-
+//hola
 #endif
