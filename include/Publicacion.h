@@ -2,6 +2,7 @@
 #define PUBLICACION_H
 #include "DTFecha.h"
 #include "TipoPublicacion.h"
+#include "TipoInmueble.h"
 #include <string>
 
 class Publicacion {
@@ -21,6 +22,8 @@ public:
     void setAdministrador(AdministraPropiedad* admin);
     DTPublicacion getDTPublicacion();
 
+    void marcarComoInactiva();
+    bool cumpleCondiciones(TipoPublicacion tipoPublicacion, float precioMinimo, float prcioMaximo, TipoInmueble tipoInmueble);
 };
 
 #endif

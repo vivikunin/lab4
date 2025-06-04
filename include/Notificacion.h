@@ -15,7 +15,7 @@ class Notificacion {
         TipoInmueble tInmueble;
 
     public:
-        Notificacion(std::string nicknameInmobiliari, int codigo, std::string texto, TipoPublicacion tPublicacion, TipoInmueble tInmueble);   
+        Notificacion(std::string nicknameInmobiliaria, int codigo, std::string texto, TipoPublicacion tPublicacion, TipoInmueble tInmueble);   
         ~Notificacion();
 
         std::string getNicknameInmobiliaria() const;
