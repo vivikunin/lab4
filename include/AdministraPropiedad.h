@@ -16,8 +16,8 @@ class AdministraPropiedad {
         std::set<Publicacion*> coleccionPublicaciones;
         Inmueble* inmuebleAdministrado;
         Inmobiliaria* inmobiliariaAdministradora;
-        std::set<Publicacion*> publicaciones;
     public:
+        AdministraPropiedad(DTFecha* fecha);
         AdministraPropiedad(DTFecha* fecha,Inmueble* inmuebleAdministrado ,Inmobiliaria* inmobiliariaAdministradora);
         ~AdministraPropiedad();
 
@@ -25,8 +25,8 @@ class AdministraPropiedad {
         Inmueble* getInmuebleAdministrado() const;
         Inmobiliaria* getInmobiliariaAdministradora() const;
  
-       // void setInmuebleAdministrado(Inmueble* inmueble); 
-       // void setInmobiliariaAdministrada(Inmobiliaria* inmobiliaria);  
+       void setInmuebleAdministrado(Inmueble* inmueble); 
+       void setInmobiliariaAdministrada(Inmobiliaria* inmobiliaria);  
 
         DTInmuebleAdministrado obtenerDatosInmuebleAdministrado();
         bool puedoCrearPublicacion(TipoPublicacion tipo);

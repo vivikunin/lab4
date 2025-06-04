@@ -1,6 +1,7 @@
 #ifndef CLIENTE_H
 #define CLIENTE_H
 #include "Usuario.h"
+#include "TipoInmueble.h"
 #include <string>
 
 class Cliente : public Usuario {
@@ -13,6 +14,7 @@ class Cliente : public Usuario {
         ~Cliente();
         std::string getApellido();
         std::string getDocumento();
+        void notificar(std::string nickname, int c, std::string texto, TipoInmueble tipoInmueble );
 };
 
 #endif

@@ -15,14 +15,16 @@ class Inmueble {
         int superficie;
         int anoConstruccion;
         AdministraPropiedad* administracion;
-        Propietario* dueño;
+        Propietario* duenio;
     public:
-        Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion, Propietario* dueño);
+        Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion);
         virtual ~Inmueble();
 
         bool esDelTipoInmueble(TipoInmueble tipoInmueble);
         DTPublicacion obtenerDatos(TipoPublicacion tipoPublicacion, float precioMinimo,float precioMaximo);
         void eliminarInmueble();
+
+        void setDuenio( Propietario* duenio);
 
         int getCodigo() const;
         std::string getDireccion() const;
