@@ -4,6 +4,7 @@
 #include "DTPublicacion.h"
 #include "TipoInmueble.h"
 #include <set>
+#include <map>
 #include <string>
 
 class Inmueble;
@@ -12,7 +13,7 @@ class ControladorInmuebles : public IInmuebles {
     private:
         static ControladorInmuebles* instance;
         ControladorInmuebles();
-        std::set <Inmueble*> coleccionInmuebles;
+        std::map <int,Inmueble*> coleccionInmuebles;
     
     public:
         static ControladorInmuebles* getInstance();

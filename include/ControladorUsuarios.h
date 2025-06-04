@@ -2,7 +2,7 @@
 #define CONTROLADORUSUARIOS_H
 #include "IUsuarios.h"
 #include <string>
-#include <set>
+#include <map>
 
 class Usuario;
 
@@ -10,7 +10,7 @@ class ControladorUsuarios : public IUsuarios  {
     private:
         static ControladorUsuarios* instance;
         ControladorUsuarios();
-        std::set <Usuario*> coleccionUsuarios;
+        std::map <string, Usuario*> coleccionUsuarios;
     
     public:
         static ControladorUsuarios* getInstance();
