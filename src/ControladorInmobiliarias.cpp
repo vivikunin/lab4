@@ -32,12 +32,10 @@ bool ControladorInmobiliarias::altaPublicacion(string nickname, int codigoInmueb
 }
         
 set <DTInmuebleAdministrado> ControladorInmobiliarias::listarInmueblesAdministrados(string nicknameInmobiliaria){
-    Inmobiliaria i = coleccionInmobiliarias.find(nicknameInmobiliaria);
-    set<DTInmuebleAdministrado> datos;
-    for (set<AdministraPropiedad*>::iterator it = propiedadesAdministradas.begin(); it != propiedadesAdministradas.end(); it++){
-        AdministraPropiedad *ap = (*it);
-        DTInmuebleAdministrado datosActual = ap.obtenerDatosInmuebleAdministrado(); //IMplementar esa
-        datos.insert(datosActual); //A CHEQUEAR JAJAJJAJA
+    map<string,Inmobiliaria*>::iterator i = coleccionInmobiliarias.find(nicknameInmobiliaria);
+    if (i != coleccionInmobiliarias.end()) {
+        return i->second->datosInmueblesAdministrados();
+    } else {
+        return {};
     }
-;
 }

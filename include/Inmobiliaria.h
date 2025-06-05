@@ -19,7 +19,7 @@ class Inmobiliaria : public Usuario {
         Inmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono);
         ~Inmobiliaria();
 
-        std::set<DTInmuebleAdministrado*> datosInmueblesAdministrados();
+        std::set<DTInmuebleAdministrado> datosInmueblesAdministrados();
         DTUsuario getDatos();
         bool altaPublicacion(int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio);
 
