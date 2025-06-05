@@ -9,9 +9,6 @@
 class Factory {
     private:
         static Factory* instance;
-        IUsuarios* controladorUsuario;
-        IInmuebles* controladorInmuebles;
-        IInmobiliarias* controladorInmobiliarias;
         Factory();
 
     public:

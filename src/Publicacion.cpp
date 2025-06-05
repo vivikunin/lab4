@@ -27,7 +27,7 @@ DTPublicacion Publicacion::getDTPublicacion() {
         this->codigo,
         this->fecha, 
         this->texto,
-        std::to_string(this->precio), // convierte float a string
+        this->precio, 
         this->administrador->getInmobiliariaAdministradora()->getNombre()
     );
     

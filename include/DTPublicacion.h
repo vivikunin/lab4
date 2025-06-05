@@ -8,15 +8,15 @@ class DTPublicacion {
         int codigo;
         DTFecha* fecha;
         std::string texto;
-        std::string precio;
+        float precio;
         std::string inmobiliaria;
 
     public:
-        DTPublicacion(int codigo, DTFecha* fecha, std::string texto, std::string precio, std::string inmobiliaria);
+        DTPublicacion(int codigo, DTFecha* fecha, std::string texto, float precio, std::string inmobiliaria);
         int getCodigo();
         DTFecha* getFecha();
         std::string getTexto();
-        std::string getPrecio();
+        float getPrecio();
         std::string getInmobiliaria();
         ~DTPublicacion();
 };
