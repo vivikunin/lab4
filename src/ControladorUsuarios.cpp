@@ -1,4 +1,7 @@
 #include "../include/ControladorUsuarios.h"
+#include "Cliente.h"
+#include"Propietario.h"
+#include "IInmobiliarias.h"
 
 ControladorUsuarios::ControladorUsuarios(){}
 
@@ -14,7 +17,7 @@ ControladorUsuarios* ControladorUsuarios::getInstance() {
 }
 
 bool ControladorUsuarios::altaCliente(string nickname, string contrasena, string nombre, string email, string apellido, string documento){
-    if (coleccionUsuarios.find(claveBuscada) != coleccionUsuarios.end()){ //entonces existe
+    if (coleccionUsuarios.find(nickname) != coleccionUsuarios.end()){ //entonces existe
         return false;
     } else {
         c = Cliente(nickname, contrasena, nombre, email, apellido, documento); //create
@@ -23,7 +26,7 @@ bool ControladorUsuarios::altaCliente(string nickname, string contrasena, string
 }
 
 bool ControladorUsuarios::altaPropiedad(string nickname, string contrasena, string nombre, string email, string cuentaBancaria, string telefono){
-    if (coleccionUsuarios.find(claveBuscada) != coleccionUsuarios.end()){ //entonces existe
+    if (coleccionUsuarios.find(nickname) != coleccionUsuarios.end()){ //entonces existe
             return false;
     } else {
         p = Propietario(nickname, contrasena, nombre, email, cuentaBancaria, telefono); //create
@@ -32,7 +35,7 @@ bool ControladorUsuarios::altaPropiedad(string nickname, string contrasena, stri
 }
 
 bool altaInmobiliaria(string nickname, string contrasena, string nombre, string email, string direccion, string url, string telefono){
-    if (coleccionUsuarios.find(claveBuscada) != coleccionUsuarios.end()){ //entonces existe
+    if (coleccionUsuarios.find(nickname) != coleccionUsuarios.end()){ //entonces existe
             return false;
     } else {
         i = Inmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono); //create

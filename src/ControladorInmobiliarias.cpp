@@ -1,7 +1,8 @@
 #include "../include/ControladorInmobiliarias.h"
+#include <set>
+using namespace std;
 
 ControladorInmobiliarias* ControladorInmobiliarias::instance = NULL;
-
 
 ControladorInmobiliarias* ControladorInmobiliarias::getInstance() {
     if (instance == NULL) {
@@ -9,10 +10,6 @@ ControladorInmobiliarias* ControladorInmobiliarias::getInstance() {
     }
     return instance;
 }
-#include "../include/ControladorInmobiliarias.h"
-#include <set>
-
-using namespace std;
 
 ControladorInmobiliarias::ControladorInmobiliarias(){}
 
@@ -33,5 +30,12 @@ bool ControladorInmobiliarias::altaPublicacion(string nickname, int codigoInmueb
 }
         
 set <DTInmuebleAdministrado> ControladorInmobiliarias::listarInmueblesAdministrados (string nicknameInmobiliaria){
+    i = coleccionInmobiliarias.find(nickname);
+    set<DTInmuebleAdministrado> datos;
+    for (set<AdministraPropiedad*>::iterator it = propiedadesAdministradas.begin(); it != propiedadesAdministradas.end(); it++){
+        AdministraPropiedad *ap = (*it);
+        DTInmuebleAdministrado datosActual = ap.obtenerDatosInmuebleAdministrado(); //IMplementar esa
+        datos.isert(datosActual); //A CHEQUEAR JAJAJJAJA
+    }
 
 }
