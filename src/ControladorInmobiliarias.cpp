@@ -1,4 +1,15 @@
 #include "../include/ControladorInmobiliarias.h"
+
+ControladorInmobiliarias* ControladorInmobiliarias::instance = NULL;
+
+
+ControladorInmobiliarias* ControladorInmobiliarias::getInstance() {
+    if (instance == NULL) {
+        instance = new ControladorInmobiliarias();
+    }
+    return instance;
+}
+#include "../include/ControladorInmobiliarias.h"
 #include <set>
 
 using namespace std;
