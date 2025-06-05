@@ -4,6 +4,14 @@ ControladorUsuarios::ControladorUsuarios(){}
 
 ControladorUsuarios::~ControladorUsuarios(){}
 
+ControladorUsuarios* ControladorUsuarios::instance = NULL;
+
+ControladorUsuarios* ControladorUsuarios::getInstance() {
+    if (instance == NULL) {
+        instance = new ControladorUsuarios();
+    }
+    return instance;
+}
 
 bool ControladorUsuarios::altaCliente(string nickname, string contrasena, string nombre, string email, string apellido, string documento){
     if (coleccionUsuarios.find(claveBuscada) != coleccionUsuarios.end()){ //entonces existe
