@@ -14,6 +14,6 @@ class IInmobiliarias{
 
        virtual set <DTUsuario> listarInmobiliarias()=0;
        virtual bool altaPublicacion(string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, string texto, float precio)=0;
-       virtual set <DTInmuebleAdministrado> listarInmuebleAdministrado(string nicknameInmobiliaria)=0;
+       virtual set <DTInmuebleAdministrado> listarInmueblesAdministrados(string nicknameInmobiliaria)=0;
 };
 #endif
