@@ -1,6 +1,6 @@
 #ifndef ADMINISTRAPROPIEDAD_H
 #define ADMINISTRAPROPIEDAD_H
-#include <set>
+#include <map>
 #include "DTFecha.h"
 #include "DTInmuebleAdministrado.h"
 #include "TipoPublicacion.h"
@@ -13,7 +13,7 @@
 class AdministraPropiedad {
     private:
         DTFecha* fecha;
-        std::set<Publicacion*> coleccionPublicaciones;
+        std::map<int,Publicacion*> coleccionPublicaciones;
         Inmueble* inmuebleAdministrado;
         Inmobiliaria* inmobiliariaAdministradora;
     public:
@@ -30,7 +30,7 @@ class AdministraPropiedad {
 
         DTInmuebleAdministrado obtenerDatosInmuebleAdministrado();
         bool puedoCrearPublicacion(TipoPublicacion tipo);
-        DTPublicacion obtenerDatos(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo);
+        DTPublicacion obtenerDatosPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo); //modifique nombre para que no se confundan
         void eliminarInmueble();
 };
 
