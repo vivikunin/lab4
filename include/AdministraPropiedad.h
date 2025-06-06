@@ -17,21 +17,29 @@ class AdministraPropiedad {
         Inmueble* inmuebleAdministrado;
         Inmobiliaria* inmobiliariaAdministradora;
     public:
+        //constructor y destructor
         AdministraPropiedad(DTFecha* fecha);
         AdministraPropiedad(DTFecha* fecha,Inmueble* inmuebleAdministrado ,Inmobiliaria* inmobiliariaAdministradora);
         ~AdministraPropiedad();
 
+        //getters
         DTFecha* getFecha(); 
         Inmueble* getInmuebleAdministrado() const;
         Inmobiliaria* getInmobiliariaAdministradora() const;
  
-       void setInmuebleAdministrado(Inmueble* inmueble); 
-       void setInmobiliariaAdministrada(Inmobiliaria* inmobiliaria);  
+        //setters
+        void setInmuebleAdministrado(Inmueble* inmueble); 
+        void setInmobiliariaAdministrada(Inmobiliaria* inmobiliaria);  
 
         DTInmuebleAdministrado obtenerDatosInmuebleAdministrado();
         bool puedoCrearPublicacion(TipoPublicacion tipo);
         DTPublicacion obtenerDatosPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo); //modifique nombre para que no se confundan
         void eliminarInmueble();
-};
+        AdministraPropiedad* administraPropiedadParaInmueble(int codigoInmueble);
+        void crearPublicacion(TipoPublicacion tipoPublicacion, std::string texto, float precio);
+        Publicacion* buscarPublicacionActiva();
+        void desactivarPublicacionActiva();
+
+};      
 
 #endif

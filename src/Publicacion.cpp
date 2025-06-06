@@ -5,6 +5,8 @@
 
 #include <string>
 
+int Publicacion::ultimoCodigo = 0;
+
 Publicacion::Publicacion(int codigo, DTFecha* fecha, TipoPublicacion tipo, std::string texto, float precio, bool activa){
     this->codigo=codigo;
     this->fecha=fecha;
@@ -33,10 +35,29 @@ DTPublicacion Publicacion::getDTPublicacion() {
     
 }
 
-void Publicacion:: marcarComoInactiva(){
 
+TipoPublicacion Publicacion::getTipoPublicacion(){
+    return this->tipo;
+}
+
+DTFecha* Publicacion::getFecha(){
+    return this->fecha;
+}
+
+int Publicacion::getCodigo(){
+    return this->codigo;
+}
+
+bool Publicacion::estaActiva(){
+    return this->activa;
+}
+
+void Publicacion:: marcarComoInactiva(){
+    this->activa=false;
 }
 
 bool Publicacion:: cumpleCondiciones(TipoPublicacion tipoPublicacion, float precioMinimo, float prcioMaximo, TipoInmueble tipoInmueble){
 
 }
+
+
