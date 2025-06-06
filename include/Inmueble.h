@@ -6,6 +6,9 @@
 #include "TipoPublicacion.h"
 #include "AdministraPropiedad.h"
 #include "Propietario.h"
+#include "DTInmueble.h"
+
+class AdministraPropiedad;
 
 class Inmueble {
     private:

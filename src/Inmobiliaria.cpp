@@ -13,13 +13,15 @@ std::set<DTInmuebleAdministrado> Inmobiliaria:: datosInmueblesAdministrados(){
 
 bool Inmobiliaria::altaPublicacion(int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio){
     AdministraPropiedad *ap =NULL;
-    for(std::set<AdministraPropiedad*>::iterator it= propiedadesAdministradas.begin(); it!=propiedadesAdministradas.end(); it++){
+    std::set<AdministraPropiedad*>::iterator it= propiedadesAdministradas.begin();
+    while ( ap==NULL && it!=propiedadesAdministradas.end()){
         ap=(*it)->administraPropiedadParaInmueble(codigoInmueble);
+        it++;
     }
     bool puede = ap->puedoCrearPublicacion(tipoPublicacion);
     if (puede){
         ap->desactivarPublicacionActiva();
-        ap->crearPublicacion();
+        ap->crearPublicacion(tipoPublicacion, texto, precio);
     }
     return puede;
 }

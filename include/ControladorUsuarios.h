@@ -1,6 +1,7 @@
 #ifndef CONTROLADORUSUARIOS_H
 #define CONTROLADORUSUARIOS_H
 #include "IUsuarios.h"
+#include "Inmobiliaria.h"
 #include <string>
 #include <map>
 

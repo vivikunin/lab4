@@ -30,7 +30,7 @@ DTPublicacion Publicacion::getDTPublicacion() {
         this->fecha, 
         this->texto,
         this->precio, 
-        this->administrador->getInmobiliariaAdministradora()->getNombre()
+        dynamic_cast<Usuario*>(this->administrador->getInmobiliariaAdministradora())->getNombre()
     );
     
 }

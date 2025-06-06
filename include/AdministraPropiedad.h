@@ -9,6 +9,9 @@
 #include "Inmueble.h"
 #include "Inmobiliaria.h"
 
+class Publicacion;
+class Inmobiliaria;
+class Inmueble;
 
 class AdministraPropiedad {
     private:
