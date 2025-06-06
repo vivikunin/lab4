@@ -57,7 +57,7 @@ void Publicacion:: marcarComoInactiva(){
 }
 
 bool Publicacion:: cumpleCondiciones(TipoPublicacion tipoPublicacion, float precioMinimo, float prcioMaximo, TipoInmueble tipoInmueble){
-
+    
 }
 
 

@@ -22,5 +22,4 @@ class ControladorInmuebles : public IInmuebles {
         void eliminarInmueble(int codigoInmueble);
         std::set<DTPublicacion> listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble);
 };
-
 #endif

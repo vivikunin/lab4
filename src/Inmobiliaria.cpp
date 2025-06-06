@@ -25,3 +25,7 @@ bool Inmobiliaria::altaPublicacion(int codigoInmueble, TipoPublicacion tipoPubli
     }
     return puede;
 }
+
+void Inmobiliaria::eliminarReferenciaAdministracion(AdministraPropiedad* a) {
+    propiedadesAdministradas.erase(a);
+}
