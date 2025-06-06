@@ -24,7 +24,7 @@ class Inmueble {
         virtual ~Inmueble();
 
         bool esDelTipoInmueble(TipoInmueble tipoInmueble);
-        DTPublicacion obtenerDatos(TipoPublicacion tipoPublicacion, float precioMinimo,float precioMaximo);
+        std::set<DTPublicacion*> obtenerDatosPublicaciones(TipoPublicacion tipoPublicacion, float precioMinimo,float precioMaximo);
         void eliminarInmueble();
 
         void setDuenio( Propietario* duenio);

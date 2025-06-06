@@ -33,8 +33,10 @@ DTInmuebleAdministrado AdministraPropiedad::obtenerDatosInmuebleAdministrado(){
 }
 
 
-DTPublicacion AdministraPropiedad::obtenerDatosPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo){
-
+std::set<DTPublicacion*> AdministraPropiedad::obtenerDatosPublicaciones(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo){
+    for(std::map<int, Publicacion*>::iterator it=coleccionPublicaciones.begin(); it!=coleccionPublicaciones.end(); it++){
+        if()
+    }
 }
 
 void AdministraPropiedad::eliminarInmueble(){
