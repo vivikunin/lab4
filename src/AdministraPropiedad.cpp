@@ -1,6 +1,7 @@
 #include "../include/AdministraPropiedad.h"
 #include "DTInmuebleAdministrado.h"
 #include "ControladorFechaActual.h"
+#include <set>
 
 AdministraPropiedad::AdministraPropiedad(DTFecha* fecha) {
     this->fecha = new DTFecha(fecha); 
@@ -33,9 +34,13 @@ DTInmuebleAdministrado AdministraPropiedad::obtenerDatosInmuebleAdministrado(){
 }
 
 
-std::set<DTPublicacion*> AdministraPropiedad::obtenerDatosPublicaciones(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo){
+std::set<DTPublicacion> AdministraPropiedad::obtenerDatosPublicaciones(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble){
+    std::set<DTPublicacion> res;
     for(std::map<int, Publicacion*>::iterator it=coleccionPublicaciones.begin(); it!=coleccionPublicaciones.end(); it++){
-        if()
+        if(it->second->cumpleCondiciones(tipoPublicacion, precioMinimo,precioMaximo,tipoInmueble)){
+            DTPublicacion dtp = it->second->getDTPublicacion();
+            res.insert(dtp);
+        }
     }
 }
 
