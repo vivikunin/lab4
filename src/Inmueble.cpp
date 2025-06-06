@@ -28,8 +28,8 @@ bool Inmueble::esDelTipoInmueble(TipoInmueble tipoInmueble){
 
 }
 
-DTPublicacion Inmueble::obtenerDatosPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo,float precioMaximo){
-    return this->administracion->obtenerDatosPublicacion(tipoPublicacion, precioMinimo, precioMaximo);
+std::set<DTPublicacion> Inmueble::obtenerDatosPublicaciones(TipoPublicacion tipoPublicacion, float precioMinimo,float precioMaximo, TipoInmueble tipoInmueble){
+    return this->administracion->obtenerDatosPublicaciones(tipoPublicacion, precioMinimo, precioMaximo, tipoInmueble);
 }
         void eliminarInmueble();
 
