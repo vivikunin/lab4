@@ -16,8 +16,14 @@ private:
     AdministraPropiedad* administrador;
 
 public:
+    static int ultimoCodigo;
     Publicacion(int codigo, DTFecha* fecha, TipoPublicacion tipo, std::string texto, float precio, bool activa);
     ~Publicacion();
+
+    TipoPublicacion getTipoPublicacion();
+    DTFecha* getFecha();
+    bool estaActiva();
+    int getCodigo();
 
     void setAdministrador(AdministraPropiedad* admin);
     DTPublicacion getDTPublicacion();

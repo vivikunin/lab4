@@ -10,3 +10,16 @@ std::set<DTInmuebleAdministrado> Inmobiliaria:: datosInmueblesAdministrados(){
     }
     return datos;
 }
+
+bool Inmobiliaria::altaPublicacion(int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio){
+    AdministraPropiedad *ap =NULL;
+    for(std::set<AdministraPropiedad*>::iterator it= propiedadesAdministradas.begin(); it!=propiedadesAdministradas.end(); it++){
+        ap=(*it)->administraPropiedadParaInmueble(codigoInmueble);
+    }
+    bool puede = ap->puedoCrearPublicacion(tipoPublicacion);
+    if (puede){
+        ap->desactivarPublicacionActiva();
+        ap->crearPublicacion();
+    }
+    return puede;
+}

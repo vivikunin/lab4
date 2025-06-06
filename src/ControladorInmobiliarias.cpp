@@ -30,7 +30,6 @@ set <DTUsuario> ControladorInmobiliarias::listarInmobiliarias(){
 bool ControladorInmobiliarias::altaPublicacion(string nickname, int codigoInmueble, TipoPublicacion tipoPublicacion, string texto, float precio){
     map<string,Inmobiliaria*>::iterator it=coleccionInmobiliarias.find(nickname);
     return it->second->altaPublicacion(codigoInmueble, tipoPublicacion, texto, precio);
-
 }
         
 set <DTInmuebleAdministrado> ControladorInmobiliarias::listarInmueblesAdministrados(string nicknameInmobiliaria){
