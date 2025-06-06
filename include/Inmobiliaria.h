@@ -4,8 +4,12 @@
 #include "DTUsuario.h"
 #include "DTInmuebleAdministrado.h"
 #include "Suscriptor.h"
+#include "AdministraPropiedad.h"
+
 
 #include <string>
+
+class AdministraPropiedad;
 
 class Inmobiliaria : public Usuario {
     private:
