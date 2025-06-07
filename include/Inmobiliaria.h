@@ -26,6 +26,8 @@ class Inmobiliaria : public Usuario {
         void suscribir(std::string nickname);
         void anularSuscripcion(std::string nickname);
         void notificar(std::string nickname, int c, std::string texto, TipoInmueble tipoInmueble );
+        void eliminarReferenciaAdministracion(AdministraPropiedad* ap);
+
 
 };
 

@@ -33,5 +33,4 @@ class AdministraPropiedad {
         DTPublicacion obtenerDatosPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo); //modifique nombre para que no se confundan
         void eliminarInmueble();
 };
-
 #endif

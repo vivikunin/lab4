@@ -10,3 +10,7 @@ std::set<DTInmuebleAdministrado> Inmobiliaria:: datosInmueblesAdministrados(){
     }
     return datos;
 }
+
+void Inmobiliaria::eliminarReferenciaAdministracion(AdministraPropiedad* ap) {
+    propiedadesAdministradas.erase(ap);
+}

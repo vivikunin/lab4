@@ -19,6 +19,15 @@ AdministraPropiedad::~AdministraPropiedad() {
 DTFecha*  AdministraPropiedad::getFecha(){
     return this->fecha;
 } 
+
+Inmueble* AdministraPropiedad::getInmuebleAdministrado() const{
+    return this->inmuebleAdministrado;
+}
+
+Inmobiliaria* AdministraPropiedad::getInmobiliariaAdministradora() const{
+    return this->inmobiliariaAdministradora;
+}
+
 void AdministraPropiedad::setInmuebleAdministrado(Inmueble* inmueble){
     this->inmuebleAdministrado=inmueble;
 }
@@ -41,5 +50,9 @@ DTPublicacion AdministraPropiedad::obtenerDatosPublicacion(TipoPublicacion tipoP
 }
 
 void AdministraPropiedad::eliminarInmueble(){
-
+    for (std::map<int,Publicacion*>::iterator it=coleccionPublicaciones.begin(); it!=coleccionPublicaciones.end(); it++){
+        delete(it->second);
+    }
 }
+
+
