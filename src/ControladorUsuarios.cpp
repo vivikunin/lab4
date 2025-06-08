@@ -47,3 +47,10 @@ bool ControladorUsuarios::altaInmobiliaria(string nickname, string contrasena, s
         coleccionUsuarios[nickname] = i; //add
     } 
 }
+
+void ControladorUsuarios::eliminarUsuario(string nickname){
+    Usuario* aRemover=coleccionUsuarios.find(nickname)->second;
+    coleccionUsuarios.erase(nickname);
+    delete aRemover;
+
+}

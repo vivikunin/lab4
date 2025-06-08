@@ -12,8 +12,8 @@ class Suscriptor : public Usuario {
         std::set <Notificacion*> misNotificaciones;
     
     public:
-        Suscriptor();   
-        ~Suscriptor();
+        Suscriptor(std::string nickname, std::string contrasena, std::string nombre, std::string email);   
+        virtual ~Suscriptor()=0;
 
         void notificar(Notificacion* n);
         const std::set<Notificacion*>& getNotificaciones() const;

@@ -4,7 +4,7 @@
 #include "TipoInmueble.h"
 #include <string>
 
-class Cliente : public Usuario {
+class Cliente : public Suscriptor {
     private:
         std::string apellido;
         std::string documento;
