@@ -1,7 +1,11 @@
 #include "../include/Inmueble.h"
+#include "../include/TipoInmueble.h"
+#include "../include/Casa.h"
+#include "../include/Apartamento.h"
 #include "../include/AdministraPropiedad.h"
 
 #include <set>
+
 
 Inmueble::Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion){
     this->codigo=codigo;
@@ -14,18 +18,20 @@ Inmueble::Inmueble(int codigo, std::string direccion, int numeroPuerta, int supe
 }
 
 Inmueble:: ~Inmueble(){
-    if (administracion != nullptr) {
-        Inmobiliaria* i = administracion->getInmobiliariaAdministradora();
-        if (i != nullptr){
-            i->eliminarReferenciaAdministracion(administracion); 
-        }  
-        delete administracion;
-    }
+    delete administracion;
 }
 
 
-bool Inmueble::esDelTipoInmueble(TipoInmueble tipoInmueble){
-
+bool Inmueble::esDelTipoInmueble(TipoInmueble tipo) {
+    switch (tipo) {
+        case Todos:
+            return true;
+        case Casa:
+            return dynamic_cast<Casa*>(this) != nullptr;
+        case Apartamento:
+            return dynamic_cast<Apartamento*>(this) != nullptr;
+    }
+    return false;
 }
 
 std::set<DTPublicacion> Inmueble::obtenerDatosPublicaciones(TipoPublicacion tipoPublicacion, float precioMinimo,float precioMaximo, TipoInmueble tipoInmueble){
@@ -75,4 +81,8 @@ void Inmueble::setAdministracion(AdministraPropiedad* admin){
 
 AdministraPropiedad* Inmueble::getAdministracion() const{
     return administracion;
+}
+
+void Inmueble::eliminarReferenciaAdministracion(){
+    administracion=NULL;
 }

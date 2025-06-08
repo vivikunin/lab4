@@ -15,6 +15,14 @@ AdministraPropiedad::~AdministraPropiedad(){
         delete it->second;
     }
     coleccionPublicaciones.clear();
+
+    //Eliminar referencia de l ainmobiliaria y el inmueble
+    if (inmuebleAdministrado != nullptr) {
+        inmuebleAdministrado->eliminarReferenciaAdministracion();
+    }
+    if (inmobiliariaAdministradora != nullptr) {
+        inmobiliariaAdministradora->eliminarReferenciaAdministracion(this);
+    }
 }
 
 DTFecha*  AdministraPropiedad::getFecha(){
@@ -91,7 +99,7 @@ void AdministraPropiedad::desactivarPublicacionActiva(){
 }
 
 void AdministraPropiedad::crearPublicacion(TipoPublicacion tipoPublicacion, std::string texto, float precio){
-    Publicacion::ultimoCodigo++;    //aumentar el código incremental
+    Publicacion::ultimoCodigo++;  
     Publicacion* pub = new Publicacion(Publicacion::ultimoCodigo, ControladorFechaActual::getInstance()->getFechaActual(), tipoPublicacion, texto, precio, true);
     this->coleccionPublicaciones.insert({pub->getCodigo(),pub});
 }

@@ -23,11 +23,8 @@ class Inmueble {
         Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion);
         virtual ~Inmueble();
 
-        bool esDelTipoInmueble(TipoInmueble tipoInmueble);
-        std::set<DTPublicacion> obtenerDatosPublicaciones(TipoPublicacion tipoPublicacion, float precioMinimo,float precioMaximo, TipoInmueble tipoInmueble);
-        void eliminarInmueble();
-
         void setDuenio( Propietario* duenio);
+        void setAdministracion(AdministraPropiedad* admin);
 
         int getCodigo() const;
         std::string getDireccion() const;
@@ -36,9 +33,13 @@ class Inmueble {
         int getAnoConstruccion() const;
         DTInmueble getDTInmueble();
         Propietario* getDueño();
-    
-        void setAdministracion(AdministraPropiedad* admin);
         AdministraPropiedad* getAdministracion() const;
+
+        bool esDelTipoInmueble(TipoInmueble tipoInmueble);
+        std::set<DTPublicacion> obtenerDatosPublicaciones(TipoPublicacion tipoPublicacion, float precioMinimo,float precioMaximo, TipoInmueble tipoInmueble);
+        void eliminarInmueble();
+        void eliminarReferenciaAdministracion();
+    
 };
 
 #endif
