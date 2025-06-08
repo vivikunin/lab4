@@ -14,7 +14,7 @@ std::set<DTPublicacion> ControladorInmuebles::listarPublicacion(TipoPublicacion 
     std::set<DTPublicacion> dtp;
     for(std::map<int,Inmueble*>::iterator it=coleccionInmuebles.begin(); it!=coleccionInmuebles.end(); it++){
         if (it->second->esDelTipoInmueble(tipoInmueble)){
-            std::set<DTPublicacion*> publicacionesParaAgregar = it->second->obtenerDatosPublicaciones(tipoPublicacion,precioMinimo,precioMaximo);
+            std::set<DTPublicacion> publicacionesParaAgregar = it->second->obtenerDatosPublicaciones(tipoPublicacion,precioMinimo,precioMaximo, tipoInmueble);
             dtp.insert(publicacionesParaAgregar.begin(),publicacionesParaAgregar.end());
         }
     }

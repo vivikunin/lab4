@@ -34,16 +34,45 @@ std::set<DTPublicacion> Inmueble::obtenerDatosPublicaciones(TipoPublicacion tipo
 void Inmueble::eliminarInmueble(){
     duenio->removerInmueble();
     administracion->eliminarInmueble();
+}
 
-        void setDuenio( Propietario* duenio);
+void Inmueble::setDuenio( Propietario* duenio){
+    this->duenio=duenio;
+}
 
-        int getCodigo() const;
-        std::string getDireccion() const;
-        int getNumeroPuerta() const;
-        int getSuperficie() const;
-        int getAnoConstruccion() const;
-        DTInmueble getDTInmueble();
-        Propietario* getDueño();
-    
-        void setAdministracion(AdministraPropiedad* admin);
-        AdministraPropiedad* getAdministracion() const;
+int Inmueble::getCodigo() const{
+    return codigo;
+}
+
+std::string Inmueble::getDireccion() const{
+    return direccion;
+}
+
+int Inmueble::getNumeroPuerta() const{
+    return numeroPuerta;
+}
+
+int Inmueble::getSuperficie() const{
+    return superficie;
+}
+
+int Inmueble::getAnoConstruccion() const{
+    return anoConstruccion;
+}
+
+DTInmueble Inmueble::getDTInmueble(){
+    return DTInmueble(codigo, direccion, numeroPuerta, superficie, anoConstruccion);
+
+}
+
+Propietario* Inmueble::getDueño(){
+    return duenio;
+}
+
+void Inmueble::setAdministracion(AdministraPropiedad* admin){
+    administracion=admin;
+}
+
+AdministraPropiedad* Inmueble::getAdministracion() const{
+    return administracion;
+}

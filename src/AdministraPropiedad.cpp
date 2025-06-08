@@ -8,10 +8,10 @@ AdministraPropiedad::AdministraPropiedad(DTFecha* fecha) {
     this->inmuebleAdministrado = nullptr;
     this->inmobiliariaAdministradora = nullptr;
 }
-AdministraPropiedad::~AdministraPropiedad() {
+AdministraPropiedad::~AdministraPropiedad(){
     delete fecha;
     //vaciar y eliminar la coleccion de publicaciones
-    for (std::map<int,Publicacion*>::iterator it = coleccionPublicaciones.begin(); it != coleccionPublicaciones.end(); ++it) {
+    for (std::map<int,Publicacion*>::iterator it = coleccionPublicaciones.begin(); it != coleccionPublicaciones.end(); ++it){
         delete it->second;
     }
     coleccionPublicaciones.clear();
