@@ -3,6 +3,7 @@
 #include "IInmobiliarias.h"
 #include "TipoPublicacion.h"
 #include "DTInmuebleAdministrado.h"
+#include "DTInmuebleListado.h"
 #include "DTUsuario.h"
 
 #include <map>
@@ -23,6 +24,8 @@ class ControladorInmobiliarias : public IInmobiliarias {
         std::set <DTUsuario> listarInmobiliarias();
         bool altaPublicacion(string nickname, int codigoInmueble, TipoPublicacion tipoPublicacion, string texto, float precio);
         std::set <DTInmuebleAdministrado> listarInmueblesAdministrados (string nicknameInmobiliaria);
+        std::set<DTInmuebleListado> listarInmueblesNoAdministradosInmobiliaria(string nicknameInmobiliaria);
+        void altaAdministraPropiedad();
 };
 
 #endif

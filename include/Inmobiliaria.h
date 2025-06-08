@@ -3,11 +3,13 @@
 #include "Usuario.h"
 #include "DTUsuario.h"
 #include "DTInmuebleAdministrado.h"
+#include "DTInmuebleListado.h"
 #include "Suscriptor.h"
 #include "AdministraPropiedad.h"
 
 
 #include <string>
+#include <set>
 
 class AdministraPropiedad;
 
@@ -32,7 +34,7 @@ class Inmobiliaria : public Usuario {
         void anularSuscripcion(std::string nickname);
         void notificar(std::string nickname, int c, std::string texto, TipoInmueble tipoInmueble );
 
-
+        std::set<DTInmuebleListado> getInmueblesNoAdminPropietario();
 };
 
 #endif

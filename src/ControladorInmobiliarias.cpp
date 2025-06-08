@@ -41,4 +41,14 @@ set <DTInmuebleAdministrado> ControladorInmobiliarias::listarInmueblesAdministra
     }
 }
 
+set<DTInmuebleListado> ControladorInmobiliarias::listarInmueblesNoAdministradosInmobiliaria(string nicknameInmobiliaria){
+    Inmobiliaria* ci = coleccionInmobiliarias.find(nicknameInmobiliaria)->second;
+    set<DTInmuebleListado> listInmuebles = ci.getInmueblesNoAdminPropietario();
+}
+
+void ControladorInmobiliarias::altaAdministraPropiedad(){
+    
+}
+
+
 

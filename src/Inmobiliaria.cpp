@@ -34,3 +34,7 @@ std::set<DTInmuebleAdministrado> Inmobiliaria:: datosInmueblesAdministrados(){
     }
     return datos;
 }
+
+std::set<DTInmuebleListado> Inmobiliaria::getInmueblesNoAdminPropietario(){
+    
+}
