@@ -53,4 +53,12 @@ void ControladorUsuarios::eliminarUsuario(string nickname){
     coleccionUsuarios.erase(nickname);
     delete aRemover;
 
+} 
+
+std::set<DTUsuario> ControladorUsuarios::listarPropietarios(){
+    std::set<DTUsuario> res;
+    for(std::map<std::string, Usuario*>::iterator it =coleccionUsuarios.begin(); it!=coleccionUsuarios.end(); it++){
+        res.insert(it->second->getDTUsuario());
+    }
 }
+

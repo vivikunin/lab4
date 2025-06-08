@@ -21,6 +21,8 @@ class ControladorUsuarios : public IUsuarios  {
         bool altaPropiedad(string nickname, string contrasena, string nombre, string email, string cuentaBancaria, string telefono);
         bool altaInmobiliaria(string nickname, string contrasena, string nombre, string email, string direccion, string url, string telefono);
         void eliminarUsuario(string nickname);
+
+        std::set<DTUsuario> listarPropietarios();
 };
 
 #endif
