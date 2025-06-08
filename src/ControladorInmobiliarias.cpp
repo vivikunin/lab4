@@ -40,3 +40,5 @@ set <DTInmuebleAdministrado> ControladorInmobiliarias::listarInmueblesAdministra
         return {};
     }
 }
+
+
