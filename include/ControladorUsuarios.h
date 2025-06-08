@@ -20,6 +20,7 @@ class ControladorUsuarios : public IUsuarios  {
         bool altaCliente(string nickname, string contrasena, string nombre, string email, string apellido, string documento);
         bool altaPropiedad(string nickname, string contrasena, string nombre, string email, string cuentaBancaria, string telefono);
         bool altaInmobiliaria(string nickname, string contrasena, string nombre, string email, string direccion, string url, string telefono);
+        void eliminarUsuario(string nickname);
 };
 
 #endif

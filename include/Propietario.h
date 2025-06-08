@@ -4,7 +4,7 @@
 #include "TipoInmueble.h"
 #include <string>
 
-class Propietario : public Usuario {
+class Propietario : public Suscriptor {
     private:
         std::string cuentaBancaria;
         std::string telefono;
