@@ -4,8 +4,12 @@
 #include "DTUsuario.h"
 #include "DTInmuebleAdministrado.h"
 #include "Suscriptor.h"
+#include "AdministraPropiedad.h"
+
 
 #include <string>
+
+class AdministraPropiedad;
 
 class Inmobiliaria : public Usuario {
     private:
@@ -22,6 +26,7 @@ class Inmobiliaria : public Usuario {
         std::set<DTInmuebleAdministrado> datosInmueblesAdministrados();
         DTUsuario getDatos();
         bool altaPublicacion(int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio);
+        void Inmobiliaria::eliminarReferenciaAdministracion(AdministraPropiedad* a);
 
         void suscribir(std::string nickname);
         void anularSuscripcion(std::string nickname);

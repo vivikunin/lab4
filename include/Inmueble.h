@@ -6,6 +6,9 @@
 #include "TipoPublicacion.h"
 #include "AdministraPropiedad.h"
 #include "Propietario.h"
+#include "DTInmueble.h"
+
+class AdministraPropiedad;
 
 class Inmueble {
     private:
@@ -21,7 +24,7 @@ class Inmueble {
         virtual ~Inmueble();
 
         bool esDelTipoInmueble(TipoInmueble tipoInmueble);
-        DTPublicacion obtenerDatos(TipoPublicacion tipoPublicacion, float precioMinimo,float precioMaximo);
+        std::set<DTPublicacion> obtenerDatosPublicaciones(TipoPublicacion tipoPublicacion, float precioMinimo,float precioMaximo, TipoInmueble tipoInmueble);
         void eliminarInmueble();
 
         void setDuenio( Propietario* duenio);
