@@ -26,7 +26,7 @@ class Inmobiliaria : public Usuario {
         std::set<DTInmuebleAdministrado> datosInmueblesAdministrados();
         DTUsuario getDatos();
         bool altaPublicacion(int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio);
-        void Inmobiliaria::eliminarReferenciaAdministracion(AdministraPropiedad* ap);
+        void eliminarReferenciaAdministracion(AdministraPropiedad* ap);
 
         void suscribir(std::string nickname);
         void anularSuscripcion(std::string nickname);

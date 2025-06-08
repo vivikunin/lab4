@@ -145,7 +145,7 @@ void altaUsuario(){
         std::cout << "Telefono: ";
         std::getline(std::cin, telefono);
         //TODO: usuarioOk = ci->altaInmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono);
-        usuarioOk = factory->getControladorUsuario()->altaInmobiliaria(nickname, contrasena, nombre, email, apellido, documento);
+        usuarioOk = factory->getControladorUsuario()->altaInmobiliaria(nickname, contrasena, nombre, email, direccion, apellido, documento);
 
     }else if (tipoUsuario == 2){
         std::cout << "Cuenta Bancaria: ";
