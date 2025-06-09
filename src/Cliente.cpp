@@ -18,5 +18,6 @@ std::string Cliente:: getDocumento(){
 }
         
 void Cliente::notificar(std::string nickname, int c, std::string texto, TipoInmueble tipoInmueble ){
-
+    n = Notificacion(nickname, c, texto, tPublicacion, tInmueble);
+    notificaciones.push_back(n);
 }

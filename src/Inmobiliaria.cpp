@@ -22,9 +22,19 @@ void Inmobiliaria::eliminarReferenciaAdministracion(AdministraPropiedad* ap){
     propiedadesAdministradas.erase(ap);
 }
 
-void suscribir(std::string nickname);
-void anularSuscripcion(std::string nickname);
-void notificar(std::string nickname, int c, std::string texto, TipoInmueble tipoInmueble );
+void Inmobiliaria::suscribir(Suscriptor* s){ //CON EL NICKNAME COMO CONSIGO UN PUNTERO A SUSCRIPTOR
+    suscriptores.insert(s);
+}
+
+void Inmobiliaria::anularSuscripcion(std::string nickname){
+    suscriptores.erase(s);
+}
+
+void Inmobiliaria::notificar(std::string nickname, int c, std::string texto, TipoInmueble tipoInmueble ){
+    for (std::set<Suscriptor*>::iterator it=suscriptores.begin(); it!=suscriptores.end(); it++) {
+            it->notificar(n);
+    }
+}
 
 std::set<DTInmuebleAdministrado> Inmobiliaria:: datosInmueblesAdministrados(){
     std::set<DTInmuebleAdministrado> datos;

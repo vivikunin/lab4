@@ -11,8 +11,10 @@ class ControladorUsuarios : public IUsuarios  {
     private:
         static ControladorUsuarios* instance;
         ControladorUsuarios();
-        std::map <string, Usuario*> coleccionUsuarios;
+        std::map <std::string, Usuario*> coleccionUsuarios;
         Propietario* propietarioRecordado=NULL;
+        std::map<std::string, Suscriptor*> suscriptores;
+
     
     public:
         static ControladorUsuarios* getInstance();
@@ -25,6 +27,11 @@ class ControladorUsuarios : public IUsuarios  {
         bool altaPropietario(string nickname, string contrasena, string nombre, string email, string cuentaBancaria, string telefono);
         bool altaInmobiliaria(string nickname, string contrasena, string nombre, string email, string direccion, string url, string telefono);
         void eliminarUsuario(string nickname);
+        //con lo de notis
+        void agregarSuscriptor(std::string nickname, Suscriptor* s);
+        void consultarNotificaciones(std::string nickname);
+
+
 
         std::set<DTUsuario> listarPropietarios();
 

@@ -372,14 +372,35 @@ void eliminarInmueble(){
 }
 
 void suscribirseNotificaciones(){
+    Factory* factory = Factory::getInstance();
+    std::string nickname, nombreInmobiliaria;
+    std::cout << "Ingrese su nickname: ";
+    std::cin >> nickname;
+    //mostrar inmobiliarias que no esta suscrito
+    std::cout << "Ingrese nombre de la inmobiliaria a la que desea suscribirse: "; //en loop
+    std::cin >> nombreInmobiliaria;
+    //agregar a la lista de suscriptores
+
 
 }
 
 void consultaNotificaciones(){
-
+    Factory* factory = Factory::getInstance();
+    std::string nickname;
+    std::cout << "Ingrese su nickname: ";
+    std::cin >> nickname;
+    //listar notificaciones
 }
 
 void eliminarSuscripciones(){
+    Factory* factory = Factory::getInstance();
+    std::string nickname, nombreInmobiliaria;
+    std::cout << "Ingrese su nickname: ";
+    std::cin >> nickname;
+    //listar inmobiliarias que esta suscrito
+    std::cout << "Ingrese nombre de la inmobiliaria a la que desea eliminar su suscripcion: "; //en loop
+    std::cin >> nombreInmobiliaria;
+    //eliminar suscriptor
 
 }
 

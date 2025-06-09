@@ -102,4 +102,8 @@ void AdministraPropiedad::crearPublicacion(TipoPublicacion tipoPublicacion, std:
     Publicacion::ultimoCodigo++;  
     Publicacion* pub = new Publicacion(Publicacion::ultimoCodigo, ControladorFechaActual::getInstance()->getFechaActual(), tipoPublicacion, texto, precio, true);
     this->coleccionPublicaciones.insert({pub->getCodigo(),pub});
+
+    //notis
+    Notificacion n(inmobiliariaAdministradora->getNombre(), inmuebleAdministrado->getCodigo(), texto, tipoPublicacion, inmuebleAdministrado->getTipoInmueble());
+    inmobiliariaAdministradora->notificar(n);
 }
