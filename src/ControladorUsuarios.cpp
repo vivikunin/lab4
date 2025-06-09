@@ -72,3 +72,20 @@ std::set<DTUsuario> ControladorUsuarios::listarPropietarios(){
     }
 }
 
+void ControladorUsuarios::agregarSuscriptor(std::string nickname, Suscriptor* s) {
+        suscriptores[nickname] = s;
+}
+
+void ControladorUsuarios::consultarNotificaciones(std::string nickname){
+    std::map<std::string, Suscriptor*>::iterator it = suscriptores.find(nickname);
+    Suscriptor* s = it->second;
+    std::set<Notificacion> notis = s->getNotificaciones();
+
+    for(std::set<Notificacion>::iterator it =notis.begin(); it!=notis.end(); it++){
+        std::cout << "Inmobiliaria: " << n.nicknameInmobiliaria << "\n";
+        std::cout << "Código: " << n.codigo << "\n";
+        std::cout << "Texto: " << n.texto << "\n";
+        std::cout << "Tipo Publicación: " << (n.tPublicacion == TipoPublicacion::ALQUILER ? "Alquiler" : "Venta") << "\n";
+        std::cout << "Tipo Inmueble: " << (n.tInmueble == TipoInmueble::CASA ? "Casa" : "Apartamento") << "\n\n";
+    }
+}

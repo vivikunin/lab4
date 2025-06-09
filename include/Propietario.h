@@ -20,7 +20,7 @@ class Propietario : public Suscriptor {
         std::string getTelefono();
 
         void removerInmueble();
-        void notificar(std::string nickname, int c, std::string texto, TipoInmueble tipoInmueble );
+        void notificar(std::string nickname, int c, std::string texto, TipoPublicacion tpubliacion, tipoInmueble );
 };
 
 #endif
