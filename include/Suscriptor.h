@@ -4,12 +4,12 @@
 #include "Usuario.h"
 
 
-#include <set>
+#include <list>
 #include <string>
 
 class Suscriptor : public Usuario {
-    private:
-        std::set <Notificacion*> misNotificaciones;
+    protected:
+        std::list <Notificacion*> misNotificaciones;
     
     public:
         Suscriptor(std::string nickname, std::string contrasena, std::string nombre, std::string email);   

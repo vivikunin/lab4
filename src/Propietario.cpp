@@ -15,7 +15,6 @@ std::string Propietario::getTelefono(){
     return telefono;
 }
 
-void notificar(std::string nickname, int c, std::string texto, TipoPublicacion tpublicacion, tipoInmueble ){
-    n = Notificacion(nickname, c, texto, tPublicacion, tInmueble);
-    notificaciones.push_back(n);
+void Propietario::notificar(Notificacion* n){
+    this->misNotificaciones.push_back(n);
 }

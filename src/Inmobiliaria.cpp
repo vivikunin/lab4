@@ -22,11 +22,11 @@ void Inmobiliaria::eliminarReferenciaAdministracion(AdministraPropiedad* ap){
     propiedadesAdministradas.erase(ap);
 }
 
-void Inmobiliaria::suscribir(Suscriptor* s){ //CON EL NICKNAME COMO CONSIGO UN PUNTERO A SUSCRIPTOR
+void Inmobiliaria::suscribir(Suscriptor* s){ 
     suscriptores.insert(s);
 }
 
-void Inmobiliaria::anularSuscripcion(std::string nickname){
+void Inmobiliaria::anularSuscripcion(Suscriptor* s){
     suscriptores.erase(s);
 }
 

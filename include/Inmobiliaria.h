@@ -31,8 +31,8 @@ class Inmobiliaria : public Usuario {
         void eliminarReferenciaAdministracion(AdministraPropiedad* ap);
         void linkPropietario(Propietario* prop);
 
-        void suscribir(std::string nickname);
-        void anularSuscripcion(std::string nickname);
+        void suscribir(Suscriptor* s);
+        void anularSuscripcion(Suscriptor* s);
         void notificar(std::string nickname, int c, std::string texto, TipoPublicacion tipoPublicacion, TipoInmueble tipoInmueble );
 
         std::set<DTInmuebleListado> getInmueblesNoAdminPropietario();
