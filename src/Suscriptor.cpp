@@ -13,8 +13,8 @@ Suscriptor::~Suscriptor(){
     misNotificaciones.clear();
 }
 
-std::set<Notificacion*> Suscriptor::getNotificaciones(){
-    std::set<Notificacion> resultado = notificaciones;
-        notificaciones.clear(); // Elimina las notificaciones ya consultadas
+std::list<Notificacion*> Suscriptor::getNotificaciones(){
+    std::list<Notificacion*> resultado = misNotificaciones;
+        misNotificaciones.clear(); // Elimina las notificaciones ya consultadas
         return resultado;
 }
