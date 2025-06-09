@@ -3,6 +3,8 @@
 #include "IInmuebles.h"
 #include "DTPublicacion.h"
 #include "TipoInmueble.h"
+#include "TipoTecho.h"
+
 #include <set>
 #include <map>
 #include <string>
@@ -22,6 +24,7 @@ class ControladorInmuebles : public IInmuebles {
         void eliminarInmueble(int codigoInmueble);
         std::set<DTPublicacion> listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble);
 
-
+        void altaCasa(std::string direccion, int numeroPuerta, int superficie, int anoConstruccion,bool esPH, TipoTecho techo);
+        void altaApartamento(std::string direccion, int numeroPuerta, int superficie, int anoConstruccion, int piso, bool tieneAscensor, float gastosComunes);
 };
 #endif

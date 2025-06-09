@@ -145,7 +145,7 @@ void altaUsuario(){
         std::cout << "Telefono: ";
         std::getline(std::cin, telefono);
         //TODO: usuarioOk = ci->altaInmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono);
-        usuarioOk = factory->getControladorUsuario()->altaInmobiliaria(nickname, contrasena, nombre, email, apellido, documento);
+        usuarioOk = factory->getControladorUsuario()->altaInmobiliaria(nickname, contrasena, nombre, email, direccion, apellido, documento);
 
     }else if (tipoUsuario == 2){
         std::cout << "Cuenta Bancaria: ";
@@ -153,7 +153,7 @@ void altaUsuario(){
         std::cout << "Telefono: ";
         std::getline(std::cin, telefono);
         //TODO: usuarioOk = ci->altaPropietario(nickname, contrasena, nombre, email, cuentaBancaria, telefono);
-        usuarioOk = factory->getControladorUsuario()->altaPropiedad(nickname, contrasena, nombre, email, apellido, documento);
+        usuarioOk = factory->getControladorUsuario()->altaPropietario(nickname, contrasena, nombre, email, apellido, documento);
     }
     if (usuarioOk){
         if (tipoUsuario == 1 || tipoUsuario == 2){
@@ -169,11 +169,17 @@ void altaUsuario(){
                 if (tipoUsuario == 1){
                     std::cout << "Lista de Propietarios:\n";
                     //TODO: Coleccion de DTUsuario = controlador->listarPropietarios();
+                    std::set<DTUsuario> coleccionDTUsuario = factory->getControladorUsuario()->listarPropietarios();
                     //Recorrer la coleccion Mostrar "- Nickname: xx, Nombre: zz";
+                    for(std::set<DTUsuario>::iterator it = coleccionDTUsuario.begin(); it!=coleccionDTUsuario.end(); it++){
+                        std::cout << "- Nickname: " <<  it->getNickname()
+                        << ", Nombre: "   << it->getNombre() << "\n";
+                    }
                     std::cout << "Nickname propietario a representar: ";
                     std::string nicknamePropietario;
                     std::getline(std::cin, nicknamePropietario);
                     //TODO: controlador->representarPropietario(nicknamePropietario)
+                    
                 }else if (tipoUsuario == 2){
                     int tipoInmueble;
                     std::cout << "Indique el tipo de inmueble (1: Casa, 0: Apartamento): ";
@@ -209,6 +215,7 @@ void altaUsuario(){
                             techo = Plano;
                         }
                         //TODO: controlador->altaCasa(direccion, numeroPuerta, superficie, anoConstruccion, esPH, techo);
+                        factory->getControladorInmuebles()->altaCasa(direccion, numeroPuerta, superficie, anoConstruccion, esPH, techo);
                     }else{
                         int piso;
                         std::cout << "Piso: ";
@@ -224,6 +231,7 @@ void altaUsuario(){
                         std::cin >> gastosComunes;
                         std::cin.ignore();
                         //TODO: controlador->altaApartamento(direccion, numeroPuerta, superficie, anoConstruccion, piso, tieneAscensor, gastosComunes)
+                        factory->getControladorInmuebles()->altaApartamento(direccion, numeroPuerta, superficie, anoConstruccion, piso, tieneAscensor, gastosComunes);
                     }
                 }
             }
