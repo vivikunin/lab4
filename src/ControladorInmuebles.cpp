@@ -35,3 +35,12 @@ void ControladorInmuebles::altaCasa(std::string direccion, int numeroPuerta, int
     Propietario* p = Factory::getInstance()->getControladorUsuario()->getPropietarioRecordado();
     c->setDuenio(p);
 }
+
+void ControladorInmuebles:: altaApartamento(std::string direccion, int numeroPuerta, int superficie, int anoConstruccion, int piso, bool tieneAscensor, float gastosComunes){
+    Inmueble::ultimoCodigoInmueble++;
+    Apartamento* a = new  Apartamento(Inmueble::ultimoCodigoInmueble, direccion, numeroPuerta, superficie, anoConstruccion, piso, tieneAscensor, gastosComunes);
+    this->coleccionInmuebles.insert({Inmueble::ultimoCodigoInmueble, a});
+    Propietario* p = Factory::getInstance()->getControladorUsuario()->getPropietarioRecordado();
+    a->setDuenio(p);
+}
+

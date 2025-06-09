@@ -231,6 +231,7 @@ void altaUsuario(){
                         std::cin >> gastosComunes;
                         std::cin.ignore();
                         //TODO: controlador->altaApartamento(direccion, numeroPuerta, superficie, anoConstruccion, piso, tieneAscensor, gastosComunes)
+                        factory->getControladorInmuebles()->altaApartamento(direccion, numeroPuerta, superficie, anoConstruccion, piso, tieneAscensor, gastosComunes);
                     }
                 }
             }
