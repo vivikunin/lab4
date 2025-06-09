@@ -262,8 +262,9 @@ void altaPublicacion(){
     for( std::set<DTInmuebleAdministrado>::iterator it = inmueblesAdministrados.begin(); it!= inmueblesAdministrados.end(); it++){
         std::cout << "-Codigo: " << it->getCodigo();
         std::cout << "Direccion: " << it->getDireccion();
-        std::cout << "Propietario: " << //completar
+        std::cout << "Propietario: " << //completar de donde accedemos el propietario?
     }
+    
     int codigoInmueble;
     std::cout << "Inmueble: ";
     std::cin >> codigoInmueble;
