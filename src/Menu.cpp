@@ -153,7 +153,7 @@ void altaUsuario(){
         std::cout << "Telefono: ";
         std::getline(std::cin, telefono);
         //TODO: usuarioOk = ci->altaPropietario(nickname, contrasena, nombre, email, cuentaBancaria, telefono);
-        usuarioOk = factory->getControladorUsuario()->altaPropiedad(nickname, contrasena, nombre, email, apellido, documento);
+        usuarioOk = factory->getControladorUsuario()->altaPropietario(nickname, contrasena, nombre, email, apellido, documento);
     }
     if (usuarioOk){
         if (tipoUsuario == 1 || tipoUsuario == 2){
@@ -215,6 +215,7 @@ void altaUsuario(){
                             techo = Plano;
                         }
                         //TODO: controlador->altaCasa(direccion, numeroPuerta, superficie, anoConstruccion, esPH, techo);
+                        factory->getControladorInmuebles()->altaCasa(direccion, numeroPuerta, superficie, anoConstruccion, esPH, techo);
                     }else{
                         int piso;
                         std::cout << "Piso: ";

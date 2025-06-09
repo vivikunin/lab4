@@ -6,6 +6,7 @@
 
 #include <set>
 
+int Inmueble::ultimoCodigoInmueble=0;
 
 Inmueble::Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion){
     this->codigo=codigo;

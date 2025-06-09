@@ -12,17 +12,22 @@ class ControladorUsuarios : public IUsuarios  {
         static ControladorUsuarios* instance;
         ControladorUsuarios();
         std::map <string, Usuario*> coleccionUsuarios;
+        Propietario* propietarioRecordado=NULL;
     
     public:
         static ControladorUsuarios* getInstance();
         ~ControladorUsuarios();
 
+        Propietario* getPropietarioRecordado() const;
+        void finalizarAltaUsuario();
+
         bool altaCliente(string nickname, string contrasena, string nombre, string email, string apellido, string documento);
-        bool altaPropiedad(string nickname, string contrasena, string nombre, string email, string cuentaBancaria, string telefono);
+        bool altaPropietario(string nickname, string contrasena, string nombre, string email, string cuentaBancaria, string telefono);
         bool altaInmobiliaria(string nickname, string contrasena, string nombre, string email, string direccion, string url, string telefono);
         void eliminarUsuario(string nickname);
 
         std::set<DTUsuario> listarPropietarios();
+
 };
 
 #endif

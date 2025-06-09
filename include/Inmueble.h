@@ -20,6 +20,7 @@ class Inmueble {
         AdministraPropiedad* administracion;
         Propietario* duenio;
     public:
+        static int ultimoCodigoInmueble;
         Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion);
         virtual ~Inmueble();
 
