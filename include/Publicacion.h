@@ -28,6 +28,7 @@ public:
     DTFecha* getFecha();
     bool estaActiva();
     int getCodigo();
+    float getPrecio();
 
     void setAdministrador(AdministraPropiedad* admin);
     DTPublicacion getDTPublicacion();

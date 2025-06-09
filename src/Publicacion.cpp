@@ -30,9 +30,8 @@ DTPublicacion Publicacion::getDTPublicacion() {
         this->fecha, 
         this->texto,
         this->precio, 
-        dynamic_cast<Usuario*>(this->administrador->getInmobiliariaAdministradora())->getNombre()
+        this->administrador->getInmobiliariaAdministradora()->getNombre()
     );
-    
 }
 
 
@@ -57,7 +56,10 @@ void Publicacion:: marcarComoInactiva(){
 }
 
 bool Publicacion:: cumpleCondiciones(TipoPublicacion tipoPublicacion, float precioMinimo, float prcioMaximo, TipoInmueble tipoInmueble){
-    
+    return (this->getTipoPublicacion == tipoPublicacion && (this->getPrecio() >= precioMinimo && this->getPrecio() <= precioMaximo));
 }
 
+float Publicacion::getPrecio(){
+    return this->precio;
+}
 

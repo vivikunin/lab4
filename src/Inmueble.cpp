@@ -25,7 +25,7 @@ Inmueble:: ~Inmueble(){
 
 bool Inmueble::esDelTipoInmueble(TipoInmueble tipo) {
     switch (tipo) {
-        case TipoInmueble::Todos:
+        case TipoInmueble::Todos://///////QUE HIZO VIVI?
             return true;
         case TipoInmueble::Casa:
             return dynamic_cast<Casa*>(this) != nullptr;
@@ -38,6 +38,7 @@ bool Inmueble::esDelTipoInmueble(TipoInmueble tipo) {
 std::set<DTPublicacion> Inmueble::obtenerDatosPublicaciones(TipoPublicacion tipoPublicacion, float precioMinimo,float precioMaximo, TipoInmueble tipoInmueble){
     return this->administracion->obtenerDatosPublicaciones(tipoPublicacion, precioMinimo, precioMaximo, tipoInmueble);
 }
+
 void Inmueble::eliminarInmueble(){
     administracion->eliminarInmueble();
 }

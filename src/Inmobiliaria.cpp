@@ -48,3 +48,20 @@ std::set<DTInmuebleAdministrado> Inmobiliaria:: datosInmueblesAdministrados(){
 std::set<DTInmuebleListado> Inmobiliaria::getInmueblesNoAdminPropietario(){
     
 }
+
+void Inmobiliaria::linkPropietario(Propietario* prop){
+    propietariosRepresentados.insert({prop.getNickname(), prop});
+}
+
+bool Inmobiliaria::altaPublicacion(int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio){
+    AdministraPropiedad* ap;
+    for(std::set<AdministraPropiedad*>::iterator it=propiedadesAdministradas.begin(); it!=propiedadesAdministradas.end(); it++ ){
+        ap = it->administraPropiedadParaInmueble(codigoInmueble);
+        if (it != NULL) break;
+    }
+    bool puede = ap.puedoCrearPublicacion(tipoPublicacion);
+    if (puede){
+        ap.desactivarPublicacionActiva();
+        ap.crearPublicacion(tipoPublicacion, texto, precio);
+    }
+}

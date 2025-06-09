@@ -13,6 +13,7 @@ class ControladorUsuarios : public IUsuarios  {
         ControladorUsuarios();
         std::map <std::string, Usuario*> coleccionUsuarios;
         Propietario* propietarioRecordado=NULL;
+        Inmobiliaria* inmobiliariaRecordada=NULL;
         std::map<std::string, Suscriptor*> suscriptores;
 
     
@@ -30,6 +31,9 @@ class ControladorUsuarios : public IUsuarios  {
         //con lo de notis
         void agregarSuscriptor(std::string nickname, Suscriptor* s);
         void consultarNotificaciones(std::string nickname);
+
+        void representarPropietario(std::string nicknamePropietario);
+
 
 
 

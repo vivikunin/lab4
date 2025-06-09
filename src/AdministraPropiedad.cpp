@@ -99,11 +99,11 @@ void AdministraPropiedad::desactivarPublicacionActiva(){
 }
 
 void AdministraPropiedad::crearPublicacion(TipoPublicacion tipoPublicacion, std::string texto, float precio){
-    Publicacion::ultimoCodigo++;  
+    Publicacion::ultimoCodigo++;  ////////////CODIGO EN 0???????????
     Publicacion* pub = new Publicacion(Publicacion::ultimoCodigo, ControladorFechaActual::getInstance()->getFechaActual(), tipoPublicacion, texto, precio, true);
     this->coleccionPublicaciones.insert({pub->getCodigo(),pub});
 
     //notis
-    Notificacion n(inmobiliariaAdministradora->getNombre(), inmuebleAdministrado->getCodigo(), texto, tipoPublicacion, inmuebleAdministrado->getTipoInmueble());
+    Notificacion* n(inmobiliariaAdministradora->getNombre(), inmuebleAdministrado->getCodigo(), texto, tipoPublicacion, inmuebleAdministrado->getTipoInmueble());
     inmobiliariaAdministradora->notificar(n);
 }

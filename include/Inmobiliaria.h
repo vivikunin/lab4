@@ -6,10 +6,9 @@
 #include "DTInmuebleListado.h"
 #include "Suscriptor.h"
 #include "AdministraPropiedad.h"
-
-
 #include <string>
 #include <set>
+#include <map>
 
 class AdministraPropiedad;
 
@@ -18,6 +17,7 @@ class Inmobiliaria : public Usuario {
         std::string direccion;
         std::string url;
         std::string telefono;
+        std::map<std::string, Propietario*> propietariosRepresentados;
         std::set<AdministraPropiedad*> propiedadesAdministradas;
         std::set<Suscriptor*> suscriptores;
 

@@ -27,6 +27,7 @@ Propietario* ControladorUsuarios::getPropietarioRecordado() const {
 
 void ControladorUsuarios::finalizarAltaUsuario() { 
     propietarioRecordado = nullptr; 
+    inmobiliariaRecordada = nullptr;
 }
 
 bool ControladorUsuarios::altaCliente(string nickname, string contrasena, string nombre, string email, string apellido, string documento){
@@ -55,6 +56,7 @@ bool ControladorUsuarios::altaInmobiliaria(string nickname, string contrasena, s
     } else {
         Inmobiliaria* i = new Inmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono); //create
         coleccionUsuarios[nickname] = i; //add
+        inmobiliariaRecordada = i;
     } 
 }
 
@@ -88,4 +90,9 @@ void ControladorUsuarios::consultarNotificaciones(std::string nickname){
         std::cout << "Tipo Publicación: " << (n.tPublicacion == TipoPublicacion::ALQUILER ? "Alquiler" : "Venta") << "\n";
         std::cout << "Tipo Inmueble: " << (n.tInmueble == TipoInmueble::CASA ? "Casa" : "Apartamento") << "\n\n";
     }
+}
+
+void ControladorUsuarios::representarPropietario(std::string nicknamePropietario){
+    Propietario* prop = coleccionUsuarios.find(nicknamePropietario);
+    inmobiliariaRecordada.linkPropietario(prop);
 }

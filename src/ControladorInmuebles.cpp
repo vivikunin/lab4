@@ -29,10 +29,10 @@ void ControladorInmuebles::eliminarInmueble(int codigoInmueble){
 }
 
 void ControladorInmuebles::altaCasa(std::string direccion, int numeroPuerta, int superficie, int anoConstruccion,bool esPH, TipoTecho techo){
-    Inmueble::ultimoCodigoInmueble++;
+    Inmueble::ultimoCodigoInmueble++; //POR LAS DUDAS MARCO
     Casa* c = new  Casa(Inmueble::ultimoCodigoInmueble, direccion, numeroPuerta, superficie, anoConstruccion, esPH, techo);
     this->coleccionInmuebles.insert({Inmueble::ultimoCodigoInmueble, c});
-    Propietario* p = Factory::getInstance()->getControladorUsuario()->getPropietarioRecordado();
+    Propietario* p = Factory::getInstance()->getControladorUsuario()->getPropietarioRecordado();///////////PROBLEMAAAAAAAAAA////////////
     c->setDuenio(p);
 }
 
@@ -40,7 +40,7 @@ void ControladorInmuebles:: altaApartamento(std::string direccion, int numeroPue
     Inmueble::ultimoCodigoInmueble++;
     Apartamento* a = new  Apartamento(Inmueble::ultimoCodigoInmueble, direccion, numeroPuerta, superficie, anoConstruccion, piso, tieneAscensor, gastosComunes);
     this->coleccionInmuebles.insert({Inmueble::ultimoCodigoInmueble, a});
-    Propietario* p = Factory::getInstance()->getControladorUsuario()->getPropietarioRecordado();
+    Propietario* p = Factory::getInstance()->getControladorUsuario()->getPropietarioRecordado();//////ANALOGO A ARRIBA////////////
     a->setDuenio(p);
 }
 

@@ -134,7 +134,7 @@ void altaUsuario(){
         std::getline(std::cin, apellido);
         std::cout << "Documento: ";
         std::getline(std::cin, documento);
-        //TODO: usuarioOk = ci->altaCliente(nickname, contrasena, nombre, email, apellido, documento);
+        //TODO: usuarioOk = ci->altaCliente(nickname, contrasena, nombre, email, apellido, documento);//////////////////
         usuarioOk = factory->getControladorUsuario()->altaCliente(nickname, contrasena, nombre, email, apellido, documento);
 
     }else if (tipoUsuario == 1){
@@ -144,7 +144,7 @@ void altaUsuario(){
         std::getline(std::cin, url);
         std::cout << "Telefono: ";
         std::getline(std::cin, telefono);
-        //TODO: usuarioOk = ci->altaInmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono);
+        //TODO: usuarioOk = ci->altaInmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono);/////////////////////
         usuarioOk = factory->getControladorUsuario()->altaInmobiliaria(nickname, contrasena, nombre, email, direccion, apellido, documento);
 
     }else if (tipoUsuario == 2){
@@ -152,7 +152,7 @@ void altaUsuario(){
         std::getline(std::cin, cuentaBancaria);
         std::cout << "Telefono: ";
         std::getline(std::cin, telefono);
-        //TODO: usuarioOk = ci->altaPropietario(nickname, contrasena, nombre, email, cuentaBancaria, telefono);
+        //TODO: usuarioOk = ci->altaPropietario(nickname, contrasena, nombre, email, cuentaBancaria, telefono);///////////////////
         usuarioOk = factory->getControladorUsuario()->altaPropietario(nickname, contrasena, nombre, email, apellido, documento);
     }
     if (usuarioOk){
@@ -168,7 +168,7 @@ void altaUsuario(){
             while (salir != 0){
                 if (tipoUsuario == 1){
                     std::cout << "Lista de Propietarios:\n";
-                    //TODO: Coleccion de DTUsuario = controlador->listarPropietarios();
+                    //TODO: Coleccion de DTUsuario = controlador->listarPropietarios();////////////////
                     std::set<DTUsuario> coleccionDTUsuario = factory->getControladorUsuario()->listarPropietarios();
                     //Recorrer la coleccion Mostrar "- Nickname: xx, Nombre: zz";
                     for(std::set<DTUsuario>::iterator it = coleccionDTUsuario.begin(); it!=coleccionDTUsuario.end(); it++){
@@ -178,8 +178,9 @@ void altaUsuario(){
                     std::cout << "Nickname propietario a representar: ";
                     std::string nicknamePropietario;
                     std::getline(std::cin, nicknamePropietario);
-                    //TODO: controlador->representarPropietario(nicknamePropietario)
-                    
+                    //TODO: controlador->representarPropietario(nicknamePropietario)/////////////////////
+                    factory->getControladorUsuarios()->representarPropietario(nicknamePropietario);
+
                 }else if (tipoUsuario == 2){
                     int tipoInmueble;
                     std::cout << "Indique el tipo de inmueble (1: Casa, 0: Apartamento): ";
@@ -239,7 +240,8 @@ void altaUsuario(){
             std::cin >> salir;
             std::cin.ignore();
         }
-        //TODO: controlador->finalizarAltaUsuario();
+        //TODO: controlador->finalizarAltaUsuario();////////////////////////////////////
+        factory->getControladorUsuarios()->finalizarAltaUsuario();
     }else{
         std::cout << "Error al crear el usuario" << std::endl;
     }
@@ -250,19 +252,23 @@ void altaPublicacion(){
     Factory* factory = Factory::getInstance();
 
     std::cout << "Lista de Inmobiliarias:\n";
-    //TODO: Coleccion de DTUsuario = controlador->listarInmobiliarias();
+    //TODO: Coleccion de DTUsuario = controlador->listarInmobiliarias();///////////////////////////////
     std::set<DTUsuario> coleccionDTUsuario = factory->getControladorInmobiliarias()->listarInmobiliarias();
     //Recorrer la coleccion Mostrar "- Nickname: xx, Nombre: zz";
+    for(std::set<DTUsuario>::iterator it = coleccionDTUsuario.begin(); it!=coleccionDTUsuario.end(); it++){
+        std::cout << "- Nickname: " <<  it->getNickname()
+        << ", Nombre: "   << it->getNombre() << "\n";
+    }
     std::cout << "Nickname de la inmobiliaria: ";
     std::string nicknameInmobiliaria;
     std::getline(std::cin, nicknameInmobiliaria);
-    //TODO: Coleccion de DTInmuebleAdministrado = controlador->listarInmueblesAdministrados(nicknameInmobiliaria);
+    //TODO: Coleccion de DTInmuebleAdministrado = controlador->listarInmueblesAdministrados(nicknameInmobiliaria);///////////////////
     std::set<DTInmuebleAdministrado> inmueblesAdministrados = factory->getControladorInmobiliarias()->listarInmueblesAdministrados(nicknameInmobiliaria);
     //Recorrer la coleccion Mostrar "- Codigo: xx, Direccion: yy, Propietario: zzz"
     for( std::set<DTInmuebleAdministrado>::iterator it = inmueblesAdministrados.begin(); it!= inmueblesAdministrados.end(); it++){
         std::cout << "-Codigo: " << it->getCodigo();
         std::cout << "Direccion: " << it->getDireccion();
-        std::cout << "Propietario: " << //completar de donde accedemos el propietario?
+        std::cout << "Propietario: " << //completar de donde accedemos el propietario? ESTA MAL EL DATATYPE????? FALTA PROBLEMASSSSSSS
     }
     
     int codigoInmueble;
@@ -284,7 +290,7 @@ void altaPublicacion(){
     float precio;
     std::cin >> precio;
     std::cin.ignore();
-    //TODO:Controlador->altaPublicacion(nicknameInmobiliaria, codigoInmueble, tipoPublicacion, texto, precio)
+    //TODO:Controlador->altaPublicacion(nicknameInmobiliaria, codigoInmueble, tipoPublicacion, texto, precio)////////////////////////////////
     factory->getControladorInmobiliarias()->altaPublicacion(nicknameInmobiliaria, codigoInmueble, tipoPublicacion, texto, precio);
 }
 
