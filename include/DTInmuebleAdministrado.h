@@ -11,9 +11,9 @@ class DTInmuebleAdministrado {
 
     public:
         DTInmuebleAdministrado(int codigo, std::string direccion, DTFecha* fechaComienzo);
-        int getCodigo();
-        std::string getDireccion();
-        DTFecha* getFechaComienzo();
+        int getCodigo() const;
+        std::string getDireccion() const;
+        DTFecha* getFechaComienzo() const;
         ~DTInmuebleAdministrado();
 };
 
