@@ -29,10 +29,11 @@ class Inmobiliaria : public Usuario {
         DTUsuario getDatos();
         bool altaPublicacion(int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio);
         void eliminarReferenciaAdministracion(AdministraPropiedad* ap);
+        void linkPropietario(Propietario* prop);
 
         void suscribir(std::string nickname);
         void anularSuscripcion(std::string nickname);
-        void notificar(std::string nickname, int c, std::string texto, TipoInmueble tipoInmueble );
+        void notificar(std::string nickname, int c, std::string texto, TipoPublicacion tipoPublicacion, TipoInmueble tipoInmueble );
 
         std::set<DTInmuebleListado> getInmueblesNoAdminPropietario();
 };

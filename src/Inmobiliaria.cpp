@@ -30,9 +30,10 @@ void Inmobiliaria::anularSuscripcion(std::string nickname){
     suscriptores.erase(s);
 }
 
-void Inmobiliaria::notificar(std::string nickname, int c, std::string texto, TipoInmueble tipoInmueble ){
+void Inmobiliaria::notificar(std::string nickname, int c, std::string texto, TipoPublicacion tipoPublicacion, TipoInmueble tipoInmueble ){
+    Notificacion* n = new Notificacion(nickname, c, texto, tipoPublicacion, tipoInmueble);
     for (std::set<Suscriptor*>::iterator it=suscriptores.begin(); it!=suscriptores.end(); it++) {
-            it->notificar(n);
+            (*it)->notificar(n);
     }
 }
 
@@ -49,19 +50,19 @@ std::set<DTInmuebleListado> Inmobiliaria::getInmueblesNoAdminPropietario(){
     
 }
 
-void Inmobiliaria::linkPropietario(Propietario* prop){
-    propietariosRepresentados.insert({prop.getNickname(), prop});
+void Inmobiliaria::linkPropietario(Propietario* prop) {
+    this->propietariosRepresentados.insert({prop->getNickname(), prop});
 }
 
 bool Inmobiliaria::altaPublicacion(int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio){
     AdministraPropiedad* ap;
     for(std::set<AdministraPropiedad*>::iterator it=propiedadesAdministradas.begin(); it!=propiedadesAdministradas.end(); it++ ){
-        ap = it->administraPropiedadParaInmueble(codigoInmueble);
-        if (it != NULL) break;
+        ap = (*it)->administraPropiedadParaInmueble(codigoInmueble);
+        if ((*it) != NULL) break;
     }
-    bool puede = ap.puedoCrearPublicacion(tipoPublicacion);
+    bool puede = ap->puedoCrearPublicacion(tipoPublicacion);
     if (puede){
-        ap.desactivarPublicacionActiva();
-        ap.crearPublicacion(tipoPublicacion, texto, precio);
+        ap->desactivarPublicacionActiva();
+        ap->crearPublicacion(tipoPublicacion, texto, precio);
     }
 }

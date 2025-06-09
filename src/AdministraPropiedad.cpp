@@ -104,6 +104,6 @@ void AdministraPropiedad::crearPublicacion(TipoPublicacion tipoPublicacion, std:
     this->coleccionPublicaciones.insert({pub->getCodigo(),pub});
 
     //notis
-    Notificacion* n(inmobiliariaAdministradora->getNombre(), inmuebleAdministrado->getCodigo(), texto, tipoPublicacion, inmuebleAdministrado->getTipoInmueble());
-    inmobiliariaAdministradora->notificar(n);
+    inmobiliariaAdministradora->notificar(inmobiliariaAdministradora->getNickname(), pub->getCodigo(), texto, tipoPublicacion, inmuebleAdministrado->tipoDelInmueble());
+    
 }

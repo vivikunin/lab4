@@ -3,6 +3,7 @@
 #include "Usuario.h"
 #include "TipoInmueble.h"
 #include <string>
+#include <list>
 
 class Cliente : public Suscriptor {
     private:
@@ -14,7 +15,7 @@ class Cliente : public Suscriptor {
         ~Cliente();
         std::string getApellido();
         std::string getDocumento();
-        void notificar(std::string nickname, int c, std::string texto, TipoPublicacion tpublicacion, TipoInmueble tipoInmueble );
+        void notificar(Notificacion* n);
 };
 
 #endif

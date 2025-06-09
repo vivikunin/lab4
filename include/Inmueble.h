@@ -37,9 +37,10 @@ class Inmueble {
         AdministraPropiedad* getAdministracion() const;
 
         bool esDelTipoInmueble(TipoInmueble tipoInmueble);
+        TipoInmueble tipoDelInmueble();
         std::set<DTPublicacion> obtenerDatosPublicaciones(TipoPublicacion tipoPublicacion, float precioMinimo,float precioMaximo, TipoInmueble tipoInmueble);
         void eliminarInmueble();
-        void eliminarReferenciaAdministracion();
+        void eliminarReferenciaAdministracion();   
     
 };
 

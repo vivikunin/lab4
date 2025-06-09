@@ -87,3 +87,11 @@ AdministraPropiedad* Inmueble::getAdministracion() const{
 void Inmueble::eliminarReferenciaAdministracion(){
     administracion=NULL;
 }
+
+TipoInmueble Inmueble:: tipoDelInmueble(){
+    if(dynamic_cast<Casa*>(this) != nullptr){
+        return TipoInmueble::Casa;
+    } else if (dynamic_cast<Apartamento*>(this) != nullptr){
+        return TipoInmueble::Apartamento;
+    }
+}
