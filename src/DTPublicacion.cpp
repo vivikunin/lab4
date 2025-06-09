@@ -8,23 +8,23 @@ DTPublicacion::DTPublicacion(int codigo, DTFecha* fecha, std::string texto, floa
     this->inmobiliaria = inmobiliaria;
 }
 
-int DTPublicacion::getCodigo() {
+int DTPublicacion::getCodigo() const {
     return codigo;
 }
 
-DTFecha* DTPublicacion::getFecha() {
+DTFecha* DTPublicacion::getFecha() const {
     return fecha;
 }
 
-std::string DTPublicacion::getTexto() {
+std::string DTPublicacion::getTexto() const {
     return texto;
 }
 
-float DTPublicacion::getPrecio() {
+float DTPublicacion::getPrecio() const{
     return precio;
 }
 
-std::string DTPublicacion::getInmobiliaria() {
+std::string DTPublicacion::getInmobiliaria() const{
     return inmobiliaria;
 }
 
