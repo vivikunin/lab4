@@ -18,5 +18,7 @@ class IInmobiliarias{
        virtual set <DTUsuario> listarInmobiliarias();
        virtual set<DTInmuebleListado> listarInmueblesNoAdministradosInmobiliaria(string nicknameInmobiliaria);
        virtual  void altaAdministraPropiedad();
+       virtual  std::set<string> mostrarInmobiliariasNoSuscrito(string nickname);
+
 };
 #endif

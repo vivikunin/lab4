@@ -12,6 +12,7 @@ class DTCasa : public DTInmueble {
         DTCasa(int codigo, std::string direccion, int numeroPuerta, int superficie, int anioConstruccion, bool esPH, TipoTecho techo);
         bool getEsPH();
         TipoTecho getTecho();
+        void mostrarDatos();
         virtual ~DTCasa();
 };
 

@@ -19,6 +19,7 @@ class Propietario : public Suscriptor {
         std::string getCuentaBancaria();
         std::string getTelefono();
 
+        DTInmuebleListado getInmueblesNoAdmin(Inmobiliaria* i);
         void removerInmueble();
         void notificar(Notificacion* n);
 };

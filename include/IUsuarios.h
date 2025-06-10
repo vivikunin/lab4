@@ -13,6 +13,7 @@ class IUsuarios{
         void eliminarUsuario(string nickname);
         
         virtual set<DTUsuario> listarPropietarios();
+        void representarPropietario(std::string nicknamePropietario);
 
         virtual Propietario* getPropietarioRecordado() const ;
         virtual void finalizarAltaUsuario();

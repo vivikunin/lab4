@@ -15,6 +15,7 @@ class IInmuebles{
        virtual void altaApartamento(std::string direccion, int numeroPuerta, int superficie, int anoConstruccion, int piso, bool tieneAscensor, float gastosComunes);
        virtual DTInmueble detalleInmueble(int codigoInmueble);
        virtual DTInmueble detalleInmueblePublicacion(int codigoPublicacion);
+       virtual std::set<DTInmuebleListado>listarInmuebles();
 
 };
 #endif

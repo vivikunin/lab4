@@ -13,6 +13,7 @@ class DTApartamento : public DTInmueble {
         int getPiso();
         bool getTieneAscensor();
         float getGastosComunes();
+        void mostrarDatos();
         virtual ~DTApartamento();
 };
 

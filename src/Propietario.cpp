@@ -1,5 +1,6 @@
 #include "Propietario.h"
 #include "Suscriptor.h"
+#include "DTInmuebleListado.h"
 
 Propietario::Propietario(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string cuentaBancaria, std::string telefono):
 Suscriptor(nickname, contrasena, nombre, email){
@@ -17,4 +18,9 @@ std::string Propietario::getTelefono(){
 
 void Propietario::notificar(Notificacion* n){
     this->misNotificaciones.push_back(n);
+}
+
+DTInmuebleListado Propietario::getInmueblesNoAdmin(Inmobiliaria* i){
+    std::set<DTInmuebleListado> res;
+    for ()
 }

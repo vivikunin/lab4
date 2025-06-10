@@ -25,6 +25,7 @@ class ControladorInmobiliarias : public IInmobiliarias {
         bool altaPublicacion(string nickname, int codigoInmueble, TipoPublicacion tipoPublicacion, string texto, float precio);
         std::set <DTInmuebleAdministrado> listarInmueblesAdministrados (string nicknameInmobiliaria);
         std::set<DTInmuebleListado> listarInmueblesNoAdministradosInmobiliaria(string nicknameInmobiliaria);
+        std::set<string> mostrarInmobiliariasNoSuscrito(string nickname);
         void altaAdministraPropiedad();
 };
 

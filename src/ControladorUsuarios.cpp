@@ -2,6 +2,7 @@
 #include "Cliente.h"
 #include"Propietario.h"
 #include "IInmobiliarias.h"
+#include <iostream>
 
 ControladorUsuarios::ControladorUsuarios(){}
 

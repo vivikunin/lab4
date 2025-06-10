@@ -17,6 +17,7 @@ class DTInmueble {
         int getNumeroPuerta();
         int getSuperficie();
         int getAnioConstruccion();
+        virtual void mostrarDatos();
         virtual ~DTInmueble();
 };
 

@@ -57,3 +57,12 @@ DTInmueble ControladorInmuebles::detalleInmueblePublicacion(int codigoPublicacio
     }
     return it->second->getDTInmueble();
 }
+
+std::set<DTInmuebleListado> ControladorInmuebles::listarInmuebles(){
+    set<DTInmuebleListado> res;
+    for(std::map<int, Inmueble*>::iterator it = coleccionInmuebles.begin(); it!=coleccionInmuebles.end(); it++){
+        res.insert(it->second->getDTInmuebleListado());
+    }
+}
+
+

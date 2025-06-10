@@ -19,7 +19,7 @@ class Inmobiliaria : public Usuario {
         std::string telefono;
         std::map<std::string, Propietario*> propietariosRepresentados;
         std::set<AdministraPropiedad*> propiedadesAdministradas;
-        std::set<Suscriptor*> suscriptores;
+        std::map<std::string, Suscriptor*> suscriptores;
 
     public:
         Inmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono);
@@ -36,6 +36,7 @@ class Inmobiliaria : public Usuario {
         void notificar(std::string nickname, int c, std::string texto, TipoPublicacion tipoPublicacion, TipoInmueble tipoInmueble );
 
         std::set<DTInmuebleListado> getInmueblesNoAdminPropietario();
+        bool tieneSuscriptor(std::string nickname);
 };
 
 #endif

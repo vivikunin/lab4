@@ -1,6 +1,7 @@
 #include "../include/Inmobiliaria.h"
 #include "AdministraPropiedad.h"
 #include <set>
+#include <string>
 
 Inmobiliaria::Inmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono):Usuario::Usuario(nickname, contrasena, nombre, email){
     this->direccion=direccion;
@@ -23,17 +24,17 @@ void Inmobiliaria::eliminarReferenciaAdministracion(AdministraPropiedad* ap){
 }
 
 void Inmobiliaria::suscribir(Suscriptor* s){ 
-    suscriptores.insert(s);
+    suscriptores.erase(s->getNickname());
 }
 
 void Inmobiliaria::anularSuscripcion(Suscriptor* s){
-    suscriptores.erase(s);
+    suscriptores.erase(s->getNickname());
 }
 
 void Inmobiliaria::notificar(std::string nickname, int c, std::string texto, TipoPublicacion tipoPublicacion, TipoInmueble tipoInmueble ){
     Notificacion* n = new Notificacion(nickname, c, texto, tipoPublicacion, tipoInmueble);
-    for (std::set<Suscriptor*>::iterator it=suscriptores.begin(); it!=suscriptores.end(); it++) {
-            (*it)->notificar(n);
+    for (std::map<std::string, Suscriptor*>::iterator it=suscriptores.begin(); it!=suscriptores.end(); it++) {
+            it->second->notificar(n);
     }
 }
 
@@ -47,7 +48,11 @@ std::set<DTInmuebleAdministrado> Inmobiliaria:: datosInmueblesAdministrados(){
 }
 
 std::set<DTInmuebleListado> Inmobiliaria::getInmueblesNoAdminPropietario(){
-    
+   std::set<DTInmuebleListado> res;
+   for (std::map<std::string, Propietario*>::iterator it = propietariosRepresentados.begin(); it!=propietariosRepresentados.end(); it++){
+        res.insert(it->second->getInmueblesNoAdmin(this));
+   }
+   return res;
 }
 
 void Inmobiliaria::linkPropietario(Propietario* prop) {
@@ -64,5 +69,13 @@ bool Inmobiliaria::altaPublicacion(int codigoInmueble, TipoPublicacion tipoPubli
     if (puede){
         ap->desactivarPublicacionActiva();
         ap->crearPublicacion(tipoPublicacion, texto, precio);
+    }
+}
+
+bool Inmobiliaria::tieneSuscriptor(std::string nickname){
+    if(suscriptores.find(nickname)!=suscriptores.end()){
+        return true;
+    } else {
+        return false;
     }
 }

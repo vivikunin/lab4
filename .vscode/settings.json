@@ -89,6 +89,7 @@
     "__split_buffer": "cpp",
     "deque": "cpp",
     "ios": "cpp",
-    "list": "cpp"
+    "list": "cpp",
+    "iostream": "cpp"
   }
 }

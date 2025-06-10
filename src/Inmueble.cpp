@@ -94,3 +94,7 @@ TipoInmueble Inmueble:: tipoDelInmueble(){
 bool Inmueble::tienePublicacion(int codigoPublicacion){
     return administracion->tienePublicacion(codigoPublicacion);
 }
+
+DTInmuebleListado Inmueble::getDTInmuebleListado(){
+    return DTInmuebleListado(this->codigo, this->direccion, this->duenio->getNickname());
+}

@@ -26,3 +26,4 @@ ControladorFechaActual::~ControladorFechaActual(){
     delete fechaActual;
     instance = NULL;
 }
+
