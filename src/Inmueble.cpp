@@ -67,11 +67,6 @@ int Inmueble::getAnoConstruccion() const{
     return anoConstruccion;
 }
 
-DTInmueble Inmueble::getDTInmueble(){
-    return DTInmueble(codigo, direccion, numeroPuerta, superficie, anoConstruccion);
-
-}
-
 Propietario* Inmueble::getDueño(){
     return duenio;
 }
@@ -94,4 +89,8 @@ TipoInmueble Inmueble:: tipoDelInmueble(){
     } else if (dynamic_cast<Apartamento*>(this) != nullptr){
         return TipoInmueble::Apartamento;
     }
+}
+
+bool Inmueble::tienePublicacion(int codigoPublicacion){
+    return administracion->tienePublicacion(codigoPublicacion);
 }

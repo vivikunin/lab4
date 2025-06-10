@@ -7,3 +7,6 @@ Inmueble(codigo, direccion, numeroPuerta, superficie, anoConstruccion){
     techo=techo;
 }
 
+DTInmueble Casa::getDTInmueble(){
+    return DTCasa(this->getCodigo(), this->getDireccion(), this->getNumeroPuerta(), this->getSuperficie(), this->getAnoConstruccion(), esPH, techo);
+}

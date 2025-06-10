@@ -107,3 +107,11 @@ void AdministraPropiedad::crearPublicacion(TipoPublicacion tipoPublicacion, std:
     inmobiliariaAdministradora->notificar(inmobiliariaAdministradora->getNickname(), pub->getCodigo(), texto, tipoPublicacion, inmuebleAdministrado->tipoDelInmueble());
     
 }
+
+bool AdministraPropiedad::tienePublicacion(int codigoPublicacion){
+    if(coleccionPublicaciones.find(codigoPublicacion)!=coleccionPublicaciones.end()){
+        return true;
+    } else {
+        return false;
+    }
+}

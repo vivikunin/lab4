@@ -44,3 +44,16 @@ void ControladorInmuebles:: altaApartamento(std::string direccion, int numeroPue
     a->setDuenio(p);
 }
 
+DTInmueble ControladorInmuebles:: detalleInmueble(int codigoInmueble){
+    return coleccionInmuebles.find(codigoInmueble)->second->getDTInmueble();
+}
+
+DTInmueble ControladorInmuebles::detalleInmueblePublicacion(int codigoPublicacion){
+    bool ok=false;
+    std::map<int, Inmueble*>::iterator it = coleccionInmuebles.begin();
+    while(ok==false && it!=coleccionInmuebles.end()){
+        ok=it->second->tienePublicacion(codigoPublicacion);
+        it++;
+    }
+    return it->second->getDTInmueble();
+}

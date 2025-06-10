@@ -14,7 +14,7 @@ class Casa : public Inmueble {
         Casa(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion, bool esPH, TipoTecho techo);
         ~Casa();
 
-        DTCasa getDTCasa();
+        DTInmueble getDTInmueble();
 };
 
 #endif

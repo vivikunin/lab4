@@ -41,5 +41,6 @@ class AdministraPropiedad{
         AdministraPropiedad* administraPropiedadParaInmueble(int codigoInmueble);
         void desactivarPublicacionActiva();
         void crearPublicacion(TipoPublicacion tipoPublicacion, std::string texto, float precio);
+        bool tienePublicacion(int codigoPublicacion);
 };
 #endif

@@ -346,6 +346,7 @@ void consultaPublicaciones(){
         std::cin.ignore();
         std::cout << "Detalle del inmueble:\n";
         //TODO: DTInmueble = Controlador->detalleInmueblePublicacion(codigoPublicacion): DTInmueble
+        DTInmueble dti = factory->getControladorInmuebles()->detalleInmueblePublicacion(codigoPublicacion);
         //Mostrarlo:
         // Si es apartamento-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, piso: xx, ascensor: Si/No, gastos comunes: yyy"
         // Si es casa-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, PH: Si/No, Tipo de techo: Liviano/A dos aguas/Plano"
@@ -364,6 +365,7 @@ void eliminarInmueble(){
     std::cin.ignore();
     std::cout << "Detalle del inmueble:\n";
     //TODO: DTInmueble = Controlador->detalleInmueble(codigoInmueble)
+    factory->getControladorInmuebles()->detalleInmueble(codigoInmueble);
     //Mostrarlo:
     // Si es apartamento-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, piso: xx, ascensor: Si/No, gastos comunes: yyy"
     // Si es casa-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, PH: Si/No, Tipo de techo: Liviano/A dos aguas/Plano"
