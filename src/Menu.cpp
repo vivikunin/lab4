@@ -13,8 +13,11 @@
 #include "../include/DTInmuebleListado.h"
 #include "../include/DTPublicacion.h"
 #include "../include/DTUsuario.h"
+#include "../include/DTNotificacion.h"
+
 #include <string>
 #include <set>
+
 
 void mostrarMenu() {
     std::cout << "=== Menu de Operaciones ===" << std::endl;
@@ -268,7 +271,7 @@ void altaPublicacion(){
     for( std::set<DTInmuebleAdministrado>::iterator it = inmueblesAdministrados.begin(); it!= inmueblesAdministrados.end(); it++){
         std::cout << "-Codigo: " << it->getCodigo();
         std::cout << "Direccion: " << it->getDireccion();
-        std::cout << "Propietario: " << //completar de donde accedemos el propietario? ESTA MAL EL DATATYPE????? FALTA PROBLEMASSSSSSS
+        std::cout << "Propietario: " << ;//completar de donde accedemos el propietario? ESTA MAL EL DATATYPE????? FALTA PROBLEMASSSSSSS
     }
     
     int codigoInmueble;
@@ -320,9 +323,9 @@ void consultaPublicaciones(){
     std::cin.ignore();
     TipoInmueble tipoInmueble = Todos;
     if(inTipoPublicacion == 1){
-        tipoInmueble = Casa;
+        tipoInmueble = TICasa;
     }else if(inTipoPublicacion == 2){
-        tipoInmueble = Apartamento;
+        tipoInmueble = TIApartamento;
     }
     std::cout << "Publicaciones encontradas:\n";
     //TODO: Coleccion de DTPublicacion = Controlador->listarPublicacion(tipoPublicacion, precioMinimo, precioMaximo, tipoInmueble); ///////////////////////////
@@ -412,6 +415,15 @@ void consultaNotificaciones(){
     std::cout << "Ingrese su nickname: ";
     std::cin >> nickname;
     //listar notificaciones
+    std::set<DTNotificacion> listaNotificaciones = factory->getControladorUsuario()->consultarNotificaciones(nickname);
+    //mostrar las notificaciones
+    for(std::set<DTNotificacion>::iterator it =listaNotificaciones.begin(); it!=listaNotificaciones.end(); it++){
+        std::cout << "Inmobiliaria: " << (*it).getNicknameInmobiliaria() << "\n";
+        std::cout << "Código: " << (*it).getCodigo() << "\n";
+        std::cout << "Texto: " << (*it).getTexto() << "\n";
+        std::cout << "Tipo Publicación: " << ((*it).getTipoPublicacion() == Alquiler ? "Alquiler" : "Venta") << "\n";
+        std::cout << "Tipo Inmueble: " << ((*it).getTipoInmueble()== TICasa ? "Casa" : "Apartamento") << "\n\n";
+    }
 }
 
 void eliminarSuscripciones(){
@@ -431,7 +443,7 @@ void altaAdministracionPropiedad(){
 
     std::cout << "Lista de Inmobiliarias:\n";
     //TODO: Coleccion de DTUsuario = controlador->listarInmobiliarias(); //////////////////////////////////////////
-    DTUsuario dtu = factory->getControladorInmobiliarias()->listarInmobiliarias();
+    std::set<DTUsuario> coleccionDTUsuario = factory->getControladorInmobiliarias()->listarInmobiliarias();
     //Recorrer la coleccion Mostrar "- Nickname: xx, Nombre: zz";
     for(std::set<DTUsuario>::iterator it = coleccionDTUsuario.begin(); it!=coleccionDTUsuario.end(); it++){
         std::cout << "- Nickname: " <<  it->getNickname()
@@ -441,7 +453,7 @@ void altaAdministracionPropiedad(){
     std::string nicknameInmobiliaria;
     std::getline(std::cin, nicknameInmobiliaria);
     //TODO: Coleccion de DTInmuebleListado = Controlador->listarInmueblesNoAdministradosInmobiliaria(nicknameInmobiliaria);
-    DTInmuebleListado dtil = factory->getControladorInmuebles()->listarInmueblesNoAdministradosInmobiliaria(nicknameInmobiliaria);
+    std::set<DTInmuebleListado> dtil = factory->getControladorInmobiliarias()->listarInmueblesNoAdministradosInmobiliaria(nicknameInmobiliaria);
     //Recorrer la coleccion Mostrar "- Codigo: xx, direccion: xxxx, propietario: bbbbb";
     std::cout << "Codigo del inmueble a administrar: ";
     int codigoInmueble;

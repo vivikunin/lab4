@@ -25,11 +25,11 @@ Inmueble:: ~Inmueble(){
 
 bool Inmueble::esDelTipoInmueble(TipoInmueble tipo) {
     switch (tipo) {
-        case TipoInmueble::Todos://///////QUE HIZO VIVI?
+        case Todos:
             return true;
-        case TipoInmueble::Casa:
+        case TICasa:
             return dynamic_cast<Casa*>(this) != nullptr;
-        case TipoInmueble::Apartamento:
+        case TIApartamento:
             return dynamic_cast<Apartamento*>(this) != nullptr;
     }
     return false;

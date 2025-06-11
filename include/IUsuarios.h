@@ -15,6 +15,8 @@ class IUsuarios{
         virtual set<DTUsuario> listarPropietarios();
         void representarPropietario(std::string nicknamePropietario);
 
+        std::set<DTNotificacion> consultarNotificaciones(std::string nickname);
+
         virtual Propietario* getPropietarioRecordado() const ;
         virtual void finalizarAltaUsuario();
 };

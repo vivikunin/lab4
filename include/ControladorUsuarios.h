@@ -30,7 +30,7 @@ class ControladorUsuarios : public IUsuarios  {
         void eliminarUsuario(string nickname);
         //con lo de notis
         void agregarSuscriptor(std::string nickname, Suscriptor* s);
-        void consultarNotificaciones(std::string nickname);
+        std::set<DTNotificacion> consultarNotificaciones(std::string nickname);
 
         void representarPropietario(std::string nicknamePropietario);
 

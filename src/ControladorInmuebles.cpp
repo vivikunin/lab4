@@ -1,5 +1,5 @@
-#include "../include/ControladorInmuebles.h"
-#include "../include/Inmueble.h" 
+#include "ControladorInmuebles.h"
+#include "Inmueble.h" 
 #include "Casa.h"        
 #include "Apartamento.h"  
 #include "Factory.h"  
@@ -29,7 +29,7 @@ void ControladorInmuebles::eliminarInmueble(int codigoInmueble){
 }
 
 void ControladorInmuebles::altaCasa(std::string direccion, int numeroPuerta, int superficie, int anoConstruccion,bool esPH, TipoTecho techo){
-    Inmueble::ultimoCodigoInmueble++; //POR LAS DUDAS MARCO
+    Inmueble::ultimoCodigoInmueble++;
     Casa* c = new  Casa(Inmueble::ultimoCodigoInmueble, direccion, numeroPuerta, superficie, anoConstruccion, esPH, techo);
     this->coleccionInmuebles.insert({Inmueble::ultimoCodigoInmueble, c});
     Propietario* p = Factory::getInstance()->getControladorUsuario()->getPropietarioRecordado();///////////PROBLEMAAAAAAAAAA////////////
@@ -38,7 +38,7 @@ void ControladorInmuebles::altaCasa(std::string direccion, int numeroPuerta, int
 
 void ControladorInmuebles:: altaApartamento(std::string direccion, int numeroPuerta, int superficie, int anoConstruccion, int piso, bool tieneAscensor, float gastosComunes){
     Inmueble::ultimoCodigoInmueble++;
-    Apartamento* a = new  Apartamento(Inmueble::ultimoCodigoInmueble, direccion, numeroPuerta, superficie, anoConstruccion, piso, tieneAscensor, gastosComunes);
+    class Apartamento* a = new  class Apartamento(Inmueble::ultimoCodigoInmueble, direccion, numeroPuerta, superficie, anoConstruccion, piso, tieneAscensor, gastosComunes);
     this->coleccionInmuebles.insert({Inmueble::ultimoCodigoInmueble, a});
     Propietario* p = Factory::getInstance()->getControladorUsuario()->getPropietarioRecordado();//////ANALOGO A ARRIBA////////////
     a->setDuenio(p);

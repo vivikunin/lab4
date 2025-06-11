@@ -2,6 +2,7 @@
 #include "Cliente.h"
 #include"Propietario.h"
 #include "IInmobiliarias.h"
+#include "Suscriptor.h"
 #include <iostream>
 
 ControladorUsuarios::ControladorUsuarios(){}
@@ -79,21 +80,13 @@ void ControladorUsuarios::agregarSuscriptor(std::string nickname, Suscriptor* s)
         suscriptores[nickname] = s;
 }
 
-void ControladorUsuarios::consultarNotificaciones(std::string nickname){
+std::set<DTNotificacion> ControladorUsuarios::consultarNotificaciones(std::string nickname){
     std::map<std::string, Suscriptor*>::iterator it = suscriptores.find(nickname);
     Suscriptor* s = it->second;
-    std::set<Notificacion> notis = s->getNotificaciones();
-
-    for(std::set<Notificacion>::iterator it =notis.begin(); it!=notis.end(); it++){
-        std::cout << "Inmobiliaria: " << n.nicknameInmobiliaria << "\n";
-        std::cout << "Código: " << n.codigo << "\n";
-        std::cout << "Texto: " << n.texto << "\n";
-        std::cout << "Tipo Publicación: " << (n.tPublicacion == TipoPublicacion::ALQUILER ? "Alquiler" : "Venta") << "\n";
-        std::cout << "Tipo Inmueble: " << (n.tInmueble == TipoInmueble::CASA ? "Casa" : "Apartamento") << "\n\n";
-    }
+    std::set<DTNotificacion> notis = s->getNotificaciones();
 }
 
 void ControladorUsuarios::representarPropietario(std::string nicknamePropietario){
-    Propietario* prop = coleccionUsuarios.find(nicknamePropietario);
-    inmobiliariaRecordada.linkPropietario(prop);
+    Propietario* prop = dynamic_cast<Propietario*>((coleccionUsuarios.find(nicknamePropietario))->second);
+    inmobiliariaRecordada->linkPropietario(prop);
 }

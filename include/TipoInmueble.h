@@ -1,10 +1,10 @@
 #ifndef TIPOINMUEBLE_H
 #define TIPOINMUEBLE_H
 
-enum class TipoInmueble {
+enum TipoInmueble {
     Todos,
-    Casa,
-    Apartamento
+    TICasa,
+    TIApartamento
 };
 
 #endif

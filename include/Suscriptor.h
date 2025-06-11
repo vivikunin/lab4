@@ -1,7 +1,9 @@
 #ifndef SUSCRIPTOR_H
 #define SUSCRIPTOR_H
+
 #include "Notificacion.h"
 #include "Usuario.h"
+#include "DTNotificacion.h"
 
 
 #include <list>
@@ -16,7 +18,7 @@ class Suscriptor : public Usuario {
         virtual ~Suscriptor()=0;
 
         virtual void notificar(Notificacion* n);
-        std::list<Notificacion*> getNotificaciones();
+        std::set<DTNotificacion> getNotificaciones();
 };
 
 #endif
