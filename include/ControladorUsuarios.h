@@ -12,17 +12,17 @@ class ControladorUsuarios : public IUsuarios  {
         static ControladorUsuarios* instance;
         ControladorUsuarios();
         std::map <std::string, Usuario*> coleccionUsuarios;
-        Propietario* propietarioRecordado=NULL;
+        Usuario* usuarioRecordado=NULL;
         Inmobiliaria* inmobiliariaRecordada=NULL;
-        std::map<std::string, Suscriptor*> suscriptores;
 
     
     public:
         static ControladorUsuarios* getInstance();
         ~ControladorUsuarios();
 
-        Propietario* getPropietarioRecordado() const;
+        Usuario* getUsuarioRecordado() const;
         void finalizarAltaUsuario();
+        void olvidarUsuarioRecordado();
 
         bool altaCliente(string nickname, string contrasena, string nombre, string email, string apellido, string documento);
         bool altaPropietario(string nickname, string contrasena, string nombre, string email, string cuentaBancaria, string telefono);
@@ -33,6 +33,7 @@ class ControladorUsuarios : public IUsuarios  {
         std::set<DTNotificacion> consultarNotificaciones(std::string nickname);
 
         void representarPropietario(std::string nicknamePropietario);
+        void recordarUsuario(std::string nicknamePropietario);
 
 
 

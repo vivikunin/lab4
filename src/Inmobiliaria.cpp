@@ -24,7 +24,7 @@ void Inmobiliaria::eliminarReferenciaAdministracion(AdministraPropiedad* ap){
 }
 
 void Inmobiliaria::suscribir(Suscriptor* s){ 
-    suscriptores.erase(s->getNickname());
+    suscriptores.insert({s->getNickname(),s});
 }
 
 void Inmobiliaria::anularSuscripcion(Suscriptor* s){

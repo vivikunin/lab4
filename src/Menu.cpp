@@ -244,7 +244,7 @@ void altaUsuario(){
             std::cin.ignore();
         }
         //TODO: controlador->finalizarAltaUsuario();////////////////////////////////////
-        factory->getControladorUsuarios()->finalizarAltaUsuario();
+        factory->getControladorUsuario()->finalizarAltaUsuario();
     }else{
         std::cout << "Error al crear el usuario" << std::endl;
     }
@@ -396,15 +396,26 @@ void suscribirseNotificaciones(){
     std::string nickname, nombreInmobiliaria;
     std::cout << "Ingrese su nickname: ";
     std::cin >> nickname;
+    factory->getControladorUsuario()->recordarUsuario(nickname);
     //mostrar inmobiliarias que no esta suscrito
     std::set<string> inmobilairias = factory->getControladorInmobiliarias()->mostrarInmobiliariasNoSuscrito(nickname);
     std::cout << "- Nickname: ";
     for(std::set<string>::iterator it = inmobilairias.begin(); it!=inmobilairias.end(); it++){
         std::cout <<  *it;
     }
-    std::cout << "Ingrese nombre de la inmobiliaria a la que desea suscribirse: "; //en loop
-    std::cin >> nombreInmobiliaria;
-    //agregar a la lista de suscriptores
+    int salir = 1;
+    while (salir != 0){
+        std::cout << "Ingrese nombre de la inmobiliaria a la que desea suscribirse: "; 
+        std::cin >> nombreInmobiliaria;
+        //agregar a la lista de suscriptores
+        factory->getControladorInmobiliarias()->suscribirseAInmobiliaria(nombreInmobiliaria);
+        std::cout << "¿Quiere seguir ingresando? (1: Si, 0: No): ";
+        std::cin >> salir;
+        std::cin.ignore();
+    }
+    factory->getControladorUsuario()->olvidarUsuarioRecordado();
+   
+
 
 
 }
@@ -422,7 +433,7 @@ void consultaNotificaciones(){
         std::cout << "Código: " << (*it).getCodigo() << "\n";
         std::cout << "Texto: " << (*it).getTexto() << "\n";
         std::cout << "Tipo Publicación: " << ((*it).getTipoPublicacion() == Alquiler ? "Alquiler" : "Venta") << "\n";
-        std::cout << "Tipo Inmueble: " << ((*it).getTipoInmueble()== TICasa ? "Casa" : "Apartamento") << "\n\n";
+        std::cout << "Tipo Inmueble: " << ((*it).getTipoInmueble()== TICasa ? "Casa" : "Apartamento") << "\n";
     }
 }
 
@@ -431,11 +442,19 @@ void eliminarSuscripciones(){
     std::string nickname, nombreInmobiliaria;
     std::cout << "Ingrese su nickname: ";
     std::cin >> nickname;
+    factory->getControladorUsuario()->recordarUsuario(nickname);
     //listar inmobiliarias que esta suscrito
-    std::cout << "Ingrese nombre de la inmobiliaria a la que desea eliminar su suscripcion: "; //en loop
-    std::cin >> nombreInmobiliaria;
-    //eliminar suscriptor
-
+    std::set<string> inmobilairias = factory->getControladorInmobiliarias()->mostrarInmobiliariasSuscrito(nickname);
+    int salir = 1;
+    while (salir != 0){
+        std::cout << "Ingrese nombre de la inmobiliaria a la que desea eliminar su suscripcion: ";
+        std::cin >> nombreInmobiliaria;
+        // eliminar suscripcion
+        factory->getControladorInmobiliarias()->desSuscribirseAInmobiliaria(nombreInmobiliaria);
+        std::cout << "¿Quiere seguir eliminando suscripciones? (1: Si, 0: No): ";
+        std::cin >> salir;
+        std::cin.ignore();
+    }
 }
 
 void altaAdministracionPropiedad(){

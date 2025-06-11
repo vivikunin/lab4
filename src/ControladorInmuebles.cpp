@@ -32,7 +32,7 @@ void ControladorInmuebles::altaCasa(std::string direccion, int numeroPuerta, int
     Inmueble::ultimoCodigoInmueble++;
     Casa* c = new  Casa(Inmueble::ultimoCodigoInmueble, direccion, numeroPuerta, superficie, anoConstruccion, esPH, techo);
     this->coleccionInmuebles.insert({Inmueble::ultimoCodigoInmueble, c});
-    Propietario* p = Factory::getInstance()->getControladorUsuario()->getPropietarioRecordado();///////////PROBLEMAAAAAAAAAA////////////
+    Propietario* p = dynamic_cast<Propietario*> (Factory::getInstance()->getControladorUsuario()->getUsuarioRecordado());
     c->setDuenio(p);
 }
 
@@ -40,8 +40,7 @@ void ControladorInmuebles:: altaApartamento(std::string direccion, int numeroPue
     Inmueble::ultimoCodigoInmueble++;
     class Apartamento* a = new  class Apartamento(Inmueble::ultimoCodigoInmueble, direccion, numeroPuerta, superficie, anoConstruccion, piso, tieneAscensor, gastosComunes);
     this->coleccionInmuebles.insert({Inmueble::ultimoCodigoInmueble, a});
-    Propietario* p = Factory::getInstance()->getControladorUsuario()->getPropietarioRecordado();//////ANALOGO A ARRIBA////////////
-    a->setDuenio(p);
+    Propietario* p = dynamic_cast<Propietario*>(Factory::getInstance()->getControladorUsuario()->getUsuarioRecordado());
 }
 
 DTInmueble ControladorInmuebles:: detalleInmueble(int codigoInmueble){

@@ -1,6 +1,7 @@
 #ifndef USUARIO_H
 #define USUARIO_H
 #include <string>
+#include <set>
 #include"DTUsuario.h"
 
 class Usuario {

@@ -6,12 +6,12 @@
 #include "DTNotificacion.h"
 
 
-#include <list>
+#include <set>
 #include <string>
 
 class Suscriptor : public Usuario {
     protected:
-        std::list <Notificacion*> misNotificaciones;
+        std::set <Notificacion*> misNotificaciones;
     
     public:
         Suscriptor(std::string nickname, std::string contrasena, std::string nombre, std::string email);   

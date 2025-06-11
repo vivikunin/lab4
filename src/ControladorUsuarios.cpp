@@ -4,6 +4,7 @@
 #include "IInmobiliarias.h"
 #include "Suscriptor.h"
 #include <iostream>
+#include <map>
 
 ControladorUsuarios::ControladorUsuarios(){}
 
@@ -23,12 +24,12 @@ ControladorUsuarios* ControladorUsuarios::getInstance() {
     return instance;
 }
 
-Propietario* ControladorUsuarios::getPropietarioRecordado() const { 
-    return propietarioRecordado; 
+Usuario* ControladorUsuarios::getUsuarioRecordado() const { 
+    return usuarioRecordado; 
 }
 
 void ControladorUsuarios::finalizarAltaUsuario() { 
-    propietarioRecordado = nullptr; 
+    usuarioRecordado = nullptr; 
     inmobiliariaRecordada = nullptr;
 }
 
@@ -38,7 +39,6 @@ bool ControladorUsuarios::altaCliente(string nickname, string contrasena, string
     } else {
         Cliente* c = new Cliente(nickname, contrasena, nombre, email, apellido, documento); //create
         coleccionUsuarios[nickname] = c; //add
-        
     } 
 }
 
@@ -48,7 +48,7 @@ bool ControladorUsuarios::altaPropietario(string nickname, string contrasena, st
     } else {
         Propietario* p = new Propietario(nickname, contrasena, nombre, email, cuentaBancaria, telefono); //create
         coleccionUsuarios[nickname] = p; //add
-        propietarioRecordado = p;
+        usuarioRecordado = p;
     } 
 }
 
@@ -81,12 +81,20 @@ void ControladorUsuarios::agregarSuscriptor(std::string nickname, Suscriptor* s)
 }
 
 std::set<DTNotificacion> ControladorUsuarios::consultarNotificaciones(std::string nickname){
-    std::map<std::string, Suscriptor*>::iterator it = suscriptores.find(nickname);
-    Suscriptor* s = it->second;
-    std::set<DTNotificacion> notis = s->getNotificaciones();
+    std::map<std::string, Usuario*>::iterator it = coleccionUsuarios.find(nickname);
+    return it->second->listarNotificaciones();
 }
 
 void ControladorUsuarios::representarPropietario(std::string nicknamePropietario){
     Propietario* prop = dynamic_cast<Propietario*>((coleccionUsuarios.find(nicknamePropietario))->second);
     inmobiliariaRecordada->linkPropietario(prop);
+}
+
+void ControladorUsuarios::recordarUsuario(std::string nicknamePropietario){
+    std::map <std::string, Usuario*>::iterator it =  coleccionUsuarios.find(nicknamePropietario);
+    usuarioRecordado= it->second;
+}
+
+void ControladorUsuarios::olvidarUsuarioRecordado(){
+    usuarioRecordado=NULL;
 }

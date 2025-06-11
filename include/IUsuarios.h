@@ -17,7 +17,10 @@ class IUsuarios{
 
         std::set<DTNotificacion> consultarNotificaciones(std::string nickname);
 
-        virtual Propietario* getPropietarioRecordado() const ;
+        virtual Usuario* getUsuarioRecordado() const ;
+        virtual void recordarUsuario(std::string nicknamePropietario);
         virtual void finalizarAltaUsuario();
+        virtual void olvidarUsuarioRecordado();
+        virtual void agregarSuscriptor(Usuario* u);
 };
 #endif

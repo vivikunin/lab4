@@ -26,7 +26,11 @@ class ControladorInmobiliarias : public IInmobiliarias {
         std::set <DTInmuebleAdministrado> listarInmueblesAdministrados (string nicknameInmobiliaria);
         std::set<DTInmuebleListado> listarInmueblesNoAdministradosInmobiliaria(string nicknameInmobiliaria);
         std::set<string> mostrarInmobiliariasNoSuscrito(string nickname);
+        std::set<string> mostrarInmobiliariasSuscrito(string nickname);
         void altaAdministraPropiedad();
+
+        void suscribirseAInmobiliaria(std::string nombreInmobiliaria);
+        void desSuscribirseAInmobiliaria(std::string nombreInmobiliaria);
 };
 
 #endif

@@ -1,6 +1,7 @@
 #include "../include/ControladorInmobiliarias.h"
 #include "Inmobiliaria.h"
 #include "AdministraPropiedad.h"
+#include "Factory.h"
 
 #include <set>
 using namespace std;
@@ -59,6 +60,23 @@ std::set<string> ControladorInmobiliarias::mostrarInmobiliariasNoSuscrito(string
     }
 }
 
+std::set<string> ControladorInmobiliarias::mostrarInmobiliariasSuscrito(string nickname){
+    std::set<string> res;
+    for(std::map<string, Inmobiliaria*>::iterator it = coleccionInmobiliarias.begin(); it!=coleccionInmobiliarias.end(); it++){
+        if(it->second->tieneSuscriptor(it->first)){
+            res.insert(it->second->getNickname());
+        }
+    }
+}
+
+void ControladorInmobiliarias::suscribirseAInmobiliaria(std::string nombreInmobiliaria){
+    std::map<std::string, Inmobiliaria*>::iterator it = coleccionInmobiliarias.find(nombreInmobiliaria);
+    it->second->suscribir(dynamic_cast<Suscriptor*>(Factory::getInstance()->getControladorUsuario()->getUsuarioRecordado()));
+}
+
+void ControladorInmobiliarias::desSuscribirseAInmobiliaria(std::string nombreInmobiliaria){
+    
+}
 
 
 
