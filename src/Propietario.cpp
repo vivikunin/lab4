@@ -17,7 +17,7 @@ std::string Propietario::getTelefono(){
 }
 
 void Propietario::notificar(Notificacion* n){
-    this->misNotificaciones.push_back(n);
+    this->misNotificaciones.insert(n);
 }
 
 DTInmuebleListado Propietario::getInmueblesNoAdmin(Inmobiliaria* i){

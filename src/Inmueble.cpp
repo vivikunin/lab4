@@ -85,9 +85,9 @@ void Inmueble::eliminarReferenciaAdministracion(){
 
 TipoInmueble Inmueble:: tipoDelInmueble(){
     if(dynamic_cast<Casa*>(this) != nullptr){
-        return TipoInmueble::Casa;
+        return TICasa;
     } else if (dynamic_cast<Apartamento*>(this) != nullptr){
-        return TipoInmueble::Apartamento;
+        return TIApartamento;
     }
 }
 

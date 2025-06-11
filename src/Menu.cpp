@@ -267,11 +267,11 @@ void altaPublicacion(){
     std::getline(std::cin, nicknameInmobiliaria);
     //TODO: Coleccion de DTInmuebleAdministrado = controlador->listarInmueblesAdministrados(nicknameInmobiliaria);///////////////////
     std::set<DTInmuebleAdministrado> inmueblesAdministrados = factory->getControladorInmobiliarias()->listarInmueblesAdministrados(nicknameInmobiliaria);
-    //Recorrer la coleccion Mostrar "- Codigo: xx, Direccion: yy, Propietario: zzz"
+    //Recorrer la coleccion Mostrar "- Codigo: xx, Direccion: yy, Fecha comienzo: zzz"
     for( std::set<DTInmuebleAdministrado>::iterator it = inmueblesAdministrados.begin(); it!= inmueblesAdministrados.end(); it++){
         std::cout << "-Codigo: " << it->getCodigo();
         std::cout << "Direccion: " << it->getDireccion();
-        std::cout << "Propietario: " << ;//completar de donde accedemos el propietario? ESTA MAL EL DATATYPE????? FALTA PROBLEMASSSSSSS
+        std::cout << "Fecha comienzo: " << it->getFechaComienzo();
     }
     
     int codigoInmueble;
@@ -368,12 +368,12 @@ void eliminarInmueble(){
         std::cout << "-Codigo: " << it->getCodigo();
         std::cout << "Direccion: " << it->getDireccion();
         std::cout << "Propietario: " << it->getPropietario()<<"\n";
+    }
     std::cout << "Codigo del inmueble a eliminar: ";
     int codigoInmueble;
     std::cin >> codigoInmueble;
     std::cin.ignore();
     std::cout << "Detalle del inmueble:\n";
-    }
     //TODO: DTInmueble = Controlador->detalleInmueble(codigoInmueble) //////////////////////////////////////
     DTInmueble dti = factory->getControladorInmuebles()->detalleInmueble(codigoInmueble);
     //Mostrarlo:

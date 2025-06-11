@@ -34,7 +34,7 @@ public:
     DTPublicacion getDTPublicacion();
 
     void marcarComoInactiva();
-    bool cumpleCondiciones(TipoPublicacion tipoPublicacion, float precioMinimo, float prcioMaximo, TipoInmueble tipoInmueble);
+    bool cumpleCondiciones(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble);
 };
 
 #endif

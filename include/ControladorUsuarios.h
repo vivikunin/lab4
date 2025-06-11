@@ -29,7 +29,6 @@ class ControladorUsuarios : public IUsuarios  {
         bool altaInmobiliaria(string nickname, string contrasena, string nombre, string email, string direccion, string url, string telefono);
         void eliminarUsuario(string nickname);
         //con lo de notis
-        void agregarSuscriptor(std::string nickname, Suscriptor* s);
         std::set<DTNotificacion> consultarNotificaciones(std::string nickname);
 
         void representarPropietario(std::string nicknamePropietario);

@@ -55,8 +55,8 @@ void Publicacion:: marcarComoInactiva(){
     this->activa=false;
 }
 
-bool Publicacion:: cumpleCondiciones(TipoPublicacion tipoPublicacion, float precioMinimo, float prcioMaximo, TipoInmueble tipoInmueble){
-    return (this->getTipoPublicacion == tipoPublicacion && (this->getPrecio() >= precioMinimo && this->getPrecio() <= precioMaximo));
+bool Publicacion:: cumpleCondiciones(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble){
+    return (this->getTipoPublicacion() == tipoPublicacion && (this->getPrecio() >= precioMinimo && this->getPrecio() <= precioMaximo));
 }
 
 float Publicacion::getPrecio(){

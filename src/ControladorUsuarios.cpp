@@ -76,13 +76,9 @@ std::set<DTUsuario> ControladorUsuarios::listarPropietarios(){
     }
 }
 
-void ControladorUsuarios::agregarSuscriptor(std::string nickname, Suscriptor* s) {
-        suscriptores[nickname] = s;
-}
-
 std::set<DTNotificacion> ControladorUsuarios::consultarNotificaciones(std::string nickname){
     std::map<std::string, Usuario*>::iterator it = coleccionUsuarios.find(nickname);
-    return it->second->listarNotificaciones();
+    return dynamic_cast<Suscriptor*>(it->second)->getNotificaciones();
 }
 
 void ControladorUsuarios::representarPropietario(std::string nicknamePropietario){
