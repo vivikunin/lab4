@@ -75,7 +75,8 @@ void ControladorInmobiliarias::suscribirseAInmobiliaria(std::string nombreInmobi
 }
 
 void ControladorInmobiliarias::desSuscribirseAInmobiliaria(std::string nombreInmobiliaria){
-    
+    std::map<std::string, Inmobiliaria*>::iterator it = coleccionInmobiliarias.find(nombreInmobiliaria);
+    it->second->anularSuscripcion(dynamic_cast<Suscriptor*>(Factory::getInstance()->getControladorUsuario()->getUsuarioRecordado()));
 }
 
 
