@@ -9,6 +9,7 @@
 #include "DTInmueble.h"
 
 class AdministraPropiedad;
+class Propietario;
 
 class Inmueble {
     private:
@@ -24,7 +25,7 @@ class Inmueble {
         Inmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion);
         virtual ~Inmueble();
 
-        void setDuenio( Propietario* duenio);
+        void setDuenio(Propietario* duenio);
         void setAdministracion(AdministraPropiedad* admin);
 
         int getCodigo() const;

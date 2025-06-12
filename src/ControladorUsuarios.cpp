@@ -47,8 +47,8 @@ bool ControladorUsuarios::altaPropietario(string nickname, string contrasena, st
             return false;
     } else {
         Propietario* p = new Propietario(nickname, contrasena, nombre, email, cuentaBancaria, telefono); //create
-        coleccionUsuarios[nickname] = p; //add
-        usuarioRecordado = p;
+        coleccionUsuarios.insert({dynamic_cast<Usuario*>(p)->getNickname(),dynamic_cast<Usuario*>(p)}); 
+        usuarioRecordado = dynamic_cast<Usuario*>(p);
     } 
 }
 

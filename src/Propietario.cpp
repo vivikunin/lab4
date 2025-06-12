@@ -5,6 +5,8 @@
 #include <map>
 #include <string>
 
+class Inmobiliaria;
+
 Propietario::Propietario(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string cuentaBancaria, std::string telefono):
 Suscriptor(nickname, contrasena, nombre, email){
     this->cuentaBancaria=cuentaBancaria;

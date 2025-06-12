@@ -6,11 +6,14 @@
 #include "DTInmuebleListado.h"
 #include "Suscriptor.h"
 #include "AdministraPropiedad.h"
+#include "Propietario.h"
+
 #include <string>
 #include <set>
 #include <map>
 
 class AdministraPropiedad;
+class Propietario;
 
 class Inmobiliaria : public Usuario {
     private:

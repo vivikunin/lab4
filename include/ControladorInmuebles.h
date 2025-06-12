@@ -4,6 +4,7 @@
 #include "DTPublicacion.h"
 #include "TipoInmueble.h"
 #include "TipoTecho.h"
+#include "DTInmueble.h"
 
 #include <set>
 #include <map>

@@ -9,6 +9,9 @@
 
 #include <string>
 
+class Inmobiliaria;
+class Inmueble;
+
 class Propietario : public Suscriptor {
     private:
         std::string cuentaBancaria;

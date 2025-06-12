@@ -3,6 +3,7 @@
 #include "Casa.h"        
 #include "Apartamento.h"  
 #include "Factory.h"  
+#include "DTInmueble.h"
 
 ControladorInmuebles* ControladorInmuebles::instance = NULL;
 

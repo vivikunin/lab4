@@ -3,6 +3,9 @@
 #include "DTPublicacion.h"
 #include "TipoPublicacion.h"
 #include "TipoInmueble.h"
+#include "DTInmuebleListado.h"
+#include "TipoTecho.h"
+
 #include <set>
 
 class IInmuebles{

@@ -5,6 +5,8 @@
 #include "DTUsuario.h"
 #include "TipoPublicacion.h"
 #include "DTInmuebleAdministrado.h"
+#include "DTInmuebleListado.h"
+
 
 using namespace std;
 
