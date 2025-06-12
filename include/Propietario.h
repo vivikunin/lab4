@@ -2,6 +2,7 @@
 #define PROPIETARIO_H
 #include "Usuario.h"
 #include "TipoInmueble.h"
+#include "DTInmuebleListado.h"
 #include "Suscriptor.h"
 
 

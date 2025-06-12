@@ -15,12 +15,11 @@ class IInmobiliarias{
        virtual set <DTUsuario> listarInmobiliarias()=0;
        virtual bool altaPublicacion(string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, string texto, float precio)=0;
        virtual set <DTInmuebleAdministrado> listarInmueblesAdministrados(string nicknameInmobiliaria)=0;
-       virtual set <DTUsuario> listarInmobiliarias();
-       virtual set<DTInmuebleListado> listarInmueblesNoAdministradosInmobiliaria(string nicknameInmobiliaria);
-       virtual  void altaAdministraPropiedad();
-       virtual  std::set<string> mostrarInmobiliariasNoSuscrito(string nickname);
-       virtual std::set<string> mostrarInmobiliariasSuscrito(string nickname);
-       virtual void suscribirseAInmobiliaria(std::string nombreInmobiliaria);
-       virtual void desSuscribirseAInmobiliaria(std::string nombreInmobiliaria);
+       virtual set<DTInmuebleListado> listarInmueblesNoAdministradosInmobiliaria(string nicknameInmobiliaria)=0;
+       virtual  void altaAdministraPropiedad()=0;
+       virtual  std::set<string> mostrarInmobiliariasNoSuscrito(string nickname)=0;
+       virtual std::set<string> mostrarInmobiliariasSuscrito(string nickname)=0;
+       virtual void suscribirseAInmobiliaria(std::string nombreInmobiliaria)=0;
+       virtual void desSuscribirseAInmobiliaria(std::string nombreInmobiliaria)=0;
 };
 #endif

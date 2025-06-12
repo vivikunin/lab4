@@ -474,6 +474,11 @@ void altaAdministracionPropiedad(){
     //TODO: Coleccion de DTInmuebleListado = Controlador->listarInmueblesNoAdministradosInmobiliaria(nicknameInmobiliaria);
     std::set<DTInmuebleListado> dtil = factory->getControladorInmobiliarias()->listarInmueblesNoAdministradosInmobiliaria(nicknameInmobiliaria);
     //Recorrer la coleccion Mostrar "- Codigo: xx, direccion: xxxx, propietario: bbbbb";
+    for( std::set<DTInmuebleListado>::iterator it = dtil.begin(); it!= dtil.end(); it++){
+        std::cout << "-Codigo: " << it->getCodigo();
+        std::cout << "Direccion: " << it->getDireccion();
+        std::cout << "Propietario: " << it->getPropietario()<<"\n";
+    }
     std::cout << "Codigo del inmueble a administrar: ";
     int codigoInmueble;
     std::cin >> codigoInmueble;

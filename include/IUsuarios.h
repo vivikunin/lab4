@@ -1,6 +1,8 @@
 #ifndef IUSUARIOS_H
 #define IUSUARIOS_H
 #include <string>
+#include "Usuario.h"
+#include "DTNotificacion.h"
 
 using namespace std;
 
@@ -21,6 +23,5 @@ class IUsuarios{
         virtual void recordarUsuario(std::string nicknamePropietario);
         virtual void finalizarAltaUsuario();
         virtual void olvidarUsuarioRecordado();
-        virtual void agregarSuscriptor(Usuario* u);
 };
 #endif

@@ -2,6 +2,7 @@
 #define CONTROLADORUSUARIOS_H
 #include "IUsuarios.h"
 #include "Inmobiliaria.h"
+#include "Usuario.h"
 #include <string>
 #include <map>
 
