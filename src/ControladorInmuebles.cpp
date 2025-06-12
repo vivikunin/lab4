@@ -34,6 +34,7 @@ void ControladorInmuebles::altaCasa(std::string direccion, int numeroPuerta, int
     this->coleccionInmuebles.insert({Inmueble::ultimoCodigoInmueble, c});
     Propietario* p = dynamic_cast<Propietario*> (Factory::getInstance()->getControladorUsuario()->getUsuarioRecordado());
     c->setDuenio(p);
+    p->añadirPropiedad(c);
 }
 
 void ControladorInmuebles:: altaApartamento(std::string direccion, int numeroPuerta, int superficie, int anoConstruccion, int piso, bool tieneAscensor, float gastosComunes){

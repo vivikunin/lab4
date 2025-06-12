@@ -37,6 +37,8 @@ class Inmueble {
         Propietario* getDueño();
         AdministraPropiedad* getAdministracion() const;
 
+        bool esAdminitrado(Inmobiliaria* i);
+
         bool esDelTipoInmueble(TipoInmueble tipoInmueble);
         TipoInmueble tipoDelInmueble();
         std::set<DTPublicacion> obtenerDatosPublicaciones(TipoPublicacion tipoPublicacion, float precioMinimo,float precioMaximo, TipoInmueble tipoInmueble);
