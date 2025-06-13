@@ -1,6 +1,7 @@
 #include "../include/AdministraPropiedad.h"
 #include "DTInmuebleAdministrado.h"
 #include "ControladorFechaActual.h"
+#include "DTFecha.h"
 #include <set>
 
 AdministraPropiedad::AdministraPropiedad(DTFecha* fecha) {
@@ -8,6 +9,13 @@ AdministraPropiedad::AdministraPropiedad(DTFecha* fecha) {
     this->inmuebleAdministrado = nullptr;
     this->inmobiliariaAdministradora = nullptr;
 }
+
+AdministraPropiedad::AdministraPropiedad(DTFecha* fecha,Inmueble* inmuebleAdministrado ,Inmobiliaria* inmobiliariaAdministradora){
+    this->fecha = new DTFecha(fecha); 
+    this->inmuebleAdministrado = inmuebleAdministrado;
+    this->inmobiliariaAdministradora = inmobiliariaAdministradora;
+}
+
 AdministraPropiedad::~AdministraPropiedad(){
     delete fecha;
     //vaciar y eliminar la coleccion de publicaciones
@@ -16,7 +24,7 @@ AdministraPropiedad::~AdministraPropiedad(){
     }
     coleccionPublicaciones.clear();
 
-    //Eliminar referencia de l ainmobiliaria y el inmueble
+    //Eliminar referencia de la inmobiliaria y el inmueble
     if (inmuebleAdministrado != nullptr) {
         inmuebleAdministrado->eliminarReferenciaAdministracion();
     }

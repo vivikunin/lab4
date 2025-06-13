@@ -8,6 +8,7 @@
 #include "TipoTecho.h"
 
 #include <set>
+class Inmueble;
 
 class IInmuebles{
     public:
@@ -21,6 +22,6 @@ class IInmuebles{
        virtual DTInmueble* detalleInmueble(int codigoInmueble)=0;
        virtual DTInmueble* detalleInmueblePublicacion(int codigoPublicacion)=0;
        virtual std::set<DTInmuebleListado>listarInmuebles()=0;
-
+       virtual Inmueble* getInmueble(int codigoInmueble)=0;
 };
 #endif

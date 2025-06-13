@@ -18,7 +18,7 @@ class IInmobiliarias{
        virtual bool altaPublicacion(string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, string texto, float precio)=0;
        virtual set <DTInmuebleAdministrado> listarInmueblesAdministrados(string nicknameInmobiliaria)=0;
        virtual set<DTInmuebleListado> listarInmueblesNoAdministradosInmobiliaria(string nicknameInmobiliaria)=0;
-       virtual  void altaAdministraPropiedad()=0;
+       virtual  void altaAdministraPropiedad(std::string nickname, int codigoInmueble)=0;
        virtual  std::set<string> mostrarInmobiliariasNoSuscrito(string nickname)=0;
        virtual std::set<string> mostrarInmobiliariasSuscrito(string nickname)=0;
        virtual void suscribirseAInmobiliaria(std::string nombreInmobiliaria)=0;

@@ -107,3 +107,7 @@ bool Inmueble::tienePublicacion(int codigoPublicacion){
 DTInmuebleListado Inmueble::getDTInmuebleListado(){
     return DTInmuebleListado(this->codigo, this->direccion, this->duenio->getNickname());
 }
+
+void Inmueble::asociarAdministracionPropiedad(AdministraPropiedad* ap){
+    administracion=ap;
+}

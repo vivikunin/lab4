@@ -21,6 +21,8 @@ class ControladorInmuebles : public IInmuebles {
     public:
         static ControladorInmuebles* getInstance();
         ~ControladorInmuebles();
+        
+        Inmueble* getInmueble(int codigoInmueble);
 
         void eliminarInmueble(int codigoInmueble);
         std::set<DTPublicacion> listarPublicacion(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble);

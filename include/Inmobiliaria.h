@@ -14,6 +14,7 @@
 
 class AdministraPropiedad;
 class Propietario;
+class Inmueble;
 
 class Inmobiliaria : public Usuario {
     private:
@@ -33,7 +34,8 @@ class Inmobiliaria : public Usuario {
         bool altaPublicacion(int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio);
         void eliminarReferenciaAdministracion(AdministraPropiedad* ap);
         void linkPropietario(Propietario* prop);
-
+        void altaAdministracionPropiedad(Inmueble* i, DTFecha f);
+        
         void suscribir(Suscriptor* s);
         void anularSuscripcion(Suscriptor* s);
         void notificar(std::string nickname, int c, std::string texto, TipoPublicacion tipoPublicacion, TipoInmueble tipoInmueble );

@@ -48,10 +48,6 @@ set<DTInmuebleListado> ControladorInmobiliarias::listarInmueblesNoAdministradosI
     return listInmuebles;
 }
 
-void ControladorInmobiliarias::altaAdministraPropiedad(){
-
-}
-
 std::set<string> ControladorInmobiliarias::mostrarInmobiliariasNoSuscrito(string nickname){
     std::set<string> res;
     for(std::map<string, Inmobiliaria*>::iterator it = coleccionInmobiliarias.begin(); it!=coleccionInmobiliarias.end(); it++){
@@ -82,5 +78,12 @@ void ControladorInmobiliarias::desSuscribirseAInmobiliaria(std::string nombreInm
     it->second->anularSuscripcion(dynamic_cast<Suscriptor*>(Factory::getInstance()->getControladorUsuario()->getUsuarioRecordado()));
 }
 
+void ControladorInmobiliarias::altaAdministraPropiedad(std::string nickname, int codigoInmueble ){
+    std::map<std::string, Inmobiliaria*>::iterator inmobiliaria = coleccionInmobiliarias.find(nickname);
+    IInmuebles* controladorInmuebles = Factory::getInstance()->getControladorInmuebles();
+    DTFecha f = Factory::getInstance()->getControladorFechaActual()->getFechaActual();
+    Inmueble* cin = controladorInmuebles->getInmueble(codigoInmueble);
+    inmobiliaria->second->altaAdministracionPropiedad(cin, f);
+}
 
 

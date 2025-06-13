@@ -239,10 +239,10 @@ void altaUsuario(){
                         factory->getControladorInmuebles()->altaApartamento(direccion, numeroPuerta, superficie, anoConstruccion, piso, tieneAscensor, gastosComunes);
                     }
                 }
+                std::cout << "¿Quiere seguir ingresando? (1: Si, 0: No): ";
+                std::cin >> salir;
+                std::cin.ignore();
             }
-            std::cout << "¿Quiere seguir ingresando? (1: Si, 0: No): ";
-            std::cin >> salir;
-            std::cin.ignore();
         }
         //TODO: controlador->finalizarAltaUsuario();////////////////////////////////////
         factory->getControladorUsuario()->finalizarAltaUsuario();
@@ -359,13 +359,10 @@ void consultaPublicaciones(){
         aux=dynamic_cast<DTApartamento*>(aux);
         if( dti!= nullptr){
                 dti->mostrarDatos();
-            } else{
+        } else{
                 aux->mostrarDatos();
-            }
         }
-        
-        
-        //dti.mostrarDatos();
+    }
 }
 
 void eliminarInmueble(){
@@ -432,10 +429,6 @@ void suscribirseNotificaciones(){
         std::cin.ignore();
     }
     factory->getControladorUsuario()->olvidarUsuarioRecordado();
-   
-
-
-
 }
 
 void consultaNotificaciones(){
@@ -502,6 +495,8 @@ void altaAdministracionPropiedad(){
     std::cin >> codigoInmueble;
     std::cin.ignore();
     //TODO: Controlador->altaAdministraPropiedad(nicknameInmobiliaria, codigoInmueble);
+    factory->getControladorInmobiliarias()->altaAdministraPropiedad(nicknameInmobiliaria, codigoInmueble);
+
 }
 
 void cargarDatos(){

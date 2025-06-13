@@ -40,6 +40,8 @@ class Inmueble {
 
         bool esAdminitrado(Inmobiliaria* i);
 
+        void asociarAdministracionPropiedad(AdministraPropiedad* ap);
+
         bool esDelTipoInmueble(TipoInmueble tipoInmueble);
         TipoInmueble tipoDelInmueble();
         std::set<DTPublicacion> obtenerDatosPublicaciones(TipoPublicacion tipoPublicacion, float precioMinimo,float precioMaximo);

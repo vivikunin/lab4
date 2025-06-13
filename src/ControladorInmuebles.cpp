@@ -74,4 +74,7 @@ std::set<DTInmuebleListado> ControladorInmuebles::listarInmuebles(){
     return res;
 }
 
-
+Inmueble* ControladorInmuebles::getInmueble(int codigoInmueble){
+    std::map<int, Inmueble*>::iterator it = coleccionInmuebles.find(codigoInmueble);
+    return it->second;
+}
