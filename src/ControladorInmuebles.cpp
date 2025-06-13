@@ -7,6 +7,10 @@
 
 ControladorInmuebles* ControladorInmuebles::instance = NULL;
 
+ControladorInmuebles:: ControladorInmuebles(){}
+
+ControladorInmuebles::~ControladorInmuebles() {}
+
 ControladorInmuebles* ControladorInmuebles::getInstance(){
     if (instance==NULL) {
         instance = new ControladorInmuebles();
@@ -48,11 +52,11 @@ void ControladorInmuebles:: altaApartamento(std::string direccion, int numeroPue
     p->añadirPropiedad(a);
 }
 
-DTInmueble ControladorInmuebles:: detalleInmueble(int codigoInmueble){
+DTInmueble* ControladorInmuebles:: detalleInmueble(int codigoInmueble){
     return coleccionInmuebles.find(codigoInmueble)->second->getDTInmueble();
 }
 
-DTInmueble ControladorInmuebles::detalleInmueblePublicacion(int codigoPublicacion){
+DTInmueble* ControladorInmuebles::detalleInmueblePublicacion(int codigoPublicacion){
     bool ok=false;
     std::map<int, Inmueble*>::iterator it = coleccionInmuebles.begin();
     while(ok==false && it!=coleccionInmuebles.end()){

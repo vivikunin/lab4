@@ -31,3 +31,7 @@ std::string DTPublicacion::getInmobiliaria() const{
 DTPublicacion::~DTPublicacion(){
     delete fecha;
 }
+
+bool operator<(const DTPublicacion& a, const DTPublicacion& b) {
+    return a.getCodigo() < b.getCodigo(); 
+}

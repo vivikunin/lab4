@@ -17,3 +17,7 @@ std::string DTUsuario::getNombre() const{
 bool DTUsuario::operator<(DTUsuario& other) {
     return nickname < other.nickname; // Comparar directamente los campo
 }
+
+bool operator<(const DTUsuario& a, const DTUsuario& b) {
+    return a.getNickname() < b.getNickname(); 
+}

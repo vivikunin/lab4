@@ -18,6 +18,6 @@ std::string DTInmuebleListado::getPropietario() const {
     return propietario;
 }
 
-bool DTInmuebleListado::operator<(DTInmuebleListado& other) {
-    return codigo < other.codigo; // Comparar directamente los campo
+bool operator<(const DTInmuebleListado& a, const DTInmuebleListado& b) {
+    return a.getCodigo() < b.getCodigo(); 
 }

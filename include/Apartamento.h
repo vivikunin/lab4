@@ -15,7 +15,7 @@ class Apartamento : public Inmueble {
         Apartamento(int codigo, std::string direccion, int numeroPuerta, int superficie, int anoConstruccion, int piso, bool tieneAscensor, float gastosComunes);
         ~Apartamento();
 
-        DTInmueble getDTInmueble();
+        DTInmueble* getDTInmueble();
 };
 
 #endif

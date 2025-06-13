@@ -29,8 +29,8 @@ class ControladorInmuebles : public IInmuebles {
         void altaCasa(std::string direccion, int numeroPuerta, int superficie, int anoConstruccion,bool esPH, TipoTecho techo);
         void altaApartamento(std::string direccion, int numeroPuerta, int superficie, int anoConstruccion, int piso, bool tieneAscensor, float gastosComunes);
 
-        DTInmueble detalleInmueble(int codigoInmueble);
-        DTInmueble detalleInmueblePublicacion(int codigoPublicacion);
+        DTInmueble* detalleInmueble(int codigoInmueble);
+        DTInmueble* detalleInmueblePublicacion(int codigoPublicacion);
 
 };
 #endif

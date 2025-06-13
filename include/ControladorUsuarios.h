@@ -4,6 +4,7 @@
 #include "Inmobiliaria.h"
 #include "Usuario.h"
 #include <string>
+#include <list>
 #include <map>
 
 class Usuario;
@@ -29,8 +30,7 @@ class ControladorUsuarios : public IUsuarios  {
         bool altaPropietario(string nickname, string contrasena, string nombre, string email, string cuentaBancaria, string telefono);
         bool altaInmobiliaria(string nickname, string contrasena, string nombre, string email, string direccion, string url, string telefono);
         void eliminarUsuario(string nickname);
-        //con lo de notis
-        std::set<DTNotificacion> consultarNotificaciones(std::string nickname);
+        std::list<DTNotificacion> consultarNotificaciones(std::string nickname);
 
         void representarPropietario(std::string nicknamePropietario);
         void recordarUsuario(std::string nicknamePropietario);

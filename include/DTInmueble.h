@@ -12,13 +12,14 @@ class DTInmueble {
 
     public:
         DTInmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anioConstruccion);
-        int getCodigo();
-        std::string getDireccion();
-        int getNumeroPuerta();
-        int getSuperficie();
-        int getAnioConstruccion();
-        virtual void mostrarDatos();
+        int getCodigo()const;
+        std::string getDireccion()const;
+        int getNumeroPuerta()const;
+        int getSuperficie()const;
+        int getAnioConstruccion()const;
+        virtual void mostrarDatos()=0;
         virtual ~DTInmueble();
+        friend bool operator<(const DTInmueble&, const DTInmueble&);
 };
 
 #endif

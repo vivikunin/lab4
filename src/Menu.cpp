@@ -17,6 +17,7 @@
 
 #include <string>
 #include <set>
+#include <list>
 
 
 void mostrarMenu() {
@@ -349,12 +350,22 @@ void consultaPublicaciones(){
         std::cin.ignore();
         std::cout << "Detalle del inmueble:\n";
         //TODO: DTInmueble = Controlador->detalleInmueblePublicacion(codigoPublicacion): DTInmueble /////////////////////////////
-        DTInmueble dti = factory->getControladorInmuebles()->detalleInmueblePublicacion(codigoPublicacion);
+        DTInmueble* dti = factory->getControladorInmuebles()->detalleInmueblePublicacion(codigoPublicacion);
         //Mostrarlo:
         // Si es casa-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, PH: Si/No, Tipo de techo: Liviano/A dos aguas/Plano"
         // Si es apartamento-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, piso: xx, ascensor: Si/No, gastos comunes: yyy"
-        dti.mostrarDatos();
-    }
+        DTInmueble* aux = dti;
+        dti= dynamic_cast<DTCasa*>(dti);
+        aux=dynamic_cast<DTApartamento*>(aux);
+        if( dti!= nullptr){
+                dti->mostrarDatos();
+            } else{
+                aux->mostrarDatos();
+            }
+        }
+        
+        
+        //dti.mostrarDatos();
 }
 
 void eliminarInmueble(){
@@ -375,18 +386,25 @@ void eliminarInmueble(){
     std::cin.ignore();
     std::cout << "Detalle del inmueble:\n";
     //TODO: DTInmueble = Controlador->detalleInmueble(codigoInmueble) //////////////////////////////////////
-    DTInmueble dti = factory->getControladorInmuebles()->detalleInmueble(codigoInmueble);
+    DTInmueble* dti = factory->getControladorInmuebles()->detalleInmueble(codigoInmueble);
+    DTInmueble* aux = dti;
+    dti= dynamic_cast<DTCasa*>(dti);
+    aux=dynamic_cast<DTApartamento*>(aux);
+    if( dti!= nullptr){
+            dti->mostrarDatos();
+        } else{
+            aux->mostrarDatos();
+    }
     //Mostrarlo:
     // Si es apartamento-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, piso: xx, ascensor: Si/No, gastos comunes: yyy"
     // Si es casa-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, PH: Si/No, Tipo de techo: Liviano/A dos aguas/Plano"
-    dti.mostrarDatos();
     int deseaEliminar;
     std::cout << "¿Desea eliminar?: (1: Si, 0: No)";
     std::cin >> deseaEliminar;
     std::cin.ignore();
     if (deseaEliminar == 1){
         //TODO: Controlador->eliminarInmueble(codigoInmueble) //////////////////////////////////////
-        factory->getControladorInmuebles()->eliminarInmueble(dti.getCodigo());
+        factory->getControladorInmuebles()->eliminarInmueble(dti->getCodigo());
     }
 
 }
@@ -426,9 +444,9 @@ void consultaNotificaciones(){
     std::cout << "Ingrese su nickname: ";
     std::cin >> nickname;
     //listar notificaciones
-    std::set<DTNotificacion> listaNotificaciones = factory->getControladorUsuario()->consultarNotificaciones(nickname);
+    std::list<DTNotificacion> listaNotificaciones = factory->getControladorUsuario()->consultarNotificaciones(nickname);
     //mostrar las notificaciones
-    for(std::set<DTNotificacion>::iterator it =listaNotificaciones.begin(); it!=listaNotificaciones.end(); it++){
+    for(std::list<DTNotificacion>::iterator it =listaNotificaciones.begin(); it!=listaNotificaciones.end(); it++){
         std::cout << "Inmobiliaria: " << (*it).getNicknameInmobiliaria() << "\n";
         std::cout << "Código: " << (*it).getCodigo() << "\n";
         std::cout << "Texto: " << (*it).getTexto() << "\n";

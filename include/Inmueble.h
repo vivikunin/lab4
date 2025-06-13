@@ -33,7 +33,7 @@ class Inmueble {
         int getNumeroPuerta() const;
         int getSuperficie() const;
         int getAnoConstruccion() const;
-        virtual DTInmueble getDTInmueble()=0;
+        virtual DTInmueble* getDTInmueble()=0;
         DTInmuebleListado getDTInmuebleListado();
         Propietario* getDueño();
         AdministraPropiedad* getAdministracion() const;

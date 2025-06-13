@@ -6,19 +6,19 @@
 #include "DTNotificacion.h"
 
 
-#include <set>
+#include <list>
 #include <string>
 
 class Suscriptor : public Usuario {
     protected:
-        std::set <Notificacion*> misNotificaciones;
+        std::list <Notificacion*> misNotificaciones;
     
     public:
         Suscriptor(std::string nickname, std::string contrasena, std::string nombre, std::string email);   
-        virtual ~Suscriptor()=0;
+        virtual ~Suscriptor();
 
-        virtual void notificar(Notificacion* n);
-        std::set<DTNotificacion> getNotificaciones();
+        virtual void notificar(Notificacion* n)=0;
+        std::list<DTNotificacion> getNotificaciones();
 };
 
 #endif

@@ -19,6 +19,7 @@ class DTPublicacion {
         float getPrecio() const;
         std::string getInmobiliaria() const;
         ~DTPublicacion();
+        friend bool operator<(const DTPublicacion&, const DTPublicacion&);
 };
 
 #endif

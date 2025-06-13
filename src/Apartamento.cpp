@@ -11,6 +11,6 @@ Inmueble(codigo, direccion, numeroPuerta, superficie, anoConstruccion){
 
 Apartamento::~Apartamento(){}
 
-DTInmueble Apartamento::getDTInmueble(){
-    return DTApartamento(this->getCodigo(), this->getDireccion(), this->getNumeroPuerta(), this->getSuperficie(), this->getAnoConstruccion(), piso, tieneAscensor, gastosComunes);
+DTInmueble* Apartamento::getDTInmueble(){
+    return new DTApartamento(this->getCodigo(), this->getDireccion(), this->getNumeroPuerta(), this->getSuperficie(), this->getAnoConstruccion(), piso, tieneAscensor, gastosComunes);
 }

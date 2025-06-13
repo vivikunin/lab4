@@ -21,3 +21,7 @@ DTFecha* DTInmuebleAdministrado::getFechaComienzo() const{
 DTInmuebleAdministrado::~DTInmuebleAdministrado(){
     delete fechaComienzo;
 }
+
+bool operator<(const DTInmuebleAdministrado& a, const DTInmuebleAdministrado& b) {
+    return a.getCodigo() < b.getCodigo(); 
+}

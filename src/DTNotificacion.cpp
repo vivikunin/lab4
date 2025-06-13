@@ -29,3 +29,5 @@ TipoInmueble DTNotificacion:: getTipoInmueble() const{
     return this->tInmueble;
 }
 
+DTNotificacion::~DTNotificacion() {}
+

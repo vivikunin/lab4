@@ -8,26 +8,30 @@ DTInmueble::DTInmueble(int codigo, std::string direccion, int numeroPuerta, int 
     this->anioConstruccion = anioConstruccion;
 }
 
-int DTInmueble::getCodigo() {
+int DTInmueble::getCodigo() const{
     return codigo;
 }
 
-std::string DTInmueble::getDireccion() {
+std::string DTInmueble::getDireccion() const {
     return direccion;
 }
 
-int DTInmueble::getNumeroPuerta() {
+int DTInmueble::getNumeroPuerta() const {
     return numeroPuerta;
 }
 
-int DTInmueble::getSuperficie() {
+int DTInmueble::getSuperficie() const{
     return superficie;
 }
 
-int DTInmueble::getAnioConstruccion() {
+int DTInmueble::getAnioConstruccion() const{
     return anioConstruccion;
 }
 
 DTInmueble::~DTInmueble(){
     
+}
+
+bool operator<(const DTInmueble& a, const DTInmueble& b) {
+    return a.getCodigo() < b.getCodigo(); 
 }

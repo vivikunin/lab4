@@ -29,3 +29,4 @@ TipoInmueble Notificacion:: getTipoInmueble() const{
     return this->tInmueble;
 }
 
+Notificacion::~Notificacion() {}
