@@ -45,6 +45,7 @@ set <DTInmuebleAdministrado> ControladorInmobiliarias::listarInmueblesAdministra
 set<DTInmuebleListado> ControladorInmobiliarias::listarInmueblesNoAdministradosInmobiliaria(string nicknameInmobiliaria){
     Inmobiliaria* ci = coleccionInmobiliarias.find(nicknameInmobiliaria)->second;
     set<DTInmuebleListado> listInmuebles = ci->getInmueblesNoAdminPropietario();
+    return listInmuebles;
 }
 
 void ControladorInmobiliarias::altaAdministraPropiedad(){
@@ -54,19 +55,21 @@ void ControladorInmobiliarias::altaAdministraPropiedad(){
 std::set<string> ControladorInmobiliarias::mostrarInmobiliariasNoSuscrito(string nickname){
     std::set<string> res;
     for(std::map<string, Inmobiliaria*>::iterator it = coleccionInmobiliarias.begin(); it!=coleccionInmobiliarias.end(); it++){
-        if(!it->second->tieneSuscriptor(it->first)){
+        if(!it->second->tieneSuscriptor(nickname)){
             res.insert(it->second->getNickname());
         }
     }
+    return res;
 }
 
 std::set<string> ControladorInmobiliarias::mostrarInmobiliariasSuscrito(string nickname){
     std::set<string> res;
     for(std::map<string, Inmobiliaria*>::iterator it = coleccionInmobiliarias.begin(); it!=coleccionInmobiliarias.end(); it++){
-        if(it->second->tieneSuscriptor(it->first)){
+        if(it->second->tieneSuscriptor(nickname)){
             res.insert(it->second->getNickname());
         }
     }
+    return res;
 }
 
 void ControladorInmobiliarias::suscribirseAInmobiliaria(std::string nombreInmobiliaria){

@@ -69,6 +69,9 @@ bool Inmobiliaria::altaPublicacion(int codigoInmueble, TipoPublicacion tipoPubli
     if (puede){
         ap->desactivarPublicacionActiva();
         ap->crearPublicacion(tipoPublicacion, texto, precio);
+        return true;
+    } else{
+        return false;
     }
 }
 

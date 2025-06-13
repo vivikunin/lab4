@@ -18,10 +18,11 @@ std::set<DTPublicacion> ControladorInmuebles::listarPublicacion(TipoPublicacion 
     std::set<DTPublicacion> dtp;
     for(std::map<int,Inmueble*>::iterator it=coleccionInmuebles.begin(); it!=coleccionInmuebles.end(); it++){
         if (it->second->esDelTipoInmueble(tipoInmueble)){
-            std::set<DTPublicacion> publicacionesParaAgregar = it->second->obtenerDatosPublicaciones(tipoPublicacion,precioMinimo,precioMaximo, tipoInmueble);
+            std::set<DTPublicacion> publicacionesParaAgregar = it->second->obtenerDatosPublicaciones(tipoPublicacion,precioMinimo,precioMaximo);
             dtp.insert(publicacionesParaAgregar.begin(),publicacionesParaAgregar.end());
         }
     }
+    return dtp;
 }
 
 void ControladorInmuebles::eliminarInmueble(int codigoInmueble){
@@ -43,6 +44,8 @@ void ControladorInmuebles:: altaApartamento(std::string direccion, int numeroPue
     class Apartamento* a = new  class Apartamento(Inmueble::ultimoCodigoInmueble, direccion, numeroPuerta, superficie, anoConstruccion, piso, tieneAscensor, gastosComunes);
     this->coleccionInmuebles.insert({Inmueble::ultimoCodigoInmueble, a});
     Propietario* p = dynamic_cast<Propietario*>(Factory::getInstance()->getControladorUsuario()->getUsuarioRecordado());
+    a->setDuenio(p);
+    p->añadirPropiedad(a);
 }
 
 DTInmueble ControladorInmuebles:: detalleInmueble(int codigoInmueble){
@@ -64,6 +67,7 @@ std::set<DTInmuebleListado> ControladorInmuebles::listarInmuebles(){
     for(std::map<int, Inmueble*>::iterator it = coleccionInmuebles.begin(); it!=coleccionInmuebles.end(); it++){
         res.insert(it->second->getDTInmuebleListado());
     }
+    return res;
 }
 
 

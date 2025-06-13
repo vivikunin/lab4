@@ -2,6 +2,8 @@
 #define CLIENTE_H
 #include "Usuario.h"
 #include "TipoInmueble.h"
+#include "Suscriptor.h"
+#include "Notificacion.h"
 #include <string>
 #include <list>
 
@@ -9,7 +11,7 @@ class Cliente : public Suscriptor {
     private:
         std::string apellido;
         std::string documento;
-        std::list<Notificacion> notificaciones;
+        std::list<Notificacion*> misNotificaciones;
     public:
         Cliente(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string apellido, std::string documento);
         ~Cliente();

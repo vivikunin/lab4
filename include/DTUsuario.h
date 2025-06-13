@@ -11,6 +11,6 @@ class DTUsuario {
         DTUsuario(std::string nickname, std::string nombre);
         std::string getNickname() const;
         std::string getNombre() const;
-        bool operator<(DTUsuario& other);
+        bool operator<(DTUsuario& other);   
 };
 #endif

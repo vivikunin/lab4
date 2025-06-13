@@ -35,8 +35,8 @@ bool Inmueble::esDelTipoInmueble(TipoInmueble tipo) {
     return false;
 }
 
-std::set<DTPublicacion> Inmueble::obtenerDatosPublicaciones(TipoPublicacion tipoPublicacion, float precioMinimo,float precioMaximo, TipoInmueble tipoInmueble){
-    return this->administracion->obtenerDatosPublicaciones(tipoPublicacion, precioMinimo, precioMaximo, tipoInmueble);
+std::set<DTPublicacion> Inmueble::obtenerDatosPublicaciones(TipoPublicacion tipoPublicacion, float precioMinimo,float precioMaximo){
+    return this->administracion->obtenerDatosPublicaciones(tipoPublicacion, precioMinimo, precioMaximo);
 }
 
 void Inmueble::eliminarInmueble(){
@@ -95,7 +95,7 @@ void Inmueble::eliminarReferenciaAdministracion(){
 TipoInmueble Inmueble:: tipoDelInmueble(){
     if(dynamic_cast<Casa*>(this) != nullptr){
         return TICasa;
-    } else if (dynamic_cast<Apartamento*>(this) != nullptr){
+    } else{
         return TIApartamento;
     }
 }

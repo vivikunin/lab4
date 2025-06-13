@@ -39,6 +39,7 @@ bool ControladorUsuarios::altaCliente(string nickname, string contrasena, string
     } else {
         Cliente* c = new Cliente(nickname, contrasena, nombre, email, apellido, documento); //create
         coleccionUsuarios[nickname] = c; //add
+        return true;
     } 
 }
 
@@ -49,6 +50,7 @@ bool ControladorUsuarios::altaPropietario(string nickname, string contrasena, st
         Propietario* p = new Propietario(nickname, contrasena, nombre, email, cuentaBancaria, telefono); //create
         coleccionUsuarios.insert({dynamic_cast<Usuario*>(p)->getNickname(),dynamic_cast<Usuario*>(p)}); 
         usuarioRecordado = dynamic_cast<Usuario*>(p);
+        return true;
     } 
 }
 
@@ -59,6 +61,7 @@ bool ControladorUsuarios::altaInmobiliaria(string nickname, string contrasena, s
         Inmobiliaria* i = new Inmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono); //create
         coleccionUsuarios[nickname] = i; //add
         inmobiliariaRecordada = i;
+        return true;
     } 
 }
 
@@ -66,7 +69,6 @@ void ControladorUsuarios::eliminarUsuario(string nickname){
     Usuario* aRemover=coleccionUsuarios.find(nickname)->second;
     coleccionUsuarios.erase(nickname);
     delete aRemover;
-
 } 
 
 std::set<DTUsuario> ControladorUsuarios::listarPropietarios(){
@@ -74,6 +76,7 @@ std::set<DTUsuario> ControladorUsuarios::listarPropietarios(){
     for(std::map<std::string, Usuario*>::iterator it =coleccionUsuarios.begin(); it!=coleccionUsuarios.end(); it++){
         res.insert(it->second->getDTUsuario());
     }
+    return res;
 }
 
 std::set<DTNotificacion> ControladorUsuarios::consultarNotificaciones(std::string nickname){

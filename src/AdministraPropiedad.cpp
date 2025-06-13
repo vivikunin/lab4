@@ -51,14 +51,15 @@ DTInmuebleAdministrado AdministraPropiedad::obtenerDatosInmuebleAdministrado(){
 }
 
 
-std::set<DTPublicacion> AdministraPropiedad::obtenerDatosPublicaciones(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble){
+std::set<DTPublicacion> AdministraPropiedad::obtenerDatosPublicaciones(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo){
     std::set<DTPublicacion> res;
     for(std::map<int, Publicacion*>::iterator it=coleccionPublicaciones.begin(); it!=coleccionPublicaciones.end(); it++){
-        if(it->second->cumpleCondiciones(tipoPublicacion, precioMinimo,precioMaximo,tipoInmueble)){
+        if(it->second->cumpleCondiciones(tipoPublicacion, precioMinimo,precioMaximo)){
             DTPublicacion dtp = it->second->getDTPublicacion();
             res.insert(dtp);
         }
     }
+    return res;
 }
 
 void AdministraPropiedad::eliminarInmueble(){

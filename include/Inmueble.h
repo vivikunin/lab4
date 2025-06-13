@@ -33,7 +33,7 @@ class Inmueble {
         int getNumeroPuerta() const;
         int getSuperficie() const;
         int getAnoConstruccion() const;
-        virtual DTInmueble getDTInmueble();
+        virtual DTInmueble getDTInmueble()=0;
         DTInmuebleListado getDTInmuebleListado();
         Propietario* getDueño();
         AdministraPropiedad* getAdministracion() const;
@@ -42,7 +42,7 @@ class Inmueble {
 
         bool esDelTipoInmueble(TipoInmueble tipoInmueble);
         TipoInmueble tipoDelInmueble();
-        std::set<DTPublicacion> obtenerDatosPublicaciones(TipoPublicacion tipoPublicacion, float precioMinimo,float precioMaximo, TipoInmueble tipoInmueble);
+        std::set<DTPublicacion> obtenerDatosPublicaciones(TipoPublicacion tipoPublicacion, float precioMinimo,float precioMaximo);
         void eliminarInmueble();
         void eliminarReferenciaAdministracion();   
         bool tienePublicacion(int codigoPublicacion);

@@ -17,3 +17,7 @@ std::string DTInmuebleListado::getDireccion() const {
 std::string DTInmuebleListado::getPropietario() const {
     return propietario;
 }
+
+bool DTInmuebleListado::operator<(DTInmuebleListado& other) {
+    return codigo < other.codigo; // Comparar directamente los campo
+}

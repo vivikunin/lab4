@@ -36,7 +36,7 @@ class AdministraPropiedad{
 
         DTInmuebleAdministrado obtenerDatosInmuebleAdministrado();
         bool puedoCrearPublicacion(TipoPublicacion tipo);
-        std::set<DTPublicacion> obtenerDatosPublicaciones(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo, TipoInmueble tipoInmueble);
+        std::set<DTPublicacion> obtenerDatosPublicaciones(TipoPublicacion tipoPublicacion, float precioMinimo, float precioMaximo);
         void eliminarInmueble();
         AdministraPropiedad* administraPropiedadParaInmueble(int codigoInmueble);
         void desactivarPublicacionActiva();
