@@ -30,8 +30,11 @@ std::set<DTPublicacion> ControladorInmuebles::listarPublicacion(TipoPublicacion 
 }
 
 void ControladorInmuebles::eliminarInmueble(int codigoInmueble){
-    Inmueble* in = coleccionInmuebles.find(codigoInmueble)->second;
-    in->eliminarInmueble();
+    std::map<int,Inmueble*>::iterator it = coleccionInmuebles.find(codigoInmueble);
+    Inmueble* in =it->second;
+    in->eliminarInmueble();      
+    coleccionInmuebles.erase(it);
+    delete in;               
 }
 
 void ControladorInmuebles::altaCasa(std::string direccion, int numeroPuerta, int superficie, int anoConstruccion,bool esPH, TipoTecho techo){
@@ -61,7 +64,9 @@ DTInmueble* ControladorInmuebles::detalleInmueblePublicacion(int codigoPublicaci
     std::map<int, Inmueble*>::iterator it = coleccionInmuebles.begin();
     while(ok==false && it!=coleccionInmuebles.end()){
         ok=it->second->tienePublicacion(codigoPublicacion);
-        it++;
+        if (!ok){
+            it++;
+        }
     }
     return it->second->getDTInmueble();
 }

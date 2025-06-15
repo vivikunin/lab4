@@ -41,6 +41,9 @@ std::set<DTPublicacion> Inmueble::obtenerDatosPublicaciones(TipoPublicacion tipo
 
 void Inmueble::eliminarInmueble(){
     administracion->eliminarInmueble();
+    administracion->getInmobiliariaAdministradora()->eliminarReferenciaAdministracion(administracion);
+    delete administracion;
+    administracion = NULL;
     duenio->eliminarPropiedad(codigo);
 }
 
@@ -81,11 +84,10 @@ AdministraPropiedad* Inmueble::getAdministracion() const{
 }
 
 bool Inmueble::esAdminitrado(Inmobiliaria* i){
-    if (administracion->getInmobiliariaAdministradora()==i){
-        return true;
-    } else {
+    if (administracion == nullptr) {
         return false;
     }
+    return (administracion->getInmobiliariaAdministradora() == i);
 }
 
 void Inmueble::eliminarReferenciaAdministracion(){

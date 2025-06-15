@@ -1,18 +1,22 @@
 #include "../include/DTPublicacion.h"
 
-DTPublicacion::DTPublicacion(int codigo, DTFecha* fecha, std::string texto, float precio, std::string inmobiliaria) {
-    this->codigo = codigo;
-    this->fecha = new DTFecha(fecha);
+DTPublicacion::DTPublicacion(int codigo,  const DTFecha& fecha, std::string texto, float precio, std::string inmobiliaria) : codigo(codigo)
+, fecha(fecha)            // copia el objeto apuntado
+, texto(texto)
+, precio(precio)
+, inmobiliaria(inmobiliaria) {
+    /*this->codigo = codigo;
+    this->fecha = (*fecha);
     this->texto = texto;
     this->precio = precio;
-    this->inmobiliaria = inmobiliaria;
+    this->inmobiliaria = inmobiliaria;*/
 }
 
 int DTPublicacion::getCodigo() const {
     return codigo;
 }
 
-DTFecha* DTPublicacion::getFecha() const {
+DTFecha DTPublicacion::getFecha() const {
     return fecha;
 }
 
@@ -29,7 +33,6 @@ std::string DTPublicacion::getInmobiliaria() const{
 }
 
 DTPublicacion::~DTPublicacion(){
-    delete fecha;
 }
 
 bool operator<(const DTPublicacion& a, const DTPublicacion& b) {

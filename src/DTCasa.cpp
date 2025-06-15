@@ -29,11 +29,11 @@ void DTCasa::mostrarDatos(){
         std::cout <<", PH: No";
     }
     if (getTecho()==Liviano){
-        std::cout <<", Tipo de techo: Liviano";
+        std::cout <<", Tipo de techo: Liviano"<< "\n";
     } else if (getTecho()== A_dos_aguas){
-        std::cout <<", Tipo de techo: A dos aguas";
+        std::cout <<", Tipo de techo: A dos aguas"<< "\n";
     } else {
-        std::cout <<", Tipo de techo: Plano";
+        std::cout <<", Tipo de techo: Plano"<< "\n";
     }
 }
 

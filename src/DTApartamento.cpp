@@ -35,6 +35,7 @@ void DTApartamento::mostrarDatos(){
        std::cout <<", ascensor: No";
    }
    std::cout << ", gastos comunes: " << getGastosComunes();
+   std::cout << "\n";
 }
 
 DTApartamento::~DTApartamento(){

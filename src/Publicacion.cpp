@@ -27,7 +27,7 @@ void Publicacion::setAdministrador(AdministraPropiedad* admin){
 DTPublicacion Publicacion::getDTPublicacion() {
     return DTPublicacion(
         this->codigo,
-        this->fecha, 
+        *this->fecha, 
         this->texto,
         this->precio, 
         this->administrador->getInmobiliariaAdministradora()->getNombre()

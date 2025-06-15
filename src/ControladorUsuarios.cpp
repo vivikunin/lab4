@@ -76,7 +76,9 @@ void ControladorUsuarios::eliminarUsuario(string nickname){
 std::set<DTUsuario> ControladorUsuarios::listarPropietarios(){
     std::set<DTUsuario> res;
     for(std::map<std::string, Usuario*>::iterator it =coleccionUsuarios.begin(); it!=coleccionUsuarios.end(); it++){
-        res.insert(it->second->getDTUsuario());
+        if(dynamic_cast<Propietario*>((it->second))!=NULL){
+            res.insert(it->second->getDTUsuario());
+        }
     }
     return res;
 }

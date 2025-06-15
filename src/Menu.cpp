@@ -271,8 +271,8 @@ void altaPublicacion(){
     //Recorrer la coleccion Mostrar "- Codigo: xx, Direccion: yy, Fecha comienzo: zzz"
     for( std::set<DTInmuebleAdministrado>::iterator it = inmueblesAdministrados.begin(); it!= inmueblesAdministrados.end(); it++){
         std::cout << "-Codigo: " << it->getCodigo();
-        std::cout << "Direccion: " << it->getDireccion();
-        std::cout << "Fecha comienzo: " << (*it).getFechaComienzo().toString();
+        std::cout << " Direccion: " << it->getDireccion();
+        std::cout << " Fecha comienzo: " << (*it).getFechaComienzo().toString();
     }
     
     int codigoInmueble;
@@ -333,11 +333,11 @@ void consultaPublicaciones(){
     std::set <DTPublicacion> coleccionDatosPublicaciones = factory->getControladorInmuebles()->listarPublicacion(tipoPublicacion, precioMinimo, precioMaximo, tipoInmueble);
     //Recorrer la coleccion Mostrar "- Codigo: xx, fecha: dd/mm/yyyy, texto: zzz, precio: aaa, inmobiliaria: bbb"; //////////////////////////////////////  
     for( std::set<DTPublicacion>::iterator it = coleccionDatosPublicaciones.begin(); it!= coleccionDatosPublicaciones.end(); it++){
-        std::cout << "-Codigo: " << it->getCodigo();
-        std::cout << "fecha: " << it->getFecha();
-        std::cout << "texto: " << it->getTexto();
-        std::cout << "precio: " << it->getPrecio();
-        std::cout << "inmobiliaria: " << it->getInmobiliaria();
+        std::cout << "-Codigo: " << it->getCodigo()<<"\n";
+        std::cout << " fecha: " << it->getFecha().toString()<<"\n";
+        std::cout << " texto: " << it->getTexto()<<"\n";
+        std::cout << " precio: " << it->getPrecio()<<"\n";
+        std::cout << " inmobiliaria: " << it->getInmobiliaria()<<"\n";
     }
     int verDetalle;
     std::cout << "Ver detalle de la publicacion: (1: Si, 0: No)";
@@ -375,8 +375,8 @@ void eliminarInmueble(){
     //Recorrer la coleccion Mostrar "- Codigo: xx, direccion: xxxx, propietario: bbbbb";  /////////////////////////////////
     for( std::set<DTInmuebleListado>::iterator it = dtil.begin(); it!= dtil.end(); it++){
         std::cout << "-Codigo: " << it->getCodigo();
-        std::cout << "Direccion: " << it->getDireccion();
-        std::cout << "Propietario: " << it->getPropietario()<<"\n";
+        std::cout << " Direccion: " << it->getDireccion();
+        std::cout << " Propietario: " << it->getPropietario()<<"\n";
     }
     std::cout << "Codigo del inmueble a eliminar: ";
     int codigoInmueble;
@@ -488,8 +488,8 @@ void altaAdministracionPropiedad(){
     //Recorrer la coleccion Mostrar "- Codigo: xx, direccion: xxxx, propietario: bbbbb";
     for( std::set<DTInmuebleListado>::iterator it = dtil.begin(); it!= dtil.end(); it++){
         std::cout << "-Codigo: " << it->getCodigo();
-        std::cout << "Direccion: " << it->getDireccion();
-        std::cout << "Propietario: " << it->getPropietario()<<"\n";
+        std::cout << " Direccion: " << it->getDireccion();
+        std::cout << " Propietario: " << it->getPropietario()<<"\n";
     }
     std::cout << "Codigo del inmueble a administrar: ";
     int codigoInmueble;

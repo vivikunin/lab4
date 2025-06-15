@@ -50,8 +50,8 @@ std::set<DTInmuebleAdministrado> Inmobiliaria:: datosInmueblesAdministrados(){
 std::set<DTInmuebleListado> Inmobiliaria::getInmueblesNoAdminPropietario(){
    std::set<DTInmuebleListado> res;
    for (std::map<std::string, Propietario*>::iterator it = propietariosRepresentados.begin(); it!=propietariosRepresentados.end(); it++){
-        res.insert(it->second->getInmueblesNoAdmin(this).begin(), it->second->getInmueblesNoAdmin(this).end());
-   }
+        std::set<DTInmuebleListado> inmueblesAgregar = it->second->getInmueblesNoAdmin(this);
+        res.insert(inmueblesAgregar.begin(), inmueblesAgregar.end());   }
    return res;
 }
 
