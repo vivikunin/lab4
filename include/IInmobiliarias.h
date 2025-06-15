@@ -3,6 +3,7 @@
 #include <string>
 #include <set>
 #include "DTUsuario.h"
+#include "Inmobiliaria.h"
 #include "TipoPublicacion.h"
 #include "DTInmuebleAdministrado.h"
 #include "DTInmuebleListado.h"
@@ -15,6 +16,7 @@ class IInmobiliarias{
         virtual ~IInmobiliarias() {}
 
        virtual set <DTUsuario> listarInmobiliarias()=0;
+       virtual void  agregarInmobiliariaColeccion(Inmobiliaria* i)=0;
        virtual bool altaPublicacion(string nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipoPublicacion, string texto, float precio)=0;
        virtual set <DTInmuebleAdministrado> listarInmueblesAdministrados(string nicknameInmobiliaria)=0;
        virtual set<DTInmuebleListado> listarInmueblesNoAdministradosInmobiliaria(string nicknameInmobiliaria)=0;

@@ -20,7 +20,7 @@ class ControladorInmobiliarias : public IInmobiliarias {
         static ControladorInmobiliarias* getInstance();
         ~ControladorInmobiliarias();
         
-        bool altaInmobiliaria(string nickname,string contrasena,string nombre,string email,string direccion,string url,string telefono);
+        void agregarInmobiliariaColeccion(Inmobiliaria* i);
         std::set <DTUsuario> listarInmobiliarias();
         bool altaPublicacion(string nickname, int codigoInmueble, TipoPublicacion tipoPublicacion, string texto, float precio);
         std::set <DTInmuebleAdministrado> listarInmueblesAdministrados (string nicknameInmobiliaria);

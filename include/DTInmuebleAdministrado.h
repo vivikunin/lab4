@@ -7,13 +7,13 @@ class DTInmuebleAdministrado {
     private:
         int codigo;
         std::string direccion;
-        DTFecha* fechaComienzo;
+        DTFecha fechaComienzo;
 
     public:
-        DTInmuebleAdministrado(int codigo, std::string direccion, DTFecha* fechaComienzo);
+        DTInmuebleAdministrado(int codigo, std::string direccion, const DTFecha& fechaComienzo);
         int getCodigo() const;
         std::string getDireccion() const;
-        DTFecha* getFechaComienzo() const;
+        DTFecha getFechaComienzo() const;
         ~DTInmuebleAdministrado();
         friend bool operator<(const DTInmuebleAdministrado&, const DTInmuebleAdministrado&);
 };

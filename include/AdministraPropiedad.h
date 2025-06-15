@@ -15,18 +15,18 @@ class Inmueble;
 
 class AdministraPropiedad{
     private:
-        DTFecha* fecha;
+        DTFecha  fecha;
         std::map<int,Publicacion*> coleccionPublicaciones;
         Inmueble* inmuebleAdministrado;
         Inmobiliaria* inmobiliariaAdministradora;
     public:
         //constructor y destructor
-        AdministraPropiedad(DTFecha* fecha);
-        AdministraPropiedad(DTFecha* fecha,Inmueble* inmuebleAdministrado ,Inmobiliaria* inmobiliariaAdministradora);
+        AdministraPropiedad(DTFecha fecha);
+        AdministraPropiedad(DTFecha fecha,Inmueble* inmuebleAdministrado ,Inmobiliaria* inmobiliariaAdministradora);
         ~AdministraPropiedad();
 
         //getters
-        DTFecha* getFecha(); 
+        DTFecha& getFecha();
         Inmueble* getInmuebleAdministrado() const;
         Inmobiliaria* getInmobiliariaAdministradora() const;
  

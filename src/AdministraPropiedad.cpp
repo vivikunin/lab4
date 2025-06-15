@@ -4,20 +4,17 @@
 #include "DTFecha.h"
 #include <set>
 
-AdministraPropiedad::AdministraPropiedad(DTFecha* fecha) {
-    this->fecha = new DTFecha(fecha); 
+AdministraPropiedad::AdministraPropiedad(DTFecha fecha): fecha(fecha) {
     this->inmuebleAdministrado = nullptr;
     this->inmobiliariaAdministradora = nullptr;
 }
 
-AdministraPropiedad::AdministraPropiedad(DTFecha* fecha,Inmueble* inmuebleAdministrado ,Inmobiliaria* inmobiliariaAdministradora){
-    this->fecha = new DTFecha(fecha); 
+AdministraPropiedad::AdministraPropiedad(DTFecha fecha,Inmueble* inmuebleAdministrado ,Inmobiliaria* inmobiliariaAdministradora): fecha(fecha){
     this->inmuebleAdministrado = inmuebleAdministrado;
     this->inmobiliariaAdministradora = inmobiliariaAdministradora;
 }
 
 AdministraPropiedad::~AdministraPropiedad(){
-    delete fecha;
     //vaciar y eliminar la coleccion de publicaciones
     for (std::map<int,Publicacion*>::iterator it = coleccionPublicaciones.begin(); it != coleccionPublicaciones.end(); ++it){
         delete it->second;
@@ -33,8 +30,8 @@ AdministraPropiedad::~AdministraPropiedad(){
     }
 }
 
-DTFecha*  AdministraPropiedad::getFecha(){
-    return this->fecha;
+DTFecha&  AdministraPropiedad::getFecha(){
+    return fecha;
 } 
 
 Inmueble* AdministraPropiedad::getInmuebleAdministrado() const{
@@ -55,7 +52,7 @@ void AdministraPropiedad::setInmobiliariaAdministrada(Inmobiliaria* inmobiliaria
 DTInmuebleAdministrado AdministraPropiedad::obtenerDatosInmuebleAdministrado(){
     std::string d=inmuebleAdministrado->getDireccion();
     int c=inmuebleAdministrado->getCodigo();
-    return DTInmuebleAdministrado(c,d,this->fecha);
+    return DTInmuebleAdministrado(c,d,fecha);
 }
 
 

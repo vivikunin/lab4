@@ -19,6 +19,10 @@ ControladorInmobiliarias::ControladorInmobiliarias(){}
 
 ControladorInmobiliarias::~ControladorInmobiliarias(){}
 
+void  ControladorInmobiliarias::agregarInmobiliariaColeccion(Inmobiliaria* i){
+    coleccionInmobiliarias.insert({i->getNickname(), i});
+}
+
 set <DTUsuario> ControladorInmobiliarias::listarInmobiliarias(){
     set <DTUsuario> dtu;
     for (map<string, Inmobiliaria*>::iterator it = coleccionInmobiliarias.begin(); it != coleccionInmobiliarias.end(); it++){

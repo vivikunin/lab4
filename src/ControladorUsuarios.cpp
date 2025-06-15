@@ -3,6 +3,7 @@
 #include"Propietario.h"
 #include "IInmobiliarias.h"
 #include "Suscriptor.h"
+#include "Factory.h"
 #include <iostream>
 #include <map>
 
@@ -61,6 +62,7 @@ bool ControladorUsuarios::altaInmobiliaria(string nickname, string contrasena, s
         Inmobiliaria* i = new Inmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono); //create
         coleccionUsuarios[nickname] = i; //add
         inmobiliariaRecordada = i;
+        Factory::getInstance()->getControladorInmobiliarias()->agregarInmobiliariaColeccion(i);
         return true;
     } 
 }

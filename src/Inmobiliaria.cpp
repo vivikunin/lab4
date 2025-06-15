@@ -84,7 +84,7 @@ bool Inmobiliaria::tieneSuscriptor(std::string nickname){
 }
 
 void Inmobiliaria::altaAdministracionPropiedad(Inmueble* i, DTFecha f){
-   AdministraPropiedad* ap = new AdministraPropiedad(&f,i,this);
+   AdministraPropiedad* ap = new AdministraPropiedad(f,i,this);
    propiedadesAdministradas.insert(ap);
    i->asociarAdministracionPropiedad(ap);
 }
