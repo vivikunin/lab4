@@ -270,9 +270,9 @@ void altaPublicacion(){
     std::set<DTInmuebleAdministrado> inmueblesAdministrados = factory->getControladorInmobiliarias()->listarInmueblesAdministrados(nicknameInmobiliaria);
     //Recorrer la coleccion Mostrar "- Codigo: xx, Direccion: yy, Fecha comienzo: zzz"
     for( std::set<DTInmuebleAdministrado>::iterator it = inmueblesAdministrados.begin(); it!= inmueblesAdministrados.end(); it++){
-        std::cout << "-Codigo: " << it->getCodigo();
+        std::cout << " Codigo: " << it->getCodigo();
         std::cout << " Direccion: " << it->getDireccion();
-        std::cout << " Fecha comienzo: " << (*it).getFechaComienzo().toString();
+        std::cout << " Fecha comienzo: " << (*it).getFechaComienzo().toString()<< "\n";
     }
     
     int codigoInmueble;
@@ -323,7 +323,7 @@ void consultaPublicaciones(){
     std::cin >> inTipoInmueble;
     std::cin.ignore();
     TipoInmueble tipoInmueble = Todos;
-    if(inTipoPublicacion == 1){
+    if(tipoInmueble == 1){
         tipoInmueble = TICasa;
     }else if(inTipoPublicacion == 2){
         tipoInmueble = TIApartamento;
@@ -333,7 +333,7 @@ void consultaPublicaciones(){
     std::set <DTPublicacion> coleccionDatosPublicaciones = factory->getControladorInmuebles()->listarPublicacion(tipoPublicacion, precioMinimo, precioMaximo, tipoInmueble);
     //Recorrer la coleccion Mostrar "- Codigo: xx, fecha: dd/mm/yyyy, texto: zzz, precio: aaa, inmobiliaria: bbb"; //////////////////////////////////////  
     for( std::set<DTPublicacion>::iterator it = coleccionDatosPublicaciones.begin(); it!= coleccionDatosPublicaciones.end(); it++){
-        std::cout << "-Codigo: " << it->getCodigo()<<"\n";
+        std::cout << " Codigo: " << it->getCodigo()<<"\n";
         std::cout << " fecha: " << it->getFecha().toString()<<"\n";
         std::cout << " texto: " << it->getTexto()<<"\n";
         std::cout << " precio: " << it->getPrecio()<<"\n";
@@ -417,7 +417,7 @@ void suscribirseNotificaciones(){
     std::set<string> inmobilairias = factory->getControladorInmobiliarias()->mostrarInmobiliariasNoSuscrito(nickname);
     std::cout << "- Nickname: ";
     for(std::set<string>::iterator it = inmobilairias.begin(); it!=inmobilairias.end(); it++){
-        std::cout <<  *it;
+        std::cout <<  *it <<"\n";
     }
     int salir = 1;
     while (salir != 0){
@@ -456,7 +456,11 @@ void eliminarSuscripciones(){
     std::cin >> nickname;
     factory->getControladorUsuario()->recordarUsuario(nickname);
     //listar inmobiliarias que esta suscrito
+    std::cout << "Inmobiliarias a las que está suscrito: "<< "\n";
     std::set<string> inmobilairias = factory->getControladorInmobiliarias()->mostrarInmobiliariasSuscrito(nickname);
+    for(std::set<string>::iterator it = inmobilairias.begin(); it!=inmobilairias.end(); it++){
+        std::cout << (*it) << "\n";
+    }
     int salir = 1;
     while (salir != 0){
         std::cout << "Ingrese nombre de la inmobiliaria a la que desea eliminar su suscripcion: ";

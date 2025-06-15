@@ -22,7 +22,7 @@ float DTApartamento::getGastosComunes() {
 
 void DTApartamento::mostrarDatos(){
     // Si es apartamento-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, piso: xx, ascensor: Si/No, gastos comunes: yyy"
-    std::cout << "Codigo: " << getCodigo() 
+    std::cout << " Codigo: " << getCodigo() 
                << ", direccion: " << getDireccion() 
                << ", puerta: " << getNumeroPuerta() 
                << ", superficie: " << getSuperficie() 

@@ -15,12 +15,12 @@ AdministraPropiedad::AdministraPropiedad(DTFecha fecha,Inmueble* inmuebleAdminis
 }
 
 AdministraPropiedad::~AdministraPropiedad(){
-    //vaciar y eliminar la coleccion de publicaciones
+    /*//vaciar y eliminar la coleccion de publicaciones
     for (std::map<int,Publicacion*>::iterator it = coleccionPublicaciones.begin(); it != coleccionPublicaciones.end(); ++it){
         delete it->second;
     }
     coleccionPublicaciones.clear();
-
+*/
     //Eliminar referencia de la inmobiliaria y el inmueble
     if (inmuebleAdministrado != nullptr) {
         inmuebleAdministrado->eliminarReferenciaAdministracion();
@@ -71,6 +71,7 @@ void AdministraPropiedad::eliminarInmueble(){
     for (std::map<int,Publicacion*>::iterator it=coleccionPublicaciones.begin(); it!=coleccionPublicaciones.end(); it++){
         delete(it->second);
     }
+    coleccionPublicaciones.clear();
 }
 
 
