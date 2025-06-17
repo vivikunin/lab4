@@ -5,7 +5,6 @@
 #include "Factory.h"  
 #include "DTInmueble.h"
 
-#include <iostream>
 
 ControladorInmuebles* ControladorInmuebles::instance = NULL;
 
@@ -32,18 +31,7 @@ std::set<DTPublicacion> ControladorInmuebles::listarPublicacion(TipoPublicacion 
 }
 
 void ControladorInmuebles::eliminarInmueble(int codigoInmueble){
-    //borrar
-    std::cout << "[DEBUG] Código de inmueble a eliminar: " << codigoInmueble << std::endl;
-
-
     std::map<int,Inmueble*>::iterator it = coleccionInmuebles.find(codigoInmueble);
-    //borrar
-    if (it == coleccionInmuebles.end()) {
-        std::cerr << "[ERROR] Código no encontrado en el mapa" << std::endl;
-        return;
-    }
-
-
     Inmueble* in =it->second;
     in->eliminarInmueble();      
     coleccionInmuebles.erase(it);
