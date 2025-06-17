@@ -60,10 +60,10 @@ void Inmobiliaria::linkPropietario(Propietario* prop) {
 }
 
 bool Inmobiliaria::altaPublicacion(int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio){
-    AdministraPropiedad* ap;
+    AdministraPropiedad* ap = NULL;
     for(std::set<AdministraPropiedad*>::iterator it=propiedadesAdministradas.begin(); it!=propiedadesAdministradas.end(); it++ ){
         ap = (*it)->administraPropiedadParaInmueble(codigoInmueble);
-        if ((*it) != NULL) break;
+        if (ap != NULL) break;
     }
     bool puede = ap->puedoCrearPublicacion(tipoPublicacion);
     if (puede){

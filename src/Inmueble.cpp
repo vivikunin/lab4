@@ -40,8 +40,8 @@ std::set<DTPublicacion> Inmueble::obtenerDatosPublicaciones(TipoPublicacion tipo
 }
 
 void Inmueble::eliminarInmueble(){
-    administracion->eliminarInmueble();
     administracion->getInmobiliariaAdministradora()->eliminarReferenciaAdministracion(administracion);
+    administracion->eliminarInmueble();
     delete administracion;
     administracion = NULL;
     duenio->eliminarPropiedad(codigo);

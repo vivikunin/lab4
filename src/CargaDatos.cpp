@@ -48,6 +48,12 @@ CargaDatos::CargaDatos() {
         cm->altaApartamento("Sarmiento", 1476, 80, 2008, 6, true, 3100);
         cm->altaCasa("Cno. Carrasco", 1576, 140, 2007, true, Plano);
         cu->finalizarAltaUsuario();
+
+        auto inmuebles = cm->listarInmuebles();
+        for (auto it = inmuebles.begin(); it != inmuebles.end(); ++it) {
+            std::cout << "[CHECK] Inmueble código=" << it->getCodigo() 
+                    << " dirección=" << it->getDireccion() << std::endl;
+        }
    
     // 3) Crear inmobiliarias y asociarlas a propietarios
         // Casasur 
@@ -103,15 +109,15 @@ CargaDatos::CargaDatos() {
  
     // 5) Generar publicaciones
         //esta falla
- /*     cf->setNewFechaActual(9, 10, 2011);
+        cf->setNewFechaActual(9, 10, 2011);
         ci->altaPublicacion("idealhome", 5, Venta, "Casa al fondo Juan Paullier con 110 m fondo y techo liviano.", 47000);
-*/
+
         cf->setNewFechaActual(15, 1, 2016);
         ci->altaPublicacion("casasur123", 2, Alquiler, "Oportunidad en Av. Brasil: apartamento de 75 m piso 5 con ascensor.", 28000);
 
         cf->setNewFechaActual(5, 3, 2019);
         ci->altaPublicacion("casasur123", 2, Alquiler, "Apartamento luminoso en Av. Brasil piso alto con excelentes servicios.", 29500);
-/*
+        
         cf->setNewFechaActual(3, 4, 2019);
         ci->altaPublicacion("idealhome", 5, Alquiler, "Casa ideal para familia en Juan Paullier barrio tranquilo.", 38500);
 
@@ -120,7 +126,7 @@ CargaDatos::CargaDatos() {
 
         cf->setNewFechaActual(12, 6, 2020);
         ci->altaPublicacion("casasur123", 2, Venta, "Excelente apartamento en Av. Brasil 75 m ideal para reforma.", 390000);
-
+  
         cf->setNewFechaActual(20, 7, 2020);
         ci->altaPublicacion("vivaurbana", 6, Alquiler, "Apartamento 68 m en Bulevar Artigas tercer piso sin ascensor.", 23000);
 
@@ -129,31 +135,31 @@ CargaDatos::CargaDatos() {
 
         cf->setNewFechaActual(12, 9, 2022);
         ci->altaPublicacion("vivaurbana", 3, Venta, "Casa excelente en Camino Maldonado de 95 m con patio al fondo.", 27000);
-
+        
         cf->setNewFechaActual(1, 10, 2023);
         ci->altaPublicacion("idealhome", 1, Venta, "Casa en Av. Rivera de 120 m con techo ideal para familia.", 520000);
-
+    
         cf->setNewFechaActual(18, 10, 2023);
         ci->altaPublicacion("idealhome", 7, Alquiler, "Apartamento amplio en Sarmiento 1476 piso 6 con ascensor.", 32000);
 
         cf->setNewFechaActual(19, 10, 2023);
         ci->altaPublicacion("idealhome", 7, Venta, "Apartamento de 80 m en Sarmiento excelente estado y vista.", 455000);
-
+               
         cf->setNewFechaActual(20, 11, 2023);
         ci->altaPublicacion("idealhome", 7, Alquiler, "Apartamento con gran vista a la rambla", 31000);
-
+               
         cf->setNewFechaActual(20, 11, 2023);
-        ci->altaPublicacion("idealhome", 7, Venta, "Apartamento en excelentes condiciones de 80 m", 450000);
+        ci->altaPublicacion("idealhome", 7, Venta, "Apartamento en excelentes condiciones de 80 m", 450000);      
 
         cf->setNewFechaActual(8, 3, 2024);
         ci->altaPublicacion("vivaurbana", 3, Venta, "Venta de casa en Camino Maldonado 95 m bien distribuidos.", 430000);
-
+ 
         cf->setNewFechaActual(5, 5, 2024);
         ci->altaPublicacion("idealhome", 7, Alquiler, "Alquiler en Sarmiento 80 m piso alto con excelentes terminaciones.", 33000);
-
+  
         cf->setNewFechaActual(1, 8, 2024);
         ci->altaPublicacion("idealhome", 6, Venta, "A estrenar en Bulevar Artigas 871 apartamento moderno.", 400000);
-    */
+    
     // 6) Suscripciones de clientes a inmobiliarias
         // luisito23
         cu->recordarUsuario("luisito23");

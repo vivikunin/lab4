@@ -385,13 +385,13 @@ void eliminarInmueble(){
     std::cout << "Detalle del inmueble:\n";
     //TODO: DTInmueble = Controlador->detalleInmueble(codigoInmueble) //////////////////////////////////////
     DTInmueble* dti = factory->getControladorInmuebles()->detalleInmueble(codigoInmueble);
-    DTInmueble* aux = dti;
-    dti= dynamic_cast<DTCasa*>(dti);
-    aux=dynamic_cast<DTApartamento*>(aux);
-    if( dti!= nullptr){
-            dti->mostrarDatos();
+    DTCasa* dtcasa= dynamic_cast<DTCasa*>(dti);
+    DTApartamento* dtapto =dynamic_cast<DTApartamento*>(dti);
+
+    if( dtcasa!= nullptr){
+            dtcasa->mostrarDatos();
         } else{
-            aux->mostrarDatos();
+            dtapto->mostrarDatos();
     }
     //Mostrarlo:
     // Si es apartamento-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, piso: xx, ascensor: Si/No, gastos comunes: yyy"
@@ -402,7 +402,11 @@ void eliminarInmueble(){
     std::cin.ignore();
     if (deseaEliminar == 1){
         //TODO: Controlador->eliminarInmueble(codigoInmueble) //////////////////////////////////////
-        factory->getControladorInmuebles()->eliminarInmueble(dti->getCodigo());
+        if( dtcasa!= nullptr){
+            factory->getControladorInmuebles()->eliminarInmueble(dtcasa->getCodigo());
+        } else{
+            factory->getControladorInmuebles()->eliminarInmueble(dtapto->getCodigo());
+        }
     }
 
 }

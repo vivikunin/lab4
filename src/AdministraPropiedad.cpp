@@ -15,12 +15,6 @@ AdministraPropiedad::AdministraPropiedad(DTFecha fecha,Inmueble* inmuebleAdminis
 }
 
 AdministraPropiedad::~AdministraPropiedad(){
-    /*//vaciar y eliminar la coleccion de publicaciones
-    for (std::map<int,Publicacion*>::iterator it = coleccionPublicaciones.begin(); it != coleccionPublicaciones.end(); ++it){
-        delete it->second;
-    }
-    coleccionPublicaciones.clear();
-*/
     //Eliminar referencia de la inmobiliaria y el inmueble
     if (inmuebleAdministrado != nullptr) {
         inmuebleAdministrado->eliminarReferenciaAdministracion();
@@ -106,7 +100,7 @@ void AdministraPropiedad::desactivarPublicacionActiva(){
 }
 
 void AdministraPropiedad::crearPublicacion(TipoPublicacion tipoPublicacion, std::string texto, float precio){
-    Publicacion::ultimoCodigo++;  ////////////CODIGO EN 0???????????
+    Publicacion::ultimoCodigo++; 
     Publicacion* pub = new Publicacion(Publicacion::ultimoCodigo, ControladorFechaActual::getInstance()->getFechaActual(), tipoPublicacion, texto, precio, true);
     this->coleccionPublicaciones.insert({pub->getCodigo(),pub});
 
