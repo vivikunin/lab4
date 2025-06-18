@@ -14,6 +14,8 @@ ControladorUsuarios::~ControladorUsuarios(){
         delete it->second;
     }
     coleccionUsuarios.clear();
+    delete instance;
+    instance = NULL;
 }
 
 ControladorUsuarios* ControladorUsuarios::instance = NULL;
@@ -49,7 +51,7 @@ bool ControladorUsuarios::altaPropietario(string nickname, string contrasena, st
             return false;
     } else {
         Propietario* p = new Propietario(nickname, contrasena, nombre, email, cuentaBancaria, telefono); //create
-        coleccionUsuarios.insert({dynamic_cast<Usuario*>(p)->getNickname(),dynamic_cast<Usuario*>(p)}); 
+        coleccionUsuarios.insert(std::make_pair(dynamic_cast<Usuario*>(p)->getNickname(),dynamic_cast<Usuario*>(p))); 
         usuarioRecordado = dynamic_cast<Usuario*>(p);
         return true;
     } 

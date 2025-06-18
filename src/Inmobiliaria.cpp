@@ -24,7 +24,7 @@ void Inmobiliaria::eliminarReferenciaAdministracion(AdministraPropiedad* ap){
 }
 
 void Inmobiliaria::suscribir(Suscriptor* s){ 
-    suscriptores.insert({s->getNickname(),s});
+    suscriptores.insert(std::make_pair(s->getNickname(),s));
 }
 
 void Inmobiliaria::anularSuscripcion(Suscriptor* s){
@@ -56,7 +56,7 @@ std::set<DTInmuebleListado> Inmobiliaria::getInmueblesNoAdminPropietario(){
 }
 
 void Inmobiliaria::linkPropietario(Propietario* prop) {
-    this->propietariosRepresentados.insert({prop->getNickname(), prop});
+    this->propietariosRepresentados.insert(std::make_pair(prop->getNickname(), prop));
 }
 
 bool Inmobiliaria::altaPublicacion(int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio){

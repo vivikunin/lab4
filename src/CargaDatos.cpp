@@ -7,11 +7,11 @@ CargaDatos* CargaDatos::instance = NULL;
 
 CargaDatos::CargaDatos() {
     //TODO: Cargar los datos de prueba
-    auto factory = Factory::getInstance();
-    auto cu = factory->getControladorUsuario();
-    auto ci = factory->getControladorInmobiliarias();
-    auto cm = factory->getControladorInmuebles();
-    auto cf = factory->getControladorFechaActual();
+    Factory* factory = Factory::getInstance();
+    IUsuarios* cu = factory->getControladorUsuario();
+    IInmobiliarias* ci = factory->getControladorInmobiliarias();
+    IInmuebles* cm = factory->getControladorInmuebles();
+    IControladorFechaActual* cf = factory->getControladorFechaActual();
 
     // 1) Crear clientes 
     cu->altaCliente("luisito23", "qweasd12", "Luis", "luisito23@gmail.com", "Pérez", "46859342");
@@ -48,12 +48,6 @@ CargaDatos::CargaDatos() {
         cm->altaApartamento("Sarmiento", 1476, 80, 2008, 6, true, 3100);
         cm->altaCasa("Cno. Carrasco", 1576, 140, 2007, true, Plano);
         cu->finalizarAltaUsuario();
-
-        auto inmuebles = cm->listarInmuebles();
-        for (auto it = inmuebles.begin(); it != inmuebles.end(); ++it) {
-            std::cout << "[CHECK] Inmueble código=" << it->getCodigo() 
-                    << " dirección=" << it->getDireccion() << std::endl;
-        }
    
     // 3) Crear inmobiliarias y asociarlas a propietarios
         // Casasur 

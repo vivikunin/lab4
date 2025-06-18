@@ -1,7 +1,6 @@
 # Compilador y flags
 CXX = g++
-CXXFLAGS = -std=c++17 -Wall -Wextra -Iinclude
-
+CXXFLAGS =  -Wall -g -std=c++98 -Iinclude
 # Archivos fuente y objetivo
 SOURCES = $(wildcard src/*.cpp)
 OBJECTS = $(SOURCES:.cpp=.o)

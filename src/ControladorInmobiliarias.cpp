@@ -18,10 +18,17 @@ ControladorInmobiliarias* ControladorInmobiliarias::getInstance() {
 
 ControladorInmobiliarias::ControladorInmobiliarias(){}
 
-ControladorInmobiliarias::~ControladorInmobiliarias(){}
+ControladorInmobiliarias::~ControladorInmobiliarias(){
+    for (std::map <std::string,Inmobiliaria*>::iterator it = coleccionInmobiliarias.begin(); it != coleccionInmobiliarias.end(); ++it) {
+        delete it->second;
+    }
+    coleccionInmobiliarias.clear();
+    delete instance;
+    instance = NULL;
+}
 
 void  ControladorInmobiliarias::agregarInmobiliariaColeccion(Inmobiliaria* i){
-    coleccionInmobiliarias.insert({i->getNickname(), i});
+    coleccionInmobiliarias.insert(std::make_pair(i->getNickname(), i));
 }
 
 set <DTUsuario> ControladorInmobiliarias::listarInmobiliarias(){
@@ -43,7 +50,7 @@ set <DTInmuebleAdministrado> ControladorInmobiliarias::listarInmueblesAdministra
     if (i != coleccionInmobiliarias.end()) {
         return i->second->datosInmueblesAdministrados();
     } else {
-        return {};
+        return set<DTInmuebleAdministrado>();
     }
 }
 

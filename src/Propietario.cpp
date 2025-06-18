@@ -14,7 +14,7 @@ Suscriptor(nickname, contrasena, nombre, email){
 }
 
 void Propietario::añadirPropiedad(Inmueble* i){
-    misPropiedades.insert({i->getCodigo(),i});
+    misPropiedades.insert(std::make_pair(i->getCodigo(),i));
 }        
 
 void Propietario::eliminarPropiedad(int codigo){

@@ -92,7 +92,7 @@ void ejecutarOpcion(int opcion) {
             break;
         case 0:
             std::cout << "Saliendo del programa..." << std::endl;
-            //liberar todo
+            liberarMemoria();
             exit(0);
         default:
             std::cout << "Opcion no valida. Intente de nuevo." << std::endl;
@@ -293,7 +293,7 @@ void altaPublicacion(){
     std::getline(std::cin, texto);
     std::cout << "Precio: ";
     float precio;
-    std::cin >> precio;
+    std::cin >> precio; //hay que poner .0
     std::cin.ignore();
     //TODO:Controlador->altaPublicacion(nicknameInmobiliaria, codigoInmueble, tipoPublicacion, texto, precio)////////////////////////////////
     factory->getControladorInmobiliarias()->altaPublicacion(nicknameInmobiliaria, codigoInmueble, tipoPublicacion, texto, precio);
@@ -407,7 +407,7 @@ void suscribirseNotificaciones(){
     factory->getControladorUsuario()->recordarUsuario(nickname);
     //mostrar inmobiliarias que no esta suscrito
     std::set<string> inmobilairias = factory->getControladorInmobiliarias()->mostrarInmobiliariasNoSuscrito(nickname);
-    std::cout << "- Nickname: ";
+    std::cout << "Inmobiliarias a las que no está suscrito:\n";
     for(std::set<string>::iterator it = inmobilairias.begin(); it!=inmobilairias.end(); it++){
         std::cout <<  *it <<"\n";
     }
@@ -524,4 +524,8 @@ void cargarDatos(){
     std::cin >> ano;
     std::cin.ignore();
     cfecha->setNewFechaActual(dia, mes, ano);
+ }
+
+ void liberarMemoria(){
+    
  }

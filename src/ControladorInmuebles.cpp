@@ -10,7 +10,14 @@ ControladorInmuebles* ControladorInmuebles::instance = NULL;
 
 ControladorInmuebles:: ControladorInmuebles(){}
 
-ControladorInmuebles::~ControladorInmuebles() {}
+ControladorInmuebles::~ControladorInmuebles() {
+    for (std::map <int,Inmueble*>::iterator it = coleccionInmuebles.begin(); it != coleccionInmuebles.end(); ++it) {
+        delete it->second;
+    }
+    coleccionInmuebles.clear();
+    delete instance;
+    instance = NULL;
+}
 
 ControladorInmuebles* ControladorInmuebles::getInstance(){
     if (instance==NULL) {
@@ -41,7 +48,7 @@ void ControladorInmuebles::eliminarInmueble(int codigoInmueble){
 void ControladorInmuebles::altaCasa(std::string direccion, int numeroPuerta, int superficie, int anoConstruccion,bool esPH, TipoTecho techo){
     Inmueble::ultimoCodigoInmueble++;
     Casa* c = new  Casa(Inmueble::ultimoCodigoInmueble, direccion, numeroPuerta, superficie, anoConstruccion, esPH, techo);
-    this->coleccionInmuebles.insert({Inmueble::ultimoCodigoInmueble, c});
+    this->coleccionInmuebles.insert(std::make_pair(Inmueble::ultimoCodigoInmueble, c));
     Propietario* p = dynamic_cast<Propietario*> (Factory::getInstance()->getControladorUsuario()->getUsuarioRecordado());
     c->setDuenio(p);
     p->añadirPropiedad(c);
@@ -50,7 +57,7 @@ void ControladorInmuebles::altaCasa(std::string direccion, int numeroPuerta, int
 void ControladorInmuebles:: altaApartamento(std::string direccion, int numeroPuerta, int superficie, int anoConstruccion, int piso, bool tieneAscensor, float gastosComunes){
     Inmueble::ultimoCodigoInmueble++;
     class Apartamento* a = new  class Apartamento(Inmueble::ultimoCodigoInmueble, direccion, numeroPuerta, superficie, anoConstruccion, piso, tieneAscensor, gastosComunes);
-    this->coleccionInmuebles.insert({Inmueble::ultimoCodigoInmueble, a});
+    this->coleccionInmuebles.insert(std::make_pair(Inmueble::ultimoCodigoInmueble, a));
     Propietario* p = dynamic_cast<Propietario*>(Factory::getInstance()->getControladorUsuario()->getUsuarioRecordado());
     a->setDuenio(p);
     p->añadirPropiedad(a);

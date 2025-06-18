@@ -14,13 +14,13 @@ class ControladorUsuarios : public IUsuarios  {
         static ControladorUsuarios* instance;
         ControladorUsuarios();
         std::map <std::string, Usuario*> coleccionUsuarios;
-        Usuario* usuarioRecordado=NULL;
-        Inmobiliaria* inmobiliariaRecordada=NULL;
+        Usuario* usuarioRecordado;
+        Inmobiliaria* inmobiliariaRecordada;
 
     
     public:
         static ControladorUsuarios* getInstance();
-        ~ControladorUsuarios();
+        virtual ~ControladorUsuarios();
 
         Usuario* getUsuarioRecordado() const;
         void finalizarAltaUsuario();
