@@ -92,6 +92,7 @@ void ejecutarOpcion(int opcion) {
             break;
         case 0:
             std::cout << "Saliendo del programa..." << std::endl;
+            //liberar todo
             exit(0);
         default:
             std::cout << "Opcion no valida. Intente de nuevo." << std::endl;
@@ -354,15 +355,10 @@ void consultaPublicaciones(){
         //Mostrarlo:
         // Si es casa-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, PH: Si/No, Tipo de techo: Liviano/A dos aguas/Plano"
         // Si es apartamento-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, piso: xx, ascensor: Si/No, gastos comunes: yyy"
-        DTInmueble* aux = dti;
-        dti= dynamic_cast<DTCasa*>(dti);
-        aux=dynamic_cast<DTApartamento*>(aux);
-        if( dti!= nullptr){
-                dti->mostrarDatos();
-        } else{
-                aux->mostrarDatos();
+        if (dti!=NULL) {
+            dti->mostrarDatos();  
+            delete dti;           
         }
-        delete dti;
     }
 }
 
@@ -385,13 +381,9 @@ void eliminarInmueble(){
     std::cout << "Detalle del inmueble:\n";
     //TODO: DTInmueble = Controlador->detalleInmueble(codigoInmueble) //////////////////////////////////////
     DTInmueble* dti = factory->getControladorInmuebles()->detalleInmueble(codigoInmueble);
-    DTCasa* dtcasa= dynamic_cast<DTCasa*>(dti);
-    DTApartamento* dtapto =dynamic_cast<DTApartamento*>(dti);
-
-    if( dtcasa!= nullptr){
-            dtcasa->mostrarDatos();
-        } else{
-            dtapto->mostrarDatos();
+    if (dti) {
+        dti->mostrarDatos();  
+        delete dti;           
     }
     //Mostrarlo:
     // Si es apartamento-> "Codigo: aaa, direccion: bbb, nro. puerta: ccc, superficie: xx m2, consturccion: dddd, piso: xx, ascensor: Si/No, gastos comunes: yyy"
@@ -402,11 +394,7 @@ void eliminarInmueble(){
     std::cin.ignore();
     if (deseaEliminar == 1){
         //TODO: Controlador->eliminarInmueble(codigoInmueble) //////////////////////////////////////
-        if( dtcasa!= nullptr){
-            factory->getControladorInmuebles()->eliminarInmueble(dtcasa->getCodigo());
-        } else{
-            factory->getControladorInmuebles()->eliminarInmueble(dtapto->getCodigo());
-        }
+            factory->getControladorInmuebles()->eliminarInmueble(codigoInmueble);
     }
 
 }
