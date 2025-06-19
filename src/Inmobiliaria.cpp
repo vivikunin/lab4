@@ -22,13 +22,6 @@ Inmobiliaria::~Inmobiliaria() {
     propietariosRepresentados.clear();
 }
 
-/*Inmobiliaria::~Inmobiliaria(){
-    for(std::set<AdministraPropiedad*>::iterator it =propiedadesAdministradas.begin(); it!=propiedadesAdministradas.end();it++){
-        delete *it;
-    }
-    propiedadesAdministradas.clear();
-}*/
-
 DTUsuario getDatos();
 bool altaPublicacion(int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio);
 
@@ -45,9 +38,9 @@ void Inmobiliaria::anularSuscripcion(Suscriptor* s){
 }
 
 void Inmobiliaria::notificar(std::string nickname, int c, std::string texto, TipoPublicacion tipoPublicacion, TipoInmueble tipoInmueble ){
-    Notificacion* n = new Notificacion(nickname, c, texto, tipoPublicacion, tipoInmueble);
     for (std::map<std::string, Suscriptor*>::iterator it=suscriptores.begin(); it!=suscriptores.end(); it++) {
-            it->second->notificar(n);
+        Notificacion* n = new Notificacion(nickname, c, texto, tipoPublicacion, tipoInmueble);
+        it->second->notificar(n);
     }
 }
 
