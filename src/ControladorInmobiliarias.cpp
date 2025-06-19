@@ -88,9 +88,10 @@ void ControladorInmobiliarias::desSuscribirseAInmobiliaria(std::string nombreInm
 void ControladorInmobiliarias::altaAdministraPropiedad(std::string nickname, int codigoInmueble ){
     std::map<std::string, Inmobiliaria*>::iterator inmobiliaria = coleccionInmobiliarias.find(nickname);
     IInmuebles* controladorInmuebles = Factory::getInstance()->getControladorInmuebles();
-    DTFecha f = Factory::getInstance()->getControladorFechaActual()->getFechaActual();
+    DTFecha* f = Factory::getInstance()->getControladorFechaActual()->getFechaActual();
     Inmueble* cin = controladorInmuebles->getInmueble(codigoInmueble);
     inmobiliaria->second->altaAdministracionPropiedad(cin, f);
+    delete f;
 }
 
 

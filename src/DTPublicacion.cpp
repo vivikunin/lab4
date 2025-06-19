@@ -1,15 +1,10 @@
 #include "../include/DTPublicacion.h"
 
 DTPublicacion::DTPublicacion(int codigo,  const DTFecha& fecha, std::string texto, float precio, std::string inmobiliaria) : codigo(codigo)
-, fecha(fecha)            // copia el objeto apuntado
+, fecha(fecha)            
 , texto(texto)
 , precio(precio)
 , inmobiliaria(inmobiliaria) {
-    /*this->codigo = codigo;
-    this->fecha = (*fecha);
-    this->texto = texto;
-    this->precio = precio;
-    this->inmobiliaria = inmobiliaria;*/
 }
 
 int DTPublicacion::getCodigo() const {

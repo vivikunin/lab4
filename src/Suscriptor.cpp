@@ -1,6 +1,7 @@
 #include "Suscriptor.h"
 #include "DTNotificacion.h"
 
+
 #include <list>
 Suscriptor::Suscriptor(std::string nickname, std::string contrasena, std::string nombre, std::string email):
 Usuario(nickname, contrasena, nombre, email){
@@ -19,7 +20,8 @@ std::list<DTNotificacion> Suscriptor::getNotificaciones(){
     std::list<DTNotificacion> resultado;
     for(std::list<Notificacion*>::iterator it = misNotificaciones.begin(); it!=misNotificaciones.end(); it++){
         resultado.push_back(DTNotificacion((*it)->getNicknameInmobiliaria(), (*it)->getCodigo(), (*it)->getTexto(), (*it)->getTipoPublicacion(), (*it)->getTipoInmueble()));
+        delete (*it);
     }
-    misNotificaciones.clear(); // Elimina las notificaciones ya consultadas
+    misNotificaciones.clear(); 
     return resultado;
 }

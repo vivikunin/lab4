@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 
+
 Inmobiliaria::Inmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono):Usuario::Usuario(nickname, contrasena, nombre, email){
     this->direccion=direccion;
     this->url=url;
@@ -43,6 +44,7 @@ void Inmobiliaria::notificar(std::string nickname, int c, std::string texto, Tip
         it->second->notificar(n);
     }
 }
+
 
 std::set<DTInmuebleAdministrado> Inmobiliaria:: datosInmueblesAdministrados(){
     std::set<DTInmuebleAdministrado> datos;

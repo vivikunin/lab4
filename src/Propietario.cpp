@@ -32,6 +32,7 @@ std::string Propietario::getTelefono(){
 
 void Propietario::notificar(Notificacion* n){
     this->misNotificaciones.push_back(n);
+
 }
 
 std::set<DTInmuebleListado> Propietario::getInmueblesNoAdmin(Inmobiliaria* i){

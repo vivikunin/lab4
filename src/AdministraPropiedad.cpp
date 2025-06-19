@@ -85,9 +85,11 @@ AdministraPropiedad* AdministraPropiedad::administraPropiedadParaInmueble(int co
 
 bool AdministraPropiedad::puedoCrearPublicacion(TipoPublicacion tp){
     for(std::map<int,Publicacion*>::iterator it= coleccionPublicaciones.begin();it!=coleccionPublicaciones.end(); it++){
-        if(tp==it->second->getTipoPublicacion() && it->second->getFecha()==ControladorFechaActual::getInstance()->getFechaActual()){
+        DTFecha* f = ControladorFechaActual::getInstance()->getFechaActual();
+        if(tp==it->second->getTipoPublicacion() && it->second->getFecha()==f){
             return false;
         }
+        delete f;
     }
     return true;
 }
