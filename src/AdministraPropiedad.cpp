@@ -22,6 +22,11 @@ AdministraPropiedad::~AdministraPropiedad(){
     if (inmobiliariaAdministradora != NULL) {
         inmobiliariaAdministradora->eliminarReferenciaAdministracion(this);
     }
+
+    for (std::map<int,Publicacion*>::iterator it = coleccionPublicaciones.begin(); it != coleccionPublicaciones.end(); ++it) {
+        delete it->second;
+    }
+    coleccionPublicaciones.clear();
 }
 
 DTFecha&  AdministraPropiedad::getFecha(){

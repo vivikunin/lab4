@@ -1,6 +1,7 @@
 #include "../include/Inmobiliaria.h"
 #include "AdministraPropiedad.h"
 #include <set>
+#include <vector>
 #include <string>
 
 Inmobiliaria::Inmobiliaria(std::string nickname, std::string contrasena, std::string nombre, std::string email, std::string direccion, std::string url, std::string telefono):Usuario::Usuario(nickname, contrasena, nombre, email){
@@ -9,12 +10,24 @@ Inmobiliaria::Inmobiliaria(std::string nickname, std::string contrasena, std::st
     this->telefono=telefono;
 }
 
-Inmobiliaria::~Inmobiliaria(){
+Inmobiliaria::~Inmobiliaria() {
+    std::vector<AdministraPropiedad*> aBorrar(propiedadesAdministradas.begin(), propiedadesAdministradas.end());
+
+    for (std::vector<AdministraPropiedad*>::iterator it = aBorrar.begin(); it != aBorrar.end(); ++it) {
+        delete *it;
+    }
+
+    propiedadesAdministradas.clear();
+    suscriptores.clear();
+    propietariosRepresentados.clear();
+}
+
+/*Inmobiliaria::~Inmobiliaria(){
     for(std::set<AdministraPropiedad*>::iterator it =propiedadesAdministradas.begin(); it!=propiedadesAdministradas.end();it++){
         delete *it;
     }
     propiedadesAdministradas.clear();
-}
+}*/
 
 DTUsuario getDatos();
 bool altaPublicacion(int codigoInmueble, TipoPublicacion tipoPublicacion, std::string texto, float precio);

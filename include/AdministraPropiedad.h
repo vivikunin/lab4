@@ -15,7 +15,7 @@ class Inmueble;
 
 class AdministraPropiedad{
     private:
-        DTFecha  fecha;
+        DTFecha fecha;
         std::map<int,Publicacion*> coleccionPublicaciones;
         Inmueble* inmuebleAdministrado;
         Inmobiliaria* inmobiliariaAdministradora;
