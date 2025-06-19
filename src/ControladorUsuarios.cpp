@@ -14,8 +14,6 @@ ControladorUsuarios::~ControladorUsuarios(){
         delete it->second;
     }
     coleccionUsuarios.clear();
-    delete instance;
-    instance = NULL;
 }
 
 ControladorUsuarios* ControladorUsuarios::instance = NULL;
@@ -32,8 +30,8 @@ Usuario* ControladorUsuarios::getUsuarioRecordado() const {
 }
 
 void ControladorUsuarios::finalizarAltaUsuario() { 
-    usuarioRecordado = nullptr; 
-    inmobiliariaRecordada = nullptr;
+    usuarioRecordado = NULL; 
+    inmobiliariaRecordada = NULL;
 }
 
 bool ControladorUsuarios::altaCliente(string nickname, string contrasena, string nombre, string email, string apellido, string documento){

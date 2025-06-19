@@ -28,9 +28,9 @@ bool Inmueble::esDelTipoInmueble(TipoInmueble tipo) {
         case Todos:
             return true;
         case TICasa:
-            return dynamic_cast<Casa*>(this) != nullptr;
+            return dynamic_cast<Casa*>(this) != NULL;
         case TIApartamento:
-            return dynamic_cast<Apartamento*>(this) != nullptr;
+            return dynamic_cast<Apartamento*>(this) != NULL;
     }
     return false;
 }
@@ -84,7 +84,7 @@ AdministraPropiedad* Inmueble::getAdministracion() const{
 }
 
 bool Inmueble::esAdminitrado(Inmobiliaria* i){
-    if (administracion == nullptr) {
+    if (administracion == NULL) {
         return false;
     }
     return (administracion->getInmobiliariaAdministradora() == i);
@@ -95,7 +95,7 @@ void Inmueble::eliminarReferenciaAdministracion(){
 }
 
 TipoInmueble Inmueble:: tipoDelInmueble(){
-    if(dynamic_cast<Casa*>(this) != nullptr){
+    if(dynamic_cast<Casa*>(this) != NULL){
         return TICasa;
     } else{
         return TIApartamento;

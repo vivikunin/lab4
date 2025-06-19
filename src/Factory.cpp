@@ -11,6 +11,13 @@ Factory* Factory::instance = NULL;
 Factory::Factory() {
 }
 
+Factory::~Factory(){
+    delete ControladorUsuarios::getInstance();
+    delete ControladorInmuebles::getInstance();
+    delete ControladorInmobiliarias::getInstance();
+    delete ControladorFechaActual::getInstance();
+}
+
 Factory* Factory::getInstance() {
     if (instance == NULL) {
         instance = new Factory();

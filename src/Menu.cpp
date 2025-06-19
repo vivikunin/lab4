@@ -18,7 +18,7 @@
 #include <string>
 #include <set>
 #include <list>
-
+#include <cstdlib>
 
 void mostrarMenu() {
     std::cout << "=== Menu de Operaciones ===" << std::endl;
@@ -527,5 +527,8 @@ void cargarDatos(){
  }
 
  void liberarMemoria(){
-    
+    Factory* factory = Factory:: getInstance();
+    if (factory!=NULL){
+        delete factory;
+    }
  }

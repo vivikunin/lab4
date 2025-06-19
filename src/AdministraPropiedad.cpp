@@ -5,8 +5,8 @@
 #include <set>
 
 AdministraPropiedad::AdministraPropiedad(DTFecha fecha): fecha(fecha) {
-    this->inmuebleAdministrado = nullptr;
-    this->inmobiliariaAdministradora = nullptr;
+    this->inmuebleAdministrado = NULL;
+    this->inmobiliariaAdministradora = NULL;
 }
 
 AdministraPropiedad::AdministraPropiedad(DTFecha fecha,Inmueble* inmuebleAdministrado ,Inmobiliaria* inmobiliariaAdministradora): fecha(fecha){
@@ -16,10 +16,10 @@ AdministraPropiedad::AdministraPropiedad(DTFecha fecha,Inmueble* inmuebleAdminis
 
 AdministraPropiedad::~AdministraPropiedad(){
     //Eliminar referencia de la inmobiliaria y el inmueble
-    if (inmuebleAdministrado != nullptr) {
+    if (inmuebleAdministrado != NULL) {
         inmuebleAdministrado->eliminarReferenciaAdministracion();
     }
-    if (inmobiliariaAdministradora != nullptr) {
+    if (inmobiliariaAdministradora != NULL) {
         inmobiliariaAdministradora->eliminarReferenciaAdministracion(this);
     }
 }

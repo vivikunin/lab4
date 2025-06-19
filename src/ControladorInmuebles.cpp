@@ -15,8 +15,6 @@ ControladorInmuebles::~ControladorInmuebles() {
         delete it->second;
     }
     coleccionInmuebles.clear();
-    delete instance;
-    instance = NULL;
 }
 
 ControladorInmuebles* ControladorInmuebles::getInstance(){

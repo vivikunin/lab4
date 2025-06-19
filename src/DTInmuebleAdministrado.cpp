@@ -1,7 +1,7 @@
 #include "../include/DTInmuebleAdministrado.h"
 
 DTInmuebleAdministrado::DTInmuebleAdministrado(int codigo,std::string direccion,const DTFecha& fechaComienzo)
-: codigo(codigo), direccion(std::move(direccion)), fechaComienzo(fechaComienzo)
+: codigo(codigo), direccion(direccion), fechaComienzo(fechaComienzo)
 {}
 
 int DTInmuebleAdministrado::getCodigo() const{
