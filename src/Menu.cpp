@@ -19,6 +19,7 @@
 #include <set>
 #include <list>
 #include <cstdlib>
+#include <stdexcept>
 
 void mostrarMenu() {
     std::cout << "=== Menu de Operaciones ===" << std::endl;
@@ -264,39 +265,46 @@ void altaPublicacion(){
         std::cout << "- Nickname: " <<  it->getNickname()
         << ", Nombre: "   << it->getNombre() << "\n";
     }
-    std::cout << "Nickname de la inmobiliaria: ";
-    std::string nicknameInmobiliaria;
-    std::getline(std::cin, nicknameInmobiliaria);
-    //TODO: Coleccion de DTInmuebleAdministrado = controlador->listarInmueblesAdministrados(nicknameInmobiliaria);///////////////////
-    std::set<DTInmuebleAdministrado> inmueblesAdministrados = factory->getControladorInmobiliarias()->listarInmueblesAdministrados(nicknameInmobiliaria);
-    //Recorrer la coleccion Mostrar "- Codigo: xx, Direccion: yy, Fecha comienzo: zzz"
-    for( std::set<DTInmuebleAdministrado>::iterator it = inmueblesAdministrados.begin(); it!= inmueblesAdministrados.end(); it++){
-        std::cout << " Codigo: " << it->getCodigo();
-        std::cout << " Direccion: " << it->getDireccion();
-        std::cout << " Fecha comienzo: " << (*it).getFechaComienzo().toString()<< "\n";
+    bool nicknameValido = false;
+    while (!nicknameValido) {
+        std::cout << "Nickname de la inmobiliaria: ";
+        std::string nicknameInmobiliaria;
+        std::getline(std::cin, nicknameInmobiliaria);
+        //TODO: Coleccion de DTInmuebleAdministrado = controlador->listarInmueblesAdministrados(nicknameInmobiliaria);///////////////////
+        try {
+            std::set<DTInmuebleAdministrado> inmueblesAdministrados = factory->getControladorInmobiliarias()->listarInmueblesAdministrados(nicknameInmobiliaria);
+            nicknameValido = true;
+            //Recorrer la coleccion Mostrar "- Codigo: xx, Direccion: yy, Fecha comienzo: zzz"
+            for( std::set<DTInmuebleAdministrado>::iterator it = inmueblesAdministrados.begin(); it!= inmueblesAdministrados.end(); it++){
+                std::cout << " Codigo: " << it->getCodigo();
+                std::cout << " Direccion: " << it->getDireccion();
+                std::cout << " Fecha comienzo: " << (*it).getFechaComienzo().toString()<< "\n";
+            }
+            int codigoInmueble;
+            std::cout << "Inmueble: ";
+            std::cin >> codigoInmueble;
+            std::cin.ignore();
+            int inTipoPublicacion;
+            std::cout << "Tipo de Publicacion: (1: Venta, 0: Alquiler)";
+            std::cin >> inTipoPublicacion;
+            TipoPublicacion tipoPublicacion = Alquiler;
+            if(inTipoPublicacion == 1){
+                tipoPublicacion = Venta;
+            }
+            std::cin.ignore();
+            std::cout << "Texto: ";
+            std::string texto;
+            std::getline(std::cin, texto);
+            std::cout << "Precio: ";
+            float precio;
+            std::cin >> precio; 
+            std::cin.ignore();
+            //TODO:Controlador->altaPublicacion(nicknameInmobiliaria, codigoInmueble, tipoPublicacion, texto, precio)////////////////////////////////
+            factory->getControladorInmobiliarias()->altaPublicacion(nicknameInmobiliaria, codigoInmueble, tipoPublicacion, texto, precio);
+        } catch (const std::invalid_argument& e) {
+            std::cerr << "Error: " << e.what() << "\nPor favor ingrese un nickname válido.\n";
+        }   
     }
-    
-    int codigoInmueble;
-    std::cout << "Inmueble: ";
-    std::cin >> codigoInmueble;
-    std::cin.ignore();
-    int inTipoPublicacion;
-    std::cout << "Tipo de Publicacion: (1: Venta, 0: Alquiler)";
-    std::cin >> inTipoPublicacion;
-    TipoPublicacion tipoPublicacion = Alquiler;
-    if(inTipoPublicacion == 1){
-        tipoPublicacion = Venta;
-    }
-    std::cin.ignore();
-    std::cout << "Texto: ";
-    std::string texto;
-    std::getline(std::cin, texto);
-    std::cout << "Precio: ";
-    float precio;
-    std::cin >> precio; //hay que poner .0
-    std::cin.ignore();
-    //TODO:Controlador->altaPublicacion(nicknameInmobiliaria, codigoInmueble, tipoPublicacion, texto, precio)////////////////////////////////
-    factory->getControladorInmobiliarias()->altaPublicacion(nicknameInmobiliaria, codigoInmueble, tipoPublicacion, texto, precio);
 }
 
 void consultaPublicaciones(){
@@ -402,26 +410,34 @@ void eliminarInmueble(){
 void suscribirseNotificaciones(){
     Factory* factory = Factory::getInstance();
     std::string nickname, nombreInmobiliaria;
-    std::cout << "Ingrese su nickname: ";
-    std::cin >> nickname;
-    factory->getControladorUsuario()->recordarUsuario(nickname);
-    //mostrar inmobiliarias que no esta suscrito
-    std::set<string> inmobilairias = factory->getControladorInmobiliarias()->mostrarInmobiliariasNoSuscrito(nickname);
-    std::cout << "Inmobiliarias a las que no está suscrito:\n";
-    for(std::set<string>::iterator it = inmobilairias.begin(); it!=inmobilairias.end(); it++){
-        std::cout <<  *it <<"\n";
+    bool nicknameValido = false;
+    while (!nicknameValido) {
+        std::cout << "Ingrese su nickname: ";
+        std::cin >> nickname;
+        try {
+            factory->getControladorUsuario()->recordarUsuario(nickname);
+            nicknameValido = true; 
+            //mostrar inmobiliarias que no esta suscrito
+            std::set<string> inmobilairias = factory->getControladorInmobiliarias()->mostrarInmobiliariasNoSuscrito(nickname);
+            std::cout << "Inmobiliarias a las que no está suscrito:\n";
+            for(std::set<string>::iterator it = inmobilairias.begin(); it!=inmobilairias.end(); it++){
+                std::cout <<  *it <<"\n";
+            }
+            int salir = 1;
+            while (salir != 0){
+                std::cout << "Ingrese nombre de la inmobiliaria a la que desea suscribirse: "; 
+                std::cin >> nombreInmobiliaria;
+                //agregar a la lista de suscriptores
+                factory->getControladorInmobiliarias()->suscribirseAInmobiliaria(nombreInmobiliaria);
+                std::cout << "¿Quiere seguir ingresando? (1: Si, 0: No): ";
+                std::cin >> salir;
+                std::cin.ignore();
+            }
+            factory->getControladorUsuario()->olvidarUsuarioRecordado();
+        } catch (const std::invalid_argument& e) {
+            std::cerr << "Error: " << e.what() << "\nPor favor, intente nuevamente.\n";
+        }
     }
-    int salir = 1;
-    while (salir != 0){
-        std::cout << "Ingrese nombre de la inmobiliaria a la que desea suscribirse: "; 
-        std::cin >> nombreInmobiliaria;
-        //agregar a la lista de suscriptores
-        factory->getControladorInmobiliarias()->suscribirseAInmobiliaria(nombreInmobiliaria);
-        std::cout << "¿Quiere seguir ingresando? (1: Si, 0: No): ";
-        std::cin >> salir;
-        std::cin.ignore();
-    }
-    factory->getControladorUsuario()->olvidarUsuarioRecordado();
 }
 
 void consultaNotificaciones(){
@@ -480,20 +496,23 @@ void altaAdministracionPropiedad(){
     std::string nicknameInmobiliaria;
     std::getline(std::cin, nicknameInmobiliaria);
     //TODO: Coleccion de DTInmuebleListado = Controlador->listarInmueblesNoAdministradosInmobiliaria(nicknameInmobiliaria);
-    std::set<DTInmuebleListado> dtil = factory->getControladorInmobiliarias()->listarInmueblesNoAdministradosInmobiliaria(nicknameInmobiliaria);
     //Recorrer la coleccion Mostrar "- Codigo: xx, direccion: xxxx, propietario: bbbbb";
-    for( std::set<DTInmuebleListado>::iterator it = dtil.begin(); it!= dtil.end(); it++){
-        std::cout << "-Codigo: " << it->getCodigo();
-        std::cout << " Direccion: " << it->getDireccion();
-        std::cout << " Propietario: " << it->getPropietario()<<"\n";
+    try {
+        std::set<DTInmuebleListado> dtil = factory->getControladorInmobiliarias()->listarInmueblesNoAdministradosInmobiliaria(nicknameInmobiliaria);
+        for( std::set<DTInmuebleListado>::iterator it = dtil.begin(); it!= dtil.end(); it++){
+            std::cout << " Codigo: " << it->getCodigo();
+            std::cout << " Direccion: " << it->getDireccion();
+            std::cout << " Propietario: " << it->getPropietario()<<"\n";
+        }
+        std::cout << "Codigo del inmueble a administrar: ";
+        int codigoInmueble;
+        std::cin >> codigoInmueble;
+        std::cin.ignore();
+        //TODO: Controlador->altaAdministraPropiedad(nicknameInmobiliaria, codigoInmueble);
+        factory->getControladorInmobiliarias()->altaAdministraPropiedad(nicknameInmobiliaria, codigoInmueble);
+    } catch (const std::invalid_argument& e) {
+        std::cerr << "Error: " << e.what() << "\n";
     }
-    std::cout << "Codigo del inmueble a administrar: ";
-    int codigoInmueble;
-    std::cin >> codigoInmueble;
-    std::cin.ignore();
-    //TODO: Controlador->altaAdministraPropiedad(nicknameInmobiliaria, codigoInmueble);
-    factory->getControladorInmobiliarias()->altaAdministraPropiedad(nicknameInmobiliaria, codigoInmueble);
-
 }
 
 void cargarDatos(){

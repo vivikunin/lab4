@@ -4,6 +4,7 @@
 #include "Factory.h"
 
 #include <set>
+#include <stdexcept>
 
 using namespace std;
 
@@ -42,6 +43,9 @@ bool ControladorInmobiliarias::altaPublicacion(string nickname, int codigoInmueb
         
 set <DTInmuebleAdministrado> ControladorInmobiliarias::listarInmueblesAdministrados(string nicknameInmobiliaria){
     map<string,Inmobiliaria*>::iterator i = coleccionInmobiliarias.find(nicknameInmobiliaria);
+    if (i==coleccionInmobiliarias.end()) {
+        throw std::invalid_argument("La inmobiliaria no existe.");
+    }
     if (i != coleccionInmobiliarias.end()) {
         return i->second->datosInmueblesAdministrados();
     } else {
@@ -50,8 +54,13 @@ set <DTInmuebleAdministrado> ControladorInmobiliarias::listarInmueblesAdministra
 }
 
 set<DTInmuebleListado> ControladorInmobiliarias::listarInmueblesNoAdministradosInmobiliaria(string nicknameInmobiliaria){
-    Inmobiliaria* ci = coleccionInmobiliarias.find(nicknameInmobiliaria)->second;
-    set<DTInmuebleListado> listInmuebles = ci->getInmueblesNoAdminPropietario();
+    std::map <string, Inmobiliaria*>::iterator it = coleccionInmobiliarias.find(nicknameInmobiliaria);
+    if (it == coleccionInmobiliarias.end()) {
+        // Si no existe, lanzamos una excepción
+        throw std::invalid_argument("El nickname ingresado no corresponde a ninguna inmobiliaria registrada.");
+    }
+
+    set<DTInmuebleListado> listInmuebles = it->second->getInmueblesNoAdminPropietario();
     return listInmuebles;
 }
 

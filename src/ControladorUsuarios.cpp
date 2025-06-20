@@ -5,6 +5,7 @@
 #include "Suscriptor.h"
 #include "Factory.h"
 #include <map>
+#include <stdexcept>
 
 ControladorUsuarios::ControladorUsuarios(){}
 
@@ -94,6 +95,9 @@ void ControladorUsuarios::representarPropietario(std::string nicknamePropietario
 
 void ControladorUsuarios::recordarUsuario(std::string nicknamePropietario){
     std::map <std::string, Usuario*>::iterator it =  coleccionUsuarios.find(nicknamePropietario);
+    if (it == coleccionUsuarios.end()) {
+        throw std::invalid_argument("El nickname ingresado no corresponde a ningún usuario.");
+    }
     usuarioRecordado= it->second;
 }
 
