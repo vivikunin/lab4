@@ -205,3 +205,10 @@ CargaDatos* CargaDatos::getInstance() {
     }
     return instance;
 }
+
+CargaDatos::~CargaDatos() {}
+
+void CargaDatos::destroyInstance() {
+    delete instance;
+    instance = NULL;
+}

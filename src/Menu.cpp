@@ -546,8 +546,6 @@ void cargarDatos(){
  }
 
  void liberarMemoria(){
-    Factory* factory = Factory:: getInstance();
-    if (factory!=NULL){
-        delete factory;
-    }
+    Factory::destroyInstance();
+    CargaDatos::destroyInstance();
  }

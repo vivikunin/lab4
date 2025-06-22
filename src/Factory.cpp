@@ -25,6 +25,12 @@ Factory* Factory::getInstance() {
     return instance;
 }
 
+void Factory::destroyInstance() {
+    delete instance;
+    instance = NULL;
+}
+
+
 IControladorFechaActual* Factory::getControladorFechaActual(){
     return ControladorFechaActual::getInstance();
 }

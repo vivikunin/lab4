@@ -13,6 +13,7 @@ class Factory {
 
     public:
         static Factory* getInstance();
+        static void destroyInstance();
         IControladorFechaActual* getControladorFechaActual();
         //TODO: Get interfaces de controladores
         IUsuarios* getControladorUsuario();
